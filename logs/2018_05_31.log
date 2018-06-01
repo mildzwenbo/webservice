@@ -1,0 +1,74 @@
+2018-05-31 08:45:21,913 test_scenario.py[line: 83] INFO: 'bool' object has no attribute 'click'
+2018-05-31 08:47:35,903 test_scenario.py[line: 83] INFO: Message: window.pen is not a function
+Stacktrace:
+    at anonymous (http://inv.pb-yun.com/#/product/riskDisclosure?fundCode=test001&fundRiskRank=R1 line 69 > Function:1)
+    at handleEvaluateEvent (http://inv.pb-yun.com/#/product/riskDisclosure?fundCode=test001&fundRiskRank=R1:69)
+2018-05-31 08:48:55,187 test_scenario.py[line: 83] INFO: Message: window.pen is not a function
+Stacktrace:
+    at anonymous (http://inv.pb-yun.com/#/product/riskDisclosure?fundCode=test001&fundRiskRank=R1 line 69 > Function:1)
+    at handleEvaluateEvent (http://inv.pb-yun.com/#/product/riskDisclosure?fundCode=test001&fundRiskRank=R1:69)
+2018-05-31 08:54:00,127 test_scenario.py[line: 83] INFO: 'bool' object has no attribute 'clear'
+2018-05-31 09:12:12,737 test_scenario.py[line: 83] INFO: 'bool' object has no attribute 'clear'
+2018-05-31 09:13:25,230 test_scenario.py[line: 84] INFO: 'bool' object has no attribute 'clear'
+2018-05-31 09:15:46,114 test_scenario.py[line: 84] INFO: Remote end closed connection without response
+2018-05-31 09:18:41,459 test_scenario.py[line: 84] INFO: 'bool' object has no attribute 'clear'
+2018-05-31 09:21:50,657 test_scenario.py[line: 86] INFO: Remote end closed connection without response
+2018-05-31 09:24:34,050 test_scenario.py[line: 86] INFO: Remote end closed connection without response
+2018-05-31 10:32:14,691 test_scenario.py[line: 84] INFO: 'bool' object has no attribute 'text'
+2018-05-31 10:34:06,068 test_scenario.py[line: 84] INFO: Message: Element is not currently visible and so may not be interacted with
+Stacktrace:
+    at fxdriver.preconditions.visible (file:///C:/Users/ADMINI~1/AppData/Local/Temp/tmpet8fo5aj/extensions/fxdriver@googlecode.com/components/command-processor.js:10092)
+    at DelayedCommand.prototype.checkPreconditions_ (file:///C:/Users/ADMINI~1/AppData/Local/Temp/tmpet8fo5aj/extensions/fxdriver@googlecode.com/components/command-processor.js:12644)
+    at DelayedCommand.prototype.executeInternal_/h (file:///C:/Users/ADMINI~1/AppData/Local/Temp/tmpet8fo5aj/extensions/fxdriver@googlecode.com/components/command-processor.js:12661)
+    at fxdriver.Timer.prototype.setTimeout/<.notify (file:///C:/Users/ADMINI~1/AppData/Local/Temp/tmpet8fo5aj/extensions/fxdriver@googlecode.com/components/command-processor.js:625)
+2018-05-31 17:36:10,846 test_scenario.py[line: 83] INFO: Message: Element is not currently visible and so may not be interacted with
+Stacktrace:
+    at fxdriver.preconditions.visible (file:///C:/Users/ADMINI~1/AppData/Local/Temp/tmpw17cfe4t/extensions/fxdriver@googlecode.com/components/command-processor.js:10092)
+    at DelayedCommand.prototype.checkPreconditions_ (file:///C:/Users/ADMINI~1/AppData/Local/Temp/tmpw17cfe4t/extensions/fxdriver@googlecode.com/components/command-processor.js:12644)
+    at DelayedCommand.prototype.executeInternal_/h (file:///C:/Users/ADMINI~1/AppData/Local/Temp/tmpw17cfe4t/extensions/fxdriver@googlecode.com/components/command-processor.js:12661)
+    at fxdriver.Timer.prototype.setTimeout/<.notify (file:///C:/Users/ADMINI~1/AppData/Local/Temp/tmpw17cfe4t/extensions/fxdriver@googlecode.com/components/command-processor.js:625)
+2018-05-31 18:14:46,143 test_scenario.py[line: 83] INFO: Message: Element is not currently visible and so may not be interacted with
+Stacktrace:
+    at fxdriver.preconditions.visible (file:///C:/Users/ADMINI~1/AppData/Local/Temp/tmp2lmmjz55/extensions/fxdriver@googlecode.com/components/command-processor.js:10092)
+    at DelayedCommand.prototype.checkPreconditions_ (file:///C:/Users/ADMINI~1/AppData/Local/Temp/tmp2lmmjz55/extensions/fxdriver@googlecode.com/components/command-processor.js:12644)
+    at DelayedCommand.prototype.executeInternal_/h (file:///C:/Users/ADMINI~1/AppData/Local/Temp/tmp2lmmjz55/extensions/fxdriver@googlecode.com/components/command-processor.js:12661)
+    at fxdriver.Timer.prototype.setTimeout/<.notify (file:///C:/Users/ADMINI~1/AppData/Local/Temp/tmp2lmmjz55/extensions/fxdriver@googlecode.com/components/command-processor.js:625)
+2018-05-31 18:38:26,500 test_purchase.py[line: 65] INFO: Message: Element is not currently visible and so may not be interacted with
+Stacktrace:
+    at fxdriver.preconditions.visible (file:///C:/Users/ADMINI~1/AppData/Local/Temp/tmpec3j_g23/extensions/fxdriver@googlecode.com/components/command-processor.js:10092)
+    at DelayedCommand.prototype.checkPreconditions_ (file:///C:/Users/ADMINI~1/AppData/Local/Temp/tmpec3j_g23/extensions/fxdriver@googlecode.com/components/command-processor.js:12644)
+    at DelayedCommand.prototype.executeInternal_/h (file:///C:/Users/ADMINI~1/AppData/Local/Temp/tmpec3j_g23/extensions/fxdriver@googlecode.com/components/command-processor.js:12661)
+    at fxdriver.Timer.prototype.setTimeout/<.notify (file:///C:/Users/ADMINI~1/AppData/Local/Temp/tmpec3j_g23/extensions/fxdriver@googlecode.com/components/command-processor.js:625)
+2018-05-31 18:44:42,178 test_scenario.py[line: 88] INFO:  :: 未审核 != 已驳回
+2018-05-31 18:49:08,650 test_scenario.py[line: 84] INFO: 'bool' object has no attribute 'click'
+2018-05-31 18:52:29,521 test_purchase.py[line: 65] INFO: Message: Element is not currently visible and so may not be interacted with
+Stacktrace:
+    at fxdriver.preconditions.visible (file:///C:/Users/ADMINI~1/AppData/Local/Temp/tmpfsgend45/extensions/fxdriver@googlecode.com/components/command-processor.js:10092)
+    at DelayedCommand.prototype.checkPreconditions_ (file:///C:/Users/ADMINI~1/AppData/Local/Temp/tmpfsgend45/extensions/fxdriver@googlecode.com/components/command-processor.js:12644)
+    at DelayedCommand.prototype.executeInternal_/h (file:///C:/Users/ADMINI~1/AppData/Local/Temp/tmpfsgend45/extensions/fxdriver@googlecode.com/components/command-processor.js:12661)
+    at fxdriver.Timer.prototype.setTimeout/<.notify (file:///C:/Users/ADMINI~1/AppData/Local/Temp/tmpfsgend45/extensions/fxdriver@googlecode.com/components/command-processor.js:625)
+2018-05-31 18:55:45,269 test_purchase.py[line: 65] INFO: Message: Element is not currently visible and so may not be interacted with
+Stacktrace:
+    at fxdriver.preconditions.visible (file:///C:/Users/ADMINI~1/AppData/Local/Temp/tmpcmrj9wwa/extensions/fxdriver@googlecode.com/components/command-processor.js:10092)
+    at DelayedCommand.prototype.checkPreconditions_ (file:///C:/Users/ADMINI~1/AppData/Local/Temp/tmpcmrj9wwa/extensions/fxdriver@googlecode.com/components/command-processor.js:12644)
+    at DelayedCommand.prototype.executeInternal_/h (file:///C:/Users/ADMINI~1/AppData/Local/Temp/tmpcmrj9wwa/extensions/fxdriver@googlecode.com/components/command-processor.js:12661)
+    at fxdriver.Timer.prototype.setTimeout/<.notify (file:///C:/Users/ADMINI~1/AppData/Local/Temp/tmpcmrj9wwa/extensions/fxdriver@googlecode.com/components/command-processor.js:625)
+2018-05-31 18:58:34,713 test_purchase.py[line: 65] INFO: Message: Element not found in the cache - perhaps the page has changed since it was looked up
+Stacktrace:
+    at fxdriver.cache.getElementAt (resource://fxdriver/modules/web-element-cache.js:9454)
+    at Utils.getElementAt (file:///C:/Users/ADMINI~1/AppData/Local/Temp/tmpjp0aaax2/extensions/fxdriver@googlecode.com/components/command-processor.js:9039)
+    at WebElement.getElementText (file:///C:/Users/ADMINI~1/AppData/Local/Temp/tmpjp0aaax2/extensions/fxdriver@googlecode.com/components/command-processor.js:12092)
+    at DelayedCommand.prototype.executeInternal_/h (file:///C:/Users/ADMINI~1/AppData/Local/Temp/tmpjp0aaax2/extensions/fxdriver@googlecode.com/components/command-processor.js:12661)
+    at fxdriver.Timer.prototype.setTimeout/<.notify (file:///C:/Users/ADMINI~1/AppData/Local/Temp/tmpjp0aaax2/extensions/fxdriver@googlecode.com/components/command-processor.js:625)
+2018-05-31 19:12:18,585 test_purchase.py[line: 65] INFO: Message: Element is not clickable at point (1187.3333740234375, 291.73333740234375). Other element would receive the click: <div style="" class="el-loading-mask el-loading-fade-leave-active el-loading-fade-leave-to"></div>
+
+2018-05-31 19:14:30,081 test_purchase.py[line: 65] INFO: name 'driver' is not defined
+2018-05-31 19:18:12,548 test_changepwd.py[line: 130] INFO: Remote end closed connection without response
+2018-05-31 19:27:30,318 test_changepwd.py[line: 121] INFO: 'bool' object has no attribute 'click'
+2018-05-31 19:28:19,720 test_changepwd.py[line: 121] INFO: 'bool' object has no attribute 'click'
+2018-05-31 19:29:09,159 test_changepwd.py[line: 121] INFO: 'bool' object has no attribute 'click'
+2018-05-31 19:29:54,746 test_changepwd.py[line: 99] INFO: 'bool' object has no attribute 'click'
+2018-05-31 19:30:39,881 test_changepwd.py[line: 99] INFO: 'bool' object has no attribute 'click'
+2018-05-31 19:31:25,114 test_changepwd.py[line: 99] INFO: 'bool' object has no attribute 'click'
+2018-05-31 19:32:13,765 test_changepwd.py[line: 78] INFO: 'bool' object has no attribute 'click'
+2018-05-31 19:32:59,176 test_changepwd.py[line: 78] INFO: Remote end closed connection without response

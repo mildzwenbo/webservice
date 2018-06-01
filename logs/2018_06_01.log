@@ -1,0 +1,31 @@
+2018-06-01 10:33:01,021 test_product_info.py[line: 99] INFO: Message: Element is not clickable at point (293.08331298828125, 157). Other element would receive the click: <div style="padding-top: 50px;" data-v-49f1192e=""></div>
+
+2018-06-01 10:33:50,819 test_product_info.py[line: 99] INFO: 'bool' object has no attribute 'text'
+2018-06-01 10:38:38,848 test_product_subscription_riskDisclosure.py[line: 66] INFO: '申购申请' != ''
+- 申购申请
++ 
+
+2018-06-01 10:45:33,960 test_scenario.py[line: 83] INFO: 'bool' object has no attribute 'click'
+2018-06-01 10:47:25,056 test_scenario.py[line: 83] INFO: 'bool' object has no attribute 'click'
+2018-06-01 10:50:20,684 test_scenario.py[line: 83] INFO: 'bool' object has no attribute 'text'
+2018-06-01 10:53:27,506 test_scenario.py[line: 82] INFO: 'bool' object has no attribute 'text'
+2018-06-01 11:11:33,599 test_purchase.py[line: 62] INFO: 'NoneType' object is not subscriptable
+2018-06-01 11:17:16,615 test_product_list.py[line: 119] INFO: list index out of range
+2018-06-01 14:25:19,112 test_manlogin.py[line: 43] INFO: '请输入正确的用户名' != '用户不存在'
+- 请输入正确的用户名
++ 用户不存在
+
+2018-06-01 14:25:51,948 test_manlogin.py[line: 43] INFO: Message: Element not found in the cache - perhaps the page has changed since it was looked up
+Stacktrace:
+    at fxdriver.cache.getElementAt (resource://fxdriver/modules/web-element-cache.js:9454)
+    at Utils.getElementAt (file:///C:/Users/ADMINI~1/AppData/Local/Temp/tmprl6209er/extensions/fxdriver@googlecode.com/components/command-processor.js:9039)
+    at WebElement.getElementText (file:///C:/Users/ADMINI~1/AppData/Local/Temp/tmprl6209er/extensions/fxdriver@googlecode.com/components/command-processor.js:12092)
+    at DelayedCommand.prototype.executeInternal_/h (file:///C:/Users/ADMINI~1/AppData/Local/Temp/tmprl6209er/extensions/fxdriver@googlecode.com/components/command-processor.js:12661)
+    at fxdriver.Timer.prototype.setTimeout/<.notify (file:///C:/Users/ADMINI~1/AppData/Local/Temp/tmprl6209er/extensions/fxdriver@googlecode.com/components/command-processor.js:625)
+2018-06-01 14:27:09,147 test_manlogin.py[line: 43] INFO: Remote end closed connection without response
+2018-06-01 14:27:12,187 test_manlogin.py[line: 43] INFO: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+2018-06-01 14:27:15,277 test_manlogin.py[line: 43] INFO: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+2018-06-01 14:32:56,215 test_product_info.py[line: 127] INFO: Message: Element is not clickable at point (696.6666870117188, 161.03334045410156). Other element would receive the click: <li class="el-select-dropdown__item" data-v-49f1192e=""></li>
+
+2018-06-01 14:48:48,329 test_editinfo.py[line: 132] INFO: Message: Element is not clickable at point (617.316650390625, 264). Other element would receive the click: <input class="el-input__inner" placeholder="选择日期" name="" autocomplete="off" type="text">
+
