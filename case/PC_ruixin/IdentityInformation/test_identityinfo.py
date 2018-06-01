@@ -13,7 +13,7 @@ import unittest
 from common.log import logger
 from page.PC.IdentityInformation.IdentityPage import IdentityInfo, browser, pc_url
 
-@unittest.skip('pass')
+#@unittest.skip('pass')
 class TestIdentityInfo(unittest.TestCase):
     """身份信息页面测试用例"""
 
