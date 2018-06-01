@@ -13,7 +13,7 @@ class PcScenario(PCLogin):
     '''流程页面'''
     '''产品列表页面元素'''
     name_loc = ('xpath','//*[@id="app"]/div/div[2]/ul/div[3]/div/div')#登录名称定位
-    viwe_loc = ('xpath',' //*[@id="app"]/div/div[2]/section/div/div[4]/div/div[3]/table/tbody/tr[1]/td[9]/div/button')#产品列表查看定位
+    viwe_loc = ('xpath',' //*[@id="app"]/div/div[2]/section/div/div/div[4]/div/div[3]/table/tbody/tr[1]/td[9]/div/button/span')#产品列表查看定位
     '''基本元素页面元素'''
     info_loc = ('xpath','//*[@id="pane-0"]/div[1]/div[2]/h3')#基本要素页面基本信息定位
     purchase1_loc = ('xpath','//*[@id="pane-0"]/div[1]/div[1]/div[2]/div[8]/dl/dd/button/span')#基本要素页面申购按钮
