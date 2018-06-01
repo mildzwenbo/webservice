@@ -7,6 +7,7 @@ author:
 date:
 brief:  运行全部测试用例
 """
+
 import unittest
 from common.HTMLTestRunner_jpg import HTMLTestRunner
 import time
