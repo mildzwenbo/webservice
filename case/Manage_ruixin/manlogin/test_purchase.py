@@ -38,29 +38,110 @@ class TestScenario(unittest.TestCase):
         "结束"
 
     def test_purchase_through(self):
-        '''申购-审核通过-合同管理流程'''
+        '''申购-审核通过-合同管理-回访确认-不购买'''
         try:
             self.browser.pc_login('13511055879', 'jzj198304', '1')
             self.browser.purchase_scenario(3000)
             sleep(1)
             self.browser.open_url('http://boss.pb-yun.com/')
             self.browser.ManageLogin('13511055879', '123456', '')
-            sleep(1)
+            sleep(2)
             self.browser.audit_through()
             sleep(2)
-            # self.assertEqual(self.browser.manage_status(),'已通过')
+            self.assertEqual(self.browser.manage_status(),'已通过')
             sleep(1)
             self.browser.contract_menu()
             sleep(1)
-            self.assertEqual(self.browser.conract_states(),'未付款')
-            self.assertEqual(self.browser.return_states(),'未回访')
+            self.assertEqual(self.browser.conract_status(),'未付款')
+            self.assertEqual(self.browser.return_status(),'未回访')
             self.browser.window_scroll()
             sleep(1)
             self.browser.edit()
+            sleep(1)
+            self.browser.payment()
+            self.assertEqual(self.browser.conract_status(),'已付款')
+            sleep(1)
+            self.browser.from_returm()
+            sleep(1)
+            self.assertEqual(self.browser.return_status(),'已发送')
+            sleep(1)
+            self.browser.open_url('http://inv.pb-yun.com')
+            sleep(1)
+            self.assertEqual(self.browser.funbuyform(),'基金购买回访单')
+            self.browser.return_visit_consider()
+            self.browser.return_visit_consider()
+            sleep(1)
+            self.browser.pc_exit()
+            self.browser.open_url('http://inv.pb-yun.com')
+            sleep(1)
+            self.browser.odd_number()
+            sleep(1)
+            self.browser.return_visit_submit()
+            self.browser.return_visit_submit()
+            sleep(1)
+            self.browser.open_url('http://boss.pb-yun.com/')
+            self.browser.ManageLogin('13511055879', '123456', '')
+            sleep(1)
+            self.browser.sales()
+            sleep(1)
+            self.browser.contract_menu()
+            sleep(1)
+            self.assertEqual(self.browser.return_status(),'不想买')
+            self.browser.window_scroll()
+            sleep(1)
+            self.browser.conract_operation()
+            sleep(1)
+            self.browser.confirm_page_confirm_butten()
+            self.assertEqual(self.browser.return_status(),'已通过')
+            self.assertEqual(self.browser.conract_status(),'不购买')
 
         except Exception as msg:
             self.log.info(msg)
             raise
+
+    def test_purchase_visit_buy(self):
+        '''申购-审核通过-合同管理-回访-购买'''
+        try:
+            self.browser.pc_login('13511055879', 'jzj198304', '1')
+            self.browser.purchase_scenario(3000)
+            sleep(1)
+            self.browser.open_url('http://boss.pb-yun.com/')
+            self.browser.ManageLogin('13511055879', '123456', '')
+            sleep(3)
+            self.browser.audit_through()
+            sleep(2)
+            self.browser.contract_eidt_returm_buy()
+            sleep(1)
+            self.browser.open_url('http://inv.pb-yun.com')
+            sleep(1)
+            self.browser.odd_sbumit()
+            sleep(1)
+            self.browser.open_url('http://boss.pb-yun.com/')
+            self.browser.ManageLogin('13511055879', '123456', '')
+            sleep(2)
+            self.browser.contract_returm_refused()
+            sleep(1)
+            self.assertEqual(self.browser.return_status(),'已驳回')
+            sleep(1)
+            self.browser.open_url('http://inv.pb-yun.com')
+            sleep(1)
+            self.browser.even_submit()
+            sleep(1)
+            self.browser.open_url('http://boss.pb-yun.com/')
+            self.browser.ManageLogin('13511055879', '123456', '')
+            sleep(2)
+            self.browser.contract_returm_through()
+
+        except Exception as msg:
+            self.log.info(msg)
+            raise
+
+
+
+
+
+
+
 
 
 if __name__ == '__main__':
