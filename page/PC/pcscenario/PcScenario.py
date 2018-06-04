@@ -1,10 +1,12 @@
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from common.PC_login import PCLogin,browser
 from common.get_url import GetUrl
 
+
 import time
 import datetime
-import unittest
-
 
 pc_url = GetUrl().get_pc_url()
 
@@ -102,13 +104,13 @@ class PcScenario(PCLogin):
         '''申购流程'''
         time.sleep(2)
         self.viwe_button()
-        time.sleep(1)
+        time.sleep(2)
         self.purchase_button1()
-        time.sleep(1)
+        time.sleep(2)
         self.check_box_confirm_butten()
-        time.sleep(1)
+        time.sleep(2)
         self.purchase_button_jump(jump)
-        time.sleep(1)
+        time.sleep(2)
 
     '''提交页面'''
     successful_loc = ('xpath','//*[@id="app"]/div/div[2]/ul/div[2]/span[3]/span/span')    #提交页面操作成功信息
@@ -157,21 +159,6 @@ class PcScenario(PCLogin):
     submit_loc = ('id', 'login-btn')  # 登录按钮定位
     longin_username_loc = ('id', 'username')
 
-    # def username(self,username):
-    #     '''用户名字段输入用户名'''
-    #     self.send_keys(self.username_loc,username)
-    #
-    # def passwd(self,passwd):
-    #     '''密码字段输入密码'''
-    #     self.send_keys(self.passwd_loc,passwd)
-    #
-    # def verifi(self,verifi):
-    #     '''验证码字段输入验证码'''
-    #     self.send_keys(self.verification_loc,verifi)
-    #
-    # def sbm(self):
-    #     '''点击登录按钮'''
-    #     self.click(self.submit_loc)
 
     def type_username(self):
         '''获取登录页面用户名'''
@@ -188,6 +175,7 @@ class PcScenario(PCLogin):
         time.sleep(1)
         self.click(self.submit_loc)
         time.sleep(1)
+
 
     '''销售管理-预约申请列表页面'''
     menu_sales_loc = ('xpath','//span[text()="销售管理"]')#销售管理菜单
@@ -413,7 +401,7 @@ class PcScenario(PCLogin):
 
 
     '''发送回访单'''
-    returm_determine_loc = ('class name','layui-layer-btn0')
+    returm_determine_loc = ('class name','layui-layer-btn0')#回访单页面确认按钮
 
     def contract_returm(self):
         '''点击发送回访单按钮'''
@@ -434,10 +422,10 @@ class PcScenario(PCLogin):
         self.returm_determine()
 
     '''PC端回访单'''
-    fundBuyForm_loc = ('xpath','//*[@id="fundBuyForm"]/div[1]/h3')
-    number_loc = ('class name','el-radio')
-    return_visit_consider_loc = ('xpath','//span[text()="考虑一下"]')
-    return_visit_submit_loc = ('xpath','//span[text()="提交"]')
+    fundBuyForm_loc = ('xpath','//*[@id="fundBuyForm"]/div[1]/h3')#基金购买回访单
+    number_loc = ('class name','el-radio')#选择框
+    return_visit_consider_loc = ('xpath','//span[text()="考虑一下"]')#考虑一下
+    return_visit_submit_loc = ('xpath','//span[text()="提交"]')#提交
 
     def funbuyform(self):
         text = self.find_element(self.fundBuyForm_loc).text[-7:]
@@ -480,9 +468,9 @@ class PcScenario(PCLogin):
         self.return_visit_submit()
 
 
-    '''产品类表退出'''
-    product_drop_down_loc = ('class name','el-icon-caret-bottom')
-    product_exit_loc = ('xpath','//span[text()="退出"]')
+    '''产品列表退出'''
+    product_drop_down_loc = ('class name','el-icon-caret-bottom')#下拉
+    product_exit_loc = ('xpath','//span[text()="退出"]')#退出
 
     def product_drop_down(self):
         '''点击下拉'''
@@ -582,135 +570,6 @@ if __name__ == '__main__':
     po.window_scroll()
     time.sleep(1)
     po.conract_operation()
-
-
-
-    # text = po.funbuyform()
-    # print(text)
-    # po.even_number()
-    # po.return_visit_submit()
-    # po.return_visit_submit()
-    # po.return_visit_consider()
-    # po.return_visit_consider()
-
-
-
-    # po.ManageLogin('13511055879','123456','')
-    # po.sales()
-    # time.sleep(2)
-    # po.contract_menu()
-    # time.sleep(1)
-    # po.window_scroll()
-
-    # time.sleep(1)
-    # po.conract_operation()
-    # time.sleep(1)
-    # po.contract_returm()
-    # time.sleep(1)
-    # po.returm_determine()
-
-    # po.edit()
-    # time.sleep(1)
-    # po.payment()
-
-    # po.conract_operation()
-    # time.sleep(1)
-    # po.contract_payment()
-    # time.sleep(1)
-    # po.paymentTime()
-    # time.sleep(1)
-    # po.payment_current()
-    # time.sleep(1)
-    # po.layui_layer_btn0()
-    #合同状态
-
-
-    # po.confirm_payment()
-    # po.layui_layer_btn0()
-
-
-    # time.sleep(1)
-
-
-
-    # time.sleep(1)
-    # text = po.type_username()
-    # print(text)
-    # time.sleep(1)
-    # po.click_menu()
-    # time.sleep(1)
-    # text1 = po.manage_status()
-    # print(text1)
-    # time.sleep(1)
-    # po.window_scroll()
-    # time.sleep(1)
-    # po.operation_button()
-    # time.sleep(1)
-    # po.audit_button()
-    # time.sleep(1)
-    # po.drop_down()
-    # po.rejected()
-    # time.sleep(1)
-    # po.determine()
-
-
-
-
-
-
-
-
-
-
-
-
-    # po.pc_login('13511055879','jzj198304','1')
-    # text = po.login_name()
-    # print(text)
-    # time.sleep(1)
-    # po.viwe_button()
-    # text1 = po.info_text()
-    # print(text1)
-    # time.sleep(2)
-    # po.purchase_button1()
-    # text2 = po.disclosure_book()
-    # print(text2)
-    # time.sleep(1)
-    # po.check_box()
-    # time.sleep(1)
-    # po.confirm_butten()
-    # time.sleep(1)
-    # text3 = po.apply()
-    # print(text3)
-    # po.purchase_confirm()
-    # time.sleep(1)
-    # po.purchase_amount('3000')
-    # po.purchase_button2()
-    # time.sleep(1)
-    # po.menu()
-    # time.sleep(1)
-    # text5 = po.breadcrumb()
-    # text4 = po.apply_time()
-    # text6 = po.status()
-    # print(text5)
-    # print(text4)
-    # print(text6)
-    # print(123456)
-
-
-    # po.sales()
-    # time.sleep(2)
-    # po.contract_menu()
-    # po.window_scroll()
-    # po.edit()
-    # po.window_scroll()
-    # po.conract_operation()
-    # po.contract_payment()
-    # po.paymentTime()
-    # po.confirm_payment()
-    # po.layui_layer_btn0()
-
-
 
 
 
