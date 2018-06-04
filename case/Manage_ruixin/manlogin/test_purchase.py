@@ -30,6 +30,7 @@ class TestScenario(unittest.TestCase):
             cls.display.stop()
 
     def setUp(self):
+        self.driver.implicitly_wait(10)
         "初始化"
 
     def tearDown(self):
@@ -99,7 +100,7 @@ class TestScenario(unittest.TestCase):
             self.log.info(msg)
             raise
 
-    def test_purchase_visit_buy(self):
+    def purchase_visit_buy(self):
         '''申购-审核通过-合同管理-回访-购买'''
         try:
             self.browser.pc_login('13511055879', 'jzj198304', '1')
@@ -123,6 +124,8 @@ class TestScenario(unittest.TestCase):
             sleep(1)
             self.assertEqual(self.browser.return_status(),'已驳回')
             sleep(1)
+            self.browser.confirm_page_confirm_butten()
+            sleep(1)
             self.browser.open_url('http://inv.pb-yun.com')
             sleep(1)
             self.browser.even_submit()
@@ -135,14 +138,5 @@ class TestScenario(unittest.TestCase):
         except Exception as msg:
             self.log.info(msg)
             raise
-
-
-
-
-
-
-
-
-
 if __name__ == '__main__':
     unittest.main()
