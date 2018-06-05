@@ -1,10 +1,10 @@
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+
 from common.PC_login import PCLogin,browser
 from common.get_url import GetUrl
 
-
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
 import time
 import datetime
 
@@ -540,6 +540,13 @@ class PcScenario(PCLogin):
         time.sleep(1)
         self.confirm_page_confirm_butten()
 
+    def WebDriverWait(self,driver,type,str):
+        '''显示等待'''
+        WebDriverWait(driver, 10).until(EC.visibility_of(driver.find_element(
+            by=type, value=str)))
+
+
+
 
 
 
@@ -562,14 +569,11 @@ if __name__ == '__main__':
     po = PcScenario(driver)
     po.open_url('http://boss.pb-yun.com')
     po.ManageLogin('13511055879', '123456', '')
-    time.sleep(1)
-    po.sales()
-    time.sleep(1)
-    po.contract_menu()
-    time.sleep(1)
-    po.window_scroll()
-    time.sleep(1)
-    po.conract_operation()
+    WebDriverWait(driver, 10).until(
+        EC.visibility_of(driver.find_element(
+            by=By.XPATH, value='//*[@id="detailName"]/span')))
+
+    po.audit_through()
 
 
 
