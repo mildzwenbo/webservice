@@ -1,7 +1,9 @@
 from page.PC.pcscenario import PcScenario
 from page.PC.pcscenario.PcScenario import PcScenario,browser,pc_url
 
-
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
 from pyvirtualdisplay import Display
 from common.log import logger
 from time import sleep
@@ -30,7 +32,7 @@ class TestScenario(unittest.TestCase):
             cls.display.stop()
 
     def setUp(self):
-        self.driver.implicitly_wait(10)
+
         "初始化"
 
     def tearDown(self):
@@ -46,7 +48,8 @@ class TestScenario(unittest.TestCase):
             sleep(1)
             self.browser.open_url('http://boss.pb-yun.com/')
             self.browser.ManageLogin('13511055879', '123456', '')
-            sleep(2)
+            sleep(3)
+            WebDriverWait(self.driver,'By.XPATh','//*[@id="detailName"]/span')
             self.browser.audit_through()
             sleep(2)
             self.assertEqual(self.browser.manage_status(),'已通过')
@@ -82,7 +85,9 @@ class TestScenario(unittest.TestCase):
             sleep(1)
             self.browser.open_url('http://boss.pb-yun.com/')
             self.browser.ManageLogin('13511055879', '123456', '')
-            sleep(1)
+            sleep(3)
+            WebDriverWait(self.driver, 'By.XPATh', '//*[@id="detailName"]/span')
+            sleep(3)
             self.browser.sales()
             sleep(1)
             self.browser.contract_menu()
@@ -100,43 +105,5 @@ class TestScenario(unittest.TestCase):
             self.log.info(msg)
             raise
 
-    def purchase_visit_buy(self):
-        '''申购-审核通过-合同管理-回访-购买'''
-        try:
-            self.browser.pc_login('13511055879', 'jzj198304', '1')
-            self.browser.purchase_scenario(3000)
-            sleep(1)
-            self.browser.open_url('http://boss.pb-yun.com/')
-            self.browser.ManageLogin('13511055879', '123456', '')
-            sleep(3)
-            self.browser.audit_through()
-            sleep(2)
-            self.browser.contract_eidt_returm_buy()
-            sleep(1)
-            self.browser.open_url('http://inv.pb-yun.com')
-            sleep(1)
-            self.browser.odd_sbumit()
-            sleep(1)
-            self.browser.open_url('http://boss.pb-yun.com/')
-            self.browser.ManageLogin('13511055879', '123456', '')
-            sleep(2)
-            self.browser.contract_returm_refused()
-            sleep(1)
-            self.assertEqual(self.browser.return_status(),'已驳回')
-            sleep(1)
-            self.browser.confirm_page_confirm_butten()
-            sleep(1)
-            self.browser.open_url('http://inv.pb-yun.com')
-            sleep(1)
-            self.browser.even_submit()
-            sleep(1)
-            self.browser.open_url('http://boss.pb-yun.com/')
-            self.browser.ManageLogin('13511055879', '123456', '')
-            sleep(2)
-            self.browser.contract_returm_through()
-
-        except Exception as msg:
-            self.log.info(msg)
-            raise
 if __name__ == '__main__':
     unittest.main()
