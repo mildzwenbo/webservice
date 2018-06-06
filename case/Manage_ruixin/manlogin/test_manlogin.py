@@ -38,7 +38,7 @@ class TestLogin(unittest.TestCase):
         """用户名密码为空"""
         try:
             self.browser.sbm()
-            self.assertEqual(self.browser.type_alarm1(),'用户不存在')
+            self.assertEqual(self.browser.type_alarm2(),'用户不存在')
         except Exception as msg:
             self.log.info(msg)
             raise
