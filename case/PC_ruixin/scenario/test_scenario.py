@@ -2,7 +2,7 @@ from page.PC.pcscenario import PcScenario
 from page.PC.pcscenario.PcScenario import PcScenario,browser,pc_url
 from common.log import logger
 
-
+from selenium.webdriver.support.wait import WebDriverWait
 from pyvirtualdisplay import Display
 from time import sleep
 import unittest
@@ -71,6 +71,8 @@ class TestScenario(unittest.TestCase):
             self.browser.open_url('http://boss.pb-yun.com/')
             sleep(1)
             self.browser.ManageLogin('13511055879','123456','')
+            sleep(1)
+            WebDriverWait(self.driver, 'By.XPATh', '//*[@id="detailName"]/span')
             sleep(1)
             self.assertEqual(self.browser.type_username(),'金战军')
             sleep(2)
