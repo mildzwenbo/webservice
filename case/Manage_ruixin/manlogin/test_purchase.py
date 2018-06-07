@@ -1,8 +1,6 @@
 from page.PC.pcscenario import PcScenario
 from page.PC.pcscenario.PcScenario import PcScenario,browser,pc_url
 
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from pyvirtualdisplay import Display
 from common.log import logger
@@ -37,13 +35,13 @@ class TestScenario(unittest.TestCase):
 
     def tearDown(self):
         self.browser.delete_all_cookies()
-        self.browser.refresh()
+        self.browser.quit()
         "结束"
 
     def test_purchase_through(self):
         '''申购-审核通过-合同管理-回访确认-不购买'''
         try:
-            self.browser.pc_login('13511055879', 'jzj198304', '1')
+            self.browser.pc_login('15822816936', 'abc123456', '1')
             self.browser.purchase_scenario(3000)
             sleep(1)
             self.browser.open_url('http://boss.pb-yun.com/')
@@ -63,6 +61,7 @@ class TestScenario(unittest.TestCase):
             self.browser.edit()
             sleep(1)
             self.browser.payment()
+            sleep(2)
             self.assertEqual(self.browser.conract_status(),'已付款')
             sleep(1)
             self.browser.from_returm()
@@ -73,21 +72,18 @@ class TestScenario(unittest.TestCase):
             sleep(1)
             self.assertEqual(self.browser.funbuyform(),'基金购买回访单')
             self.browser.return_visit_consider()
-            self.browser.return_visit_consider()
             sleep(1)
-            self.browser.pc_exit()
             self.browser.open_url('http://inv.pb-yun.com')
             sleep(1)
             self.browser.odd_number()
             sleep(1)
             self.browser.return_visit_submit()
-            self.browser.return_visit_submit()
             sleep(1)
             self.browser.open_url('http://boss.pb-yun.com/')
             self.browser.ManageLogin('13511055879', '123456', '')
-            sleep(3)
+            sleep(2)
             WebDriverWait(self.driver, 'By.XPATh', '//*[@id="detailName"]/span')
-            sleep(3)
+            sleep(2)
             self.browser.sales()
             sleep(1)
             self.browser.contract_menu()
@@ -98,12 +94,15 @@ class TestScenario(unittest.TestCase):
             self.browser.conract_operation()
             sleep(1)
             self.browser.confirm_page_confirm_butten()
+            sleep(2)
             self.assertEqual(self.browser.return_status(),'已通过')
             self.assertEqual(self.browser.conract_status(),'不购买')
 
         except Exception as msg:
             self.log.info(msg)
             raise
+
+
 
 if __name__ == '__main__':
     unittest.main()
