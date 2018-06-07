@@ -8,15 +8,13 @@ from common.PC_login import PCLogin,pc_url,browser
 
 
 class IdentityInfo(PCLogin):
-    identity = ('class name', 'avatar-wrapper')#页面右上角人头图标定位
+    identity = ('class name', 'svg-container')#页面右上角人头图标定位
     centre = ('class name', 'el-dropdown-menu__item')#个人中心定位
     link = ('class name', 'el-button')#身份信息页面，所有链接按钮的定位
 
     def menu_bar(self):
         """点击右上角人头图标下的个人中心"""
-        self.click(self.identity)
-        time.sleep(1)
-        personal_center = self.find_elements(self.centre)[0]
+        personal_center = self.find_elements(self.identity)[1]
         personal_center.click()
 
     def click_pwd(self):
@@ -51,5 +49,5 @@ if __name__ == '__main__':
     Iinfo.pc_login("15822816936","abc123456")
     time.sleep(2)
     Iinfo.menu_bar()
-    time.sleep(2)
-    Iinfo.click_phone()
+    # time.sleep(2)
+    # Iinfo.click_phone()

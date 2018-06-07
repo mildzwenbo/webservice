@@ -46,7 +46,7 @@ class qqqq(unittest.TestCase):
     def setUp(self):
         self.browser.delete_all_cookies()
         self.browser.refresh()
-        self.browser.pc_login('13944096337', 'admin123456')
+        self.browser.pc_login('15822816936', 'abc123456')
 
     def tearDown(self):
         time.sleep(2)
