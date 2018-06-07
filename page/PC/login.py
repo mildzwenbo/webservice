@@ -1,7 +1,7 @@
 """
 @author:fei
 @date:2018-5-28
-@brief:PC端登录页面所有元素的定位及其操作
+@brief:PC端登录页面所有元素的定位及其操作， 没有写主持的点击
 """
 
 from common.find_element import FindElement, browser
@@ -24,7 +24,10 @@ class PCLogin(FindElement):
 
     button_login_loc = ('css', '#app > div > form > div:nth-child(9) > div > button > span')#登录按钮
 
-    retrieve_password_loc = ('css', '#app > div > form > div:nth-child(8) > button') #找回密码
+    retrieve_password_loc = ('css', '#app > div > form > div:nth-child(8) > button:nth-child(2) > span') #找回密码
+
+
+    register_loc = ('css', '#app > div > form > div:nth-child(8) > button:nth-child(1) > span') #注册按钮
 
     def input_name(self, name):
         """输入用户名"""

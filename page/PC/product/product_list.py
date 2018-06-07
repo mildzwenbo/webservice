@@ -1,7 +1,7 @@
 """
 @author:
 @date:
-@brief:
+@brief: 缺省消息提醒按钮的定位， 点击消息的方法
 """
 
 from common.PC_login import PCLogin, browser, pc_url
@@ -11,12 +11,12 @@ import time
 class ProductList(PCLogin):
 
     home_loc = ('link text', 'Home')                            #Home按钮
-    username_loc = ('css', '.user-name')                        #用户名
+    username_loc = ('css', '#app > div > div.main-container > ul > div.right-menu > a:nth-child(2) > span > svg')                        #用户名
     search_input_loc = ('class name', 'el-input__inner')        #输入框
     search_loc = ('class name', 'el-button--medium')            #点击输入按钮、更高风险等级按钮，
-                                                                 # 列表中产品操作栏中的查看按钮
-    quit_loc = ('class name', 'el-dropdown-menu__item')              #退出按钮
+                                                                # 列表中产品操作栏中的查看按钮
 
+    quit_loc = ('class name', 'svg-container')              #退出按钮
 
     def home_click(self):
         """点击Home按钮"""
@@ -52,7 +52,8 @@ class ProductList(PCLogin):
 
     def quit_click(self):
         """点击退出按钮"""
-        self.find_elements(self.quit_loc)[1].click()
+        self.find_elements(self.quit_loc)[2].click()
+
 
 
 if __name__ == '__main__':
@@ -60,7 +61,8 @@ if __name__ == '__main__':
     h = ProductList(driver)
     h.open_url(pc_url)
     h.pc_login('15822816936', 'abc123456', '1')
-    h.username_click()
+    h.input_search('测试')
     time.sleep(1)
-    h.quit_click()
+    h.search_click()
+
 

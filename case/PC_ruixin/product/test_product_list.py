@@ -40,20 +40,9 @@ class TestHome(unittest.TestCase):
         try:
             self.browser.home_click()
             time.sleep(1)
-            text = self.browser.get_text(('css', '#app > div > div.main-container > '
-                                                 'section > div > div:nth-child(2) > span'))
+            text = self.browser.get_text(('css', '#app > div > div.main-container > section >'
+                                                 ' div > div > div:nth-child(2) > span'))
             self.assertEqual('产品名称', text)
-        except Exception as msg:
-            self.log.info(str(msg))
-            raise
-
-    def test_click_username(self):
-        """点击用户名称"""
-        try:
-            self.browser.username_click()
-            text = self.browser.get_text(self.browser.quit_loc)
-            time.sleep(1)
-            self.assertTrue('退出', text)
         except Exception as msg:
             self.log.info(str(msg))
             raise
@@ -61,8 +50,6 @@ class TestHome(unittest.TestCase):
     def test_quit_click(self):
         """退出登录"""
         try:
-            self.browser.username_click()
-            time.sleep(1)
             self.browser.quit_click()
             text = self.browser.get_text(('class name', 'title'))
             self.assertEqual('基金运营管理系统', text)
@@ -74,8 +61,6 @@ class TestHome(unittest.TestCase):
         """点击个人信息"""
         try:
             self.browser.username_click()
-            time.sleep(1)
-            self.browser.personal_information_click()
             time.sleep(1)
             text = self.browser.find_elements(('class name', 'clearfix'))[0].text
             self.assertEqual('账户信息', text)
@@ -89,8 +74,10 @@ class TestHome(unittest.TestCase):
             self.browser.input_search('测试')
             self.browser.search_click()
             time.sleep(1)
-            text = self.browser.get_text(('xpath', '//*[@id="app"]/div/div[2]/section/div/div[4]/div/div[3]'
-                                                   '/table/tbody/tr[1]/td[2]/div'))
+            text = self.browser.get_text(('css', '#app > div > div.main-container > section >'
+                                                 ' div > div > div:nth-child(4) > div > div.el-table'
+                                                 '__body-wrapper.is-scrolling-none > table > tbody >'
+                                                 ' tr:nth-child(1) > td.el-table_1_column_2 > div'))
             self.assertIn('测试', text)
         except Exception as msg:
             self.log.info(str(msg))

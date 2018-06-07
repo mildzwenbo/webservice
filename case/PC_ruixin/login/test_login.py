@@ -1,7 +1,7 @@
 """
 @author:fei
 @date:2018-5-26
-@brief:登录页面等测试用例
+@brief:登录页面等测试用例， 没有写主持的测试用例
 """
 
 import platform

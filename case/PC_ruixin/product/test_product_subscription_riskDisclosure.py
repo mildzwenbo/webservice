@@ -59,12 +59,13 @@ class TestRiskDisclosure(unittest.TestCase):
         """点击确定按钮"""
         try:
             self.browser.confirm_button_click()
+            time.sleep(1)
             text = self.browser.get_text(('css', '#app > div > div.main-container > '
                                                  'section > div > div:nth-child(2) > h4'))
             self.assertEqual('申购申请', text)
         except Exception as msg:
             self.log.info(str(msg))
-
+            raise
 
 
 if __name__ == '__main__':

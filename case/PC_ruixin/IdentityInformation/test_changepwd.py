@@ -12,7 +12,7 @@ import unittest
 from common.log import logger
 from page.PC.IdentityInformation.ChangePasswordPage import ChangePassword, browser, pc_url
 
-#@unittest.skip('pass')
+
 class ChangePwd(unittest.TestCase):
     """身份信息-修改密码页面测试用例"""
 
