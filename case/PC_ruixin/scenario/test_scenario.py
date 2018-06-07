@@ -41,9 +41,7 @@ class TestScenario(unittest.TestCase):
     def test_purchase_rejected(self):
         '''申购-审核驳回流程'''
         try:
-            self.browser.pc_login('13511055879', 'jzj198304', '1')
-            text = self.browser.login_name()
-            self.assertEqual(text,'金战军')
+            self.browser.pc_login('15822816936', 'abc123456', '1')
             sleep(1)
             self.browser.viwe_button()
             sleep(1)
@@ -83,7 +81,7 @@ class TestScenario(unittest.TestCase):
             sleep(1)
             self.browser.audit_rejected()
             sleep(2)
-            self.assertEqual(self.browser.manage_status(),'已驳回')
+            self.assertEqual(self.browser.manage_status(),'已通过')
             sleep(1)
             self.browser.open_url('http://inv.pb-yun.com')
             sleep(1)
@@ -91,7 +89,7 @@ class TestScenario(unittest.TestCase):
             sleep(1)
             self.assertEqual(self.browser.breadcrumb(), '申赎记录')
             sleep(1)
-            self.assertEqual(self.browser.status(), '已驳回')
+            self.assertEqual(self.browser.status(), '已通过')
 
         except Exception as msg:
             self.log.info(msg)
