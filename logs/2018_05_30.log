@@ -1,6 +1,0 @@
-2018-05-30 15:35:46,058 test_editinfo.py[line: 65] INFO: 'ChangePwd' object has no attribute 'click_edit'
-2018-05-30 15:38:11,444 test_editinfo.py[line: 65] INFO: 'EditinInfo' object has no attribute 'click_edit'
-2018-05-30 15:41:52,661 test_editinfo.py[line: 66] INFO: 'EditinInfo' object has no attribute 'click_edit'
-2018-05-30 15:43:33,976 test_editinfo.py[line: 66] INFO: 'EditinInfo' object has no attribute 'click_edit'
-2018-05-30 15:44:47,330 test_editinfo.py[line: 66] INFO: 'EditinInfo' object has no attribute 'browserclear_name'
-2018-05-30 15:45:51,948 test_editinfo.py[line: 66] INFO: 'EditInfo' object has no attribute 'browserclear_name'

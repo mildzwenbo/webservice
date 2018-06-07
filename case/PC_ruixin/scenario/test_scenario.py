@@ -2,7 +2,7 @@ from page.PC.pcscenario import PcScenario
 from page.PC.pcscenario.PcScenario import PcScenario,browser,pc_url
 from common.log import logger
 
-
+from selenium.webdriver.support.wait import WebDriverWait
 from pyvirtualdisplay import Display
 from time import sleep
 import unittest
@@ -41,33 +41,39 @@ class TestScenario(unittest.TestCase):
     def test_purchase_rejected(self):
         '''申购-审核驳回流程'''
         try:
-            self.browser.pc_login('13511055879', 'jzj198304', '1')
-            text = self.browser.login_name()
-            self.assertEqual(text,'金战军')
+            self.browser.pc_login('15822816936', 'abc123456', '1')
             sleep(1)
             self.browser.viwe_button()
             sleep(1)
             text = self.browser.info_text()
-            self.assertEqual(text, '基本信息')
+            self.assertEqual(text, '产品详情')
             self.browser.purchase_button1()
             sleep(1)
             text = self.browser.disclosure_book()
             self.assertEqual(text, '风险揭示书')
             sleep(1)
-            self.browser.book_jump()
+            self.browser.check_box_confirm_butten()
             sleep(1)
+            self.assertEqual(self.browser.apply(),'申购')
             self.browser.purchase_button_jump(2000)
             sleep(1)
             self.assertEqual(self.browser.successful(),'操作成功')
             sleep(1)
             self.browser.menu()
             sleep(1)
-            self.assertEqual(self.browser.time_status(),self.browser.current_time_status())
+            self.assertEqual(self.browser.breadcrumb(),'申赎记录')
+            sleep(1)
+            self.assertEqual(self.browser.apply_time(),self.browser.current_time())
+            self.assertEqual(self.browser.status(),'未审核')
             sleep(1)
             self.browser.open_url('http://boss.pb-yun.com/')
-            sleep(2)
+            sleep(1)
             self.browser.ManageLogin('13511055879','123456','')
+            sleep(1)
+            WebDriverWait(self.driver, 'By.XPATh', '//*[@id="detailName"]/span')
+            sleep(1)
             self.assertEqual(self.browser.type_username(),'金战军')
+            sleep(2)
             self.browser.click_menu()
             self.assertEqual(self.browser.manage_status(),'未审核')
             sleep(1)
@@ -75,7 +81,16 @@ class TestScenario(unittest.TestCase):
             sleep(1)
             self.browser.audit_rejected()
             sleep(2)
-            self.assertEqual(self.browser.manage_status(),'已驳回')
+            self.assertEqual(self.browser.manage_status(),'已通过')
+            sleep(1)
+            self.browser.open_url('http://inv.pb-yun.com')
+            sleep(1)
+            self.browser.menu()
+            sleep(1)
+            self.assertEqual(self.browser.breadcrumb(), '申赎记录')
+            sleep(1)
+            self.assertEqual(self.browser.status(), '已通过')
+
         except Exception as msg:
             self.log.info(msg)
             raise

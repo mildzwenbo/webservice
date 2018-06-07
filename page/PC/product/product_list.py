@@ -14,9 +14,9 @@ class ProductList(PCLogin):
     username_loc = ('css', '.user-name')                        #用户名
     search_input_loc = ('class name', 'el-input__inner')        #输入框
     search_loc = ('class name', 'el-button--medium')            #点击输入按钮、更高风险等级按钮，
-                                                                # 列表中产品操作栏中的查看按钮
-
+                                                                 # 列表中产品操作栏中的查看按钮
     quit_loc = ('class name', 'el-dropdown-menu__item')              #退出按钮
+
 
     def home_click(self):
         """点击Home按钮"""
