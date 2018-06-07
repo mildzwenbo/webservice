@@ -22,7 +22,7 @@ data = ReadExcel(excel_path, sheet).data_list()
 
 
 @ddt.ddt
-class qqqq(unittest.TestCase):
+class TestEditInfo(unittest.TestCase):
     """登录页面等测试用例"""
 
     @classmethod
