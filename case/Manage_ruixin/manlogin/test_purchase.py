@@ -15,7 +15,7 @@ class TestScenario(unittest.TestCase):
     def setUpClass(cls):
         syt = platform.platform()
         if syt[:5] == 'Linux':
-            cls.display = Display(visible=0, size=(1280, 900))
+            cls.display = Display(visible=0, size=(1280, 1000))
             cls.display.start()
         cls.log = logger
         cls.driver = browser()
@@ -61,8 +61,8 @@ class TestScenario(unittest.TestCase):
             self.browser.edit()
             sleep(1)
             self.browser.payment()
-            # sleep(2)
-            # self.assertEqual(self.browser.conract_status(),'已付款')
+            sleep(2)
+            self.assertEqual(self.browser.conract_status(),'已付款')
             sleep(1)
             self.browser.from_returm()
             sleep(1)
