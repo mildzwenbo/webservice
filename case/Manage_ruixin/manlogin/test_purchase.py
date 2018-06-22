@@ -30,11 +30,12 @@ class TestScenario(unittest.TestCase):
             cls.display.stop()
 
     def setUp(self):
-
+        self.log = logger
         "初始化"
 
     def tearDown(self):
         self.browser.delete_all_cookies()
+        self.browser.refresh()
         "结束"
 
     def test_purchase_through(self):
@@ -60,7 +61,7 @@ class TestScenario(unittest.TestCase):
             self.browser.edit()
             sleep(1)
             self.browser.payment()
-            sleep(2)
+            # sleep(2)
             # self.assertEqual(self.browser.conract_status(),'已付款')
             sleep(1)
             self.browser.from_returm()
