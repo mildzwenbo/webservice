@@ -61,6 +61,7 @@ class TestScenario(unittest.TestCase):
             self.browser.edit()
             sleep(1)
             self.browser.payment()
+            print('跳转合同列表页面')
             sleep(2)
             self.assertEqual(self.browser.conract_status(),'已付款')
             sleep(1)
