@@ -35,7 +35,6 @@ class TestScenario(unittest.TestCase):
 
     def tearDown(self):
         self.browser.delete_all_cookies()
-        self.browser.quit()
         "结束"
 
     def test_purchase_through(self):
