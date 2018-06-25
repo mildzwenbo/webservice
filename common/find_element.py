@@ -23,6 +23,9 @@ def browser(browser='firefox'):
     try:
         if browser == 'firefox':
             driver = webdriver.Firefox()
+            # file_path = r'C:\Users\Administrator\AppData\Roaming\Mozilla\Firefox\Profiles\2mnajvb0.default'
+            # f = webdriver.FirefoxProfile(file_path)
+            # driver = webdriver.Firefox(f)
         elif browser == 'chrome':
             driver = webdriver.Chrome()
         elif browser == "ie":
@@ -397,6 +400,11 @@ class FindElement():
         :return:
         """
         self.driver.quit()
+
+    def WebDriverWait(self,driver,type,str):
+        '''显示等待'''
+        WebDriverWait(driver, 10).until(EC.visibility_of(driver.find_element(
+            by=type, value=str)))
 
 
 if __name__ == '__main__':
