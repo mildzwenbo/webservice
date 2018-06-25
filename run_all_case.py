@@ -113,4 +113,4 @@ def send_mail():
 
 if __name__ == '__main__':
     run_case()
-    # send_mail()
+    send_mail()
