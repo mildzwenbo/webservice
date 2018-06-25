@@ -167,7 +167,7 @@ class TestScenario(unittest.TestCase):
             sleep(1)
             self.browser.sell_contract()                                             # 点击销售管理-合同管理菜单
             sleep(1)
-            self.assertEqual(self.browser.return_status(), '不想买')                 # 列表数据状态断言-想买
+            self.assertEqual(self.browser.return_status(), '不想买')                 # 列表数据状态断言-不想买
 
         except Exception as msg:
             self.log.info(msg)
