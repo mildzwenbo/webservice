@@ -2,7 +2,7 @@ from common.get_url import GetUrl
 from common.find_element import FindElement, browser
 import time
 
-pc_url = GetUrl().get_pc_url() + '#/manlogin'
+pc_url = GetUrl().get_pc_url() + '#/login'
 
 
 class PCLogin(FindElement):
