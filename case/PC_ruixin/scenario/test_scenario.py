@@ -31,12 +31,13 @@ class TestScenario(unittest.TestCase):
             cls.display.stop()
 
     def setUp(self):
-        self.browser.delete_all_cookies()
+
         self.browser.refresh()
         self.browser.pc_login('15822816936', 'abc123456', '1')
         "初始化"
 
     def tearDown(self):
+        self.browser.delete_all_cookies()
         sleep(2)
         "结束"
 
