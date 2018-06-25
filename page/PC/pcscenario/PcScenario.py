@@ -1,463 +1,146 @@
-
 from common.PC_login import PCLogin,browser
+from page.SafeManager.ManageLogin import ManageLoginPage
+from page.PC.product.product_purchase import ProductPurchase
+from page.PC.purchaserecord.purchase_record import PurchaseRrecord
+from page.SafeManager.sellmanager.Appointment import Appointment
+from page.SafeManager.sellmanager.ContractManager import ContractManager
+from page.PC.pcinfo.PcReturnVisit import ReturnVisitt
 from common.get_url import GetUrl
 
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.wait import WebDriverWait
+
 import time
-import datetime
+
 
 pc_url = GetUrl().get_pc_url()
 
 
-class PcScenario(PCLogin):
+class PcScenario(PCLogin,ManageLoginPage,ProductPurchase,PurchaseRrecord,Appointment,ContractManager,ReturnVisitt):
 
-    '''流程页面'''
+    '''流程所有page'''
 
-    '''产品列表页面元素'''
-    name_loc = ('class name','user-name')#登录名称定位
-    viwe_loc = ('class name','el-button--medium')#产品列表查看定位
-
-    def login_name(self):
-        '''获取登录名称'''
-        text = self.find_element(self.name_loc).text
-        return text
-
-    def viwe_button(self):
-        '''点击查看按钮方法'''
-        element = self.find_elements(self.viwe_loc)[2]
-        element.click()
-
-    '''基本元素页面元素'''
-    info_loc = ('class name','el-breadcrumb__inner')#产品详情
-    purchase1_loc = ('xpath','//span[text()="申购"]')#基本要素页面申购按钮
-
-    def info_text(self):
-        '''获取基本要素页面产品详情'''
-        element = self.find_elements(self.info_loc)[2]
-        text = element.text
-        return text
-
-    def purchase_button1(self):
-        '''点击基本要素页面申购按钮'''
-        self.click(self.purchase1_loc)
-
-
-    '''风险揭示书页面'''
-    book_loc = ('class name','no-redirect')#风险揭示书定位
-    check_box_loc = ('class name','el-checkbox__inner')#勾选框定位
-    confirm_loc = ('class name','is-plain')#确认按钮定位
-
-    def disclosure_book(self):
-        '''获取风险揭示书'''
-        text = self.find_element(self.book_loc).text
-        return text
-
-    def check_box_confirm_butten(self):
-        '''定位勾选框-点击确认按钮'''
-        self.js_scroll_end(0, 1200)
-        target = self.find_elements(self.check_box_loc)
-        target[0].click()
-        target[1].click()
-        target[2].click()
-        target[3].click()
-        target[4].click()
-        target[5].click()
-        target[6].click()
-        target[7].click()
-        self.js_scroll_end(0, 2000)
-        target[8].click()
-        target[9].click()
-        target[10].click()
-        target[11].click()
-        target[12].click()
-        '''点击确认按钮'''
-        element = self.find_elements(self.confirm_loc)[1]
-        element.click()
-
-    '''申购页面'''
-    apply_loc = ('class name','no-redirect') #申购页面申购申请元素定位
-    purchase_confirm_loc = ('class name','el-checkbox__inner')#申购页面勾选框
-    purchase_amount_loc = ('class name','el-input__inner')#申购金额输入框
-    purchase_button_loc = ('class name','is-plain')#申购页面提交按钮
-
-    def apply(self):
-        '''申购页面申购申请元素'''
-        text = self.find_element(self.apply_loc).text
-        return text
-
-    def purchase_button_jump(self,amount):
-        '''申购页面点击勾选框-输入金额-点击确认按钮'''
-        '''申购页面勾选框'''
-        self.js_scroll_end(0, 1300)
-        self.click(self.purchase_confirm_loc)
+    '''pc端产品列表查看-申购-提交'''
+    def purodut_scenarion(self, asstassertEqual, amount, ):
+        '''PC管理端申购--提交页面'''
+        self.viwe_button()                                          #点击产品列表页面查看按钮
         time.sleep(1)
-        '''申购页面输入金额'''
-        self.send_keys(self.purchase_amount_loc, amount)
+        self.detaile_test(asstassertEqual)                          #获取产品详情页面【产品详情】并断言
         time.sleep(1)
-        '''点击提交按钮'''
-        element = self.find_elements(self.purchase_button_loc)[1]
-        element.click()
-
-    def purchase_scenario(self,jump):
-        '''申购流程'''
-        time.sleep(2)
-        self.viwe_button()
-        time.sleep(2)
-        self.purchase_button1()
-        time.sleep(2)
-        self.check_box_confirm_butten()
-        time.sleep(2)
-        self.purchase_button_jump(jump)
-        time.sleep(2)
-
-    '''提交页面'''
-    successful_loc = ('xpath','//*[@id="app"]/div/div[2]/ul/div[2]/span[3]/span/span')    #提交页面操作成功信息
-
-    def successful(self):
-        '''提交页面提交成功定位'''
-        text = self.find_element(self.successful_loc).text
-        return text
-
-    '''查看申赎记录'''
-    menu_loc = ('class name', 'el-menu-item')  # 申赎记录菜单
-    breadcrumb_loc = ('class name','no-redirect') #申赎记录
-    cell_loc = ('class name', 'cell')  # 列表页面字段下数据
-
-    def menu(self):
-        '''点击申赎记录菜单'''
-        element = self.find_elements(self.menu_loc)[3]
-        element.click()
-
-    def breadcrumb(self):
-        '''获取面包屑'''
-        text = self.find_element(self.breadcrumb_loc).text
-        return text
-
-    def apply_time(self):
-        '''获取列表时间信息'''
-        element = self.find_elements(self.cell_loc)[7]
-        text = element.text
-        return text[:10]
-
-    def current_time(self):
-        '''获取当前时间'''
-        time1 = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))[:10]
-        return time1
-
-    def status(self):
-        '''获取列表状态信息'''
-        text = self.find_elements(self.cell_loc)[12].text
-        return text
-
-
-    '''管理端登录页面'''
-    username_loc = ('id', 'login-name')  # 用户名称定位
-    passwd_loc = ('id', 'login-password')  # 密码定位
-    verification_loc = ('id', 'verifyCode')  # 验证码定位
-    submit_loc = ('id', 'login-btn')  # 登录按钮定位
-    longin_username_loc = ('id', 'username')
-
-
-    def type_username(self):
-        '''获取登录页面用户名'''
-        text = self.find_element(self.longin_username_loc).text
-        return text
-
-    def ManageLogin(self,username,passwd,verifi):
-        '''用户名字段输入用户名'''
-        self.send_keys(self.username_loc,username)
+        self.purchase_button()                                      #点击产品详情页面申购按钮
         time.sleep(1)
-        self.send_keys(self.passwd_loc, passwd)
+        self.disclosure_book(asstassertEqual)                       #获取风险揭示书页【风险揭示书】并断言
         time.sleep(1)
-        self.send_keys(self.verification_loc, verifi)
+        self.check_box_button()                                     #点击风险揭示书页面复选框
         time.sleep(1)
-        self.click(self.submit_loc)
+        self.disclosure_book_confirm()                              #点击风险揭示书页面确认按钮
         time.sleep(1)
-
-
-    '''销售管理-预约申请列表页面'''
-    menu_sales_loc = ('xpath','//span[text()="销售管理"]')#销售管理菜单
-    '''列表'''
-    status1_loc = ('xpath', '//*[@class="layui-table"]/tbody/tr[1]/td[7]/div')  # 状态
-    operation_button_loc = ('class name','layui-btn')#操作按钮
-    drop_down_loc = ('xpath','//*[@id="selectIDPop"]/div/div/i')#审核页面下拉选项
-    select_loc = ('name','modules')
-    rejected_loc = ('xpath','//*[@id="selectIDPop"]/div/dl/dd[2]')#驳回按钮
-    determine_loc = ('class name','layui-layer-btn0')#确定按钮
-    a = ('class name','main-left')
-    def sales(self):
-        '''点击销售管理菜单'''
-        self.click(self.menu_sales_loc)
-    #
-    # def top(self):
-    #     '''菜单滚动条'''
-    #     js = "document.getElementsByClassName('main-left')[0].scrollTop=10000"
-    #     self.driver.execute_script(js)
-    #
-    # def appointment(self):
-    #     '''点击预约申请菜单'''
-    #     self.driver.find_element_by_link_text("预约申请").click()
-
-    def click_menu(self):
-        '''菜单操作'''
-        '''点击销售管理菜单'''
-        self.click(self.menu_sales_loc)
+        self.apply_text(asstassertEqual)                            #获取申购页面【申购】并断言
         time.sleep(1)
-        '''菜单滚动条'''
-        js = "document.getElementsByClassName('main-left')[0].scrollTop=10000"
-        self.driver.execute_script(js)
+        self.purchase_confirm(amount)                               #申购页面点击确认项、输入金额、点击确认按钮
         time.sleep(1)
-        '''点击预约申请菜单'''
-        self.driver.find_element_by_link_text("预约申请").click()
+        self.successful(asstassertEqual)                            #提交页面获取【提交成功】并断言
 
-    def manage_status(self):
-        '''状态'''
-        text = self.find_element(self.status1_loc).text
-        return text
-    '''滚动条'''
-    def scroll(self):
-        self.js_scroll_end(0, 1000)
-
-    def scroll_lift(self):
-        js = "document.getElementsByClassName('layui-table-body')[0].scrollLeft=10000"
-        self.driver.execute_script(js)
-
-    def window_scroll(self):
-        '''窗口操作'''
-        '''滚动条向下到底'''
-        self.js_scroll_end(0, 1000)
+    '''申赎记录列表页面'''
+    def purchase_record(self,asstassertEqual,status):
+        '''申赎记录页面-查看是否增加数据'''
+        self.menu()                                                  #点击申赎记录菜单
         time.sleep(1)
-        '''内置滚动条向右'''
-        js = "document.getElementsByClassName('layui-table-body')[0].scrollLeft=10000"
-        self.driver.execute_script(js)
+        asstassertEqual(self.breadcrumb(),'申赎记录')               #获取页面【申赎记录】并断言
+        time.sleep(1)
+        asstassertEqual(self.status(),status)                        #获取列表页面数据状态并断言
 
-    def operation_button(self):
-        '''点击操作按钮'''
-        self.find_elements(self.operation_button_loc)[1].click()
-
-    def audit_button(self):
-        '''点击审核按钮'''
-        js = "document.getElementById('purchase-edit').click()"
-        self.js_execute(js)
-
-    def drop_down(self):
-        '''点击审核下拉'''
-        self.click(self.drop_down_loc)
-
-    def rejected(self):
-        '''点击驳回按钮'''
-        self.click(self.rejected_loc)
-
-    def determine(self):
-        '''点击确定按钮'''
-        self.click(self.determine_loc)
-
+    '''销售管理-预约申请页面'''
+    def appointment_apply(self,asstassertEqual):
+        '''销售管理-预约申请页面审核'''
+        self.click_menu()                                             #点击销售管理-预约申请菜单
+        time.sleep(1)
+        self.window_scroll()                                          #窗口向下向右移动
+        time.sleep(1)
+        asstassertEqual(self.manage_status(),'未审核')               #获取数据状态并进行断言
+        time.sleep(1)
+        self.operation_button()                                       #点击列表操作按钮
+        time.sleep(1)
+        self.audit_button()                                           #点击审核按钮跳转审核页面
+        time.sleep(1)
 
     def audit_rejected(self):
-        '''审核驳回'''
-        self.operation_button()
+        '''销售管理-预约申请列表页面审核-驳回'''
+        self.drop_down()                                               #点击审核下拉
         time.sleep(1)
-        self.audit_button()
+        self.rejected()                                                #选取驳回
         time.sleep(1)
-        self.drop_down()
+        self.determine()                                               #点击确定
+
+    '''销售管理--合同管理'''
+    def sell_contract(self):
+        '''点击菜单销售管理-合同管理'''
+        self.sales()
         time.sleep(1)
-        self.rejected()
+        self.contract_menu()
+
+    def contract_operation(self,asstassertEqual,contract_status,return_status):
+
+        '''合同管理页面：进入管理菜单-点击操作按钮'''
+        self.contract_menu()                                           #点击合同管理菜单，进入列表页面
         time.sleep(1)
-        self.determine()
-
-    def audit_through(self):
-        '''审核通过'''
-        self.click_menu()
+        self.window_scroll()                                           #列表页面滚动条移动
         time.sleep(1)
-        self.window_scroll()
+        asstassertEqual(self.conract_status(),contract_status)         #获取列表页面合同状态并断言
+        asstassertEqual(self.return_status(),return_status)            #获取列表回访状态并断言
         time.sleep(1)
-        self.operation_button()
+        self.conract_operation()                                       #点击列表页面操作按钮
         time.sleep(1)
-        self.audit_button()
+
+    def conract_edit_button(self,time1,cost,name,calm_time):
+
+        '''合同管理页面-合同编辑'''
+        self.conract_edit()                                            #点击列表页面编辑按钮
         time.sleep(1)
-        self.determine()
-
-    '''合同管理'''
-    contract_operation_loc = ('xpath','//*[@class="layui-table"]/tbody/tr[1]/td[9]/div/a')#操作按钮
-    conract_states_loc = ('xpath','//*[@class="layui-table"]/tbody/tr[1]/td[6]/div')#合同状态
-    return_states_loc = ('xpath','//*[@class="layui-table"]/tbody/tr[1]/td[7]/div')#回访状态
-    contract_no_loc = ('id','contractNo')#合同编码
-    time_input_loc = ('id','netValueDate')#时间输入框
-    agent_loc = ('id','agent')#经办人输入框
-    serviceCharge_loc = ('id','serviceCharge')#手续费
-    calmnessPeriod_loc = ('id','calmnessPeriod')#冷静期
-    contract_save_loc = ('id','contract-save')#保存按钮
-
-
-
-    def contract_menu(self):
-        '''点击合同管理菜单'''
-        self.driver.find_element_by_link_text('合同管理').click()
-
-    def conract_operation(self):
-        '''点击操作按钮'''
-        self.click(self.contract_operation_loc)
-
-    def conract_status(self):
-        '''数据状态'''
-        text = self.find_element(self.conract_states_loc).text
-        return text
-
-    def return_status(self):
-        '''回访状态'''
-        text = self.find_element(self.return_states_loc).text
-        return text
-
-    def conract_edit(self):
-        '''点击编辑按钮'''
-        js = "document.getElementById('contract-edit').click()"
-        self.js_execute(js)
-
-    def scroll_on(self):
-        '''滚动最上面'''
-        self.js_scroll_end(0,0)
-
-    def conract_no(self):
-        '''合同编码输入'''
-        now_time = datetime.datetime.now()
-        self.send_keys(self.contract_no_loc,'HT%s' %now_time)
-
-    def time_input(self):
-        '''时间输入框'''
-        js = "document.getElementById('netValueDate').removeAttribute('readonly')"
-        self.driver.execute_script(js)
-        self.send_keys(self.time_input_loc,'2018-04-18')
-
-    def serviceCharge(self):
-        '''手续费'''
-        self.send_keys(self.serviceCharge_loc,'1')
-
-
-    def agent(self):
-        '''经办人输入框'''
-        self.send_keys(self.agent_loc,'刘鑫')
-
-
-    def calmnessPeriod(self):
-        '''冷静期输入框'''
-        self.send_keys(self.calmnessPeriod_loc,'0')
-
-    def contract_save(self):
-        '''点击保存按钮'''
-        self.click(self.contract_save_loc)
-
-    def edit(self):
-        '''进入页面进行编辑'''
-        self.conract_operation()
+        self.scroll_on()                                               #页面滚动至最上面
         time.sleep(1)
-        self.conract_edit()
+        self.conract_no()                                              #输入合同编码
         time.sleep(1)
-        self.scroll_on()
-        self.conract_no()
-        self.time_input()
-        self.serviceCharge()
-        self.agent()
-        self.calmnessPeriod()
-        self.contract_save()
+        self.time_input(time1)                                          #时间输入
+        time.sleep(1)
+        self.serviceCharge(cost)                                        #输入金额
+        time.sleep(1)
+        self.agent(name)                                                #输入经办人
+        time.sleep(1)
+        self.calmnessPeriod(calm_time)                                  #冷静期
+        time.sleep(1)
+        self.contract_save()                                            #点击确定按钮
 
-    '''确认已付款'''
-
-    paymentTime_loc = ('id','paymentTime')#付款时间
-    payment_current_loc =('xpath','//span[text()="现在"]')
-    layui_layer_btn0_loc = ('class name','layui-layer-btn0')#确认按钮
-
-    def contract_payment(self):
-        '''点击确认已付款按钮'''
-        js = "document.getElementById('contract-payment').click()"
-        self.js_execute(js)
-
-    def paymentTime(self):
-        '''点击输入付款时间'''
-        self.click(self.paymentTime_loc)
-
-    def payment_current(self):
-        '''点击现在按钮'''
-        self.click(self.payment_current_loc)
-
-    def layui_layer_btn0(self):
-        '''点击确认按钮'''
-        self.click(self.layui_layer_btn0_loc)
-
-    def payment(self):
+    def conract_payment(self):
         '''确认付款'''
         self.window_scroll()
         time.sleep(1)
-        self.conract_operation()
+        self.conract_operation()                                        #点击操作按钮
         time.sleep(1)
-        self.contract_payment()
+        self.contract_payment()                                         #点击确认付款按钮
         time.sleep(1)
-        self.paymentTime()
+        self.paymentTime()                                              #输入付款时间
         time.sleep(1)
-        self.payment_current()
+        self.payment_current()                                          #点击现在按钮
         time.sleep(1)
-        self.layui_layer_btn0()
-
-
-    '''发送回访单'''
-    returm_determine_loc = ('class name','layui-layer-btn0')#回访单页面确认按钮
-
-    def contract_returm(self):
-        '''点击发送回访单按钮'''
-        js = "document.getElementById('send-tick').click()"
-        self.js_execute(js)
-    def returm_determine(self):
-        '''点击弹出回访单页面确认按钮'''
-        self.click(self.returm_determine_loc)
+        self.layui_layer_btn0()                                         #点击确认按钮
+        time.sleep(4)
 
     def from_returm(self):
         '''发送回访单'''
-        self.window_scroll()
+        self.window_scroll()                                            #移动窗口
         time.sleep(1)
-        self.conract_operation()
+        self.conract_operation()                                        #点击操作按钮
         time.sleep(1)
-        self.contract_returm()
+        self.contract_returm()                                          #点击发动回访单按钮
         time.sleep(1)
-        self.returm_determine()
+        self.returm_determine()                                         #点击回访单页面确认按钮
+
 
     '''PC端回访单'''
-    fundBuyForm_loc = ('xpath','//*[@id="fundBuyForm"]/div[1]/h3')#基金购买回访单
-    number_loc = ('class name','el-radio')#选择框
-    return_visit_consider_loc = ('xpath','//span[text()="考虑一下"]')#考虑一下
-    return_visit_submit_loc = ('xpath','//span[text()="提交"]')#提交
-
-    def funbuyform(self):
-        text = self.find_element(self.fundBuyForm_loc).text[-7:]
-        return text
-
-    def even_number(self):
-        '''点击是单选框'''
-        a = [i for i in range(17) if i % 2 == 0]
-        for i in a:
-            element = self.find_elements(self.number_loc)[i]
-            element.click()
-
-    def odd_number(self):
-        '''点击否单选框'''
-        a = [i for i in range(18) if i % 2 != 0]
-        for i in a:
-            element = self.find_elements(self.number_loc)[i]
-            element.click()
-
-    def return_visit_consider(self):
-        '''点击考虑一下按钮'''
-        self.click(self.return_visit_consider_loc)
-
-    def return_visit_submit(self):
-        '''点击提交按钮'''
-        self.click(self.return_visit_submit_loc)
 
     def even_submit(self):
         '''点击是提交'''
         self.even_number()
         time.sleep(1)
-        self.return_visit_submit()
         self.return_visit_submit()
 
     def odd_sbumit(self):
@@ -465,7 +148,9 @@ class PcScenario(PCLogin):
         self.odd_number()
         time.sleep(1)
         self.return_visit_submit()
-        self.return_visit_submit()
+
+
+
 
 
     '''产品列表退出'''
@@ -540,40 +225,38 @@ class PcScenario(PCLogin):
         time.sleep(1)
         self.confirm_page_confirm_butten()
 
-    def WebDriverWait(self,driver,type,str):
-        '''显示等待'''
-        WebDriverWait(driver, 10).until(EC.visibility_of(driver.find_element(
-            by=type, value=str)))
+    # def WebDriverWait(self,driver,type,str):
+    #     '''显示等待'''
+    #     WebDriverWait(driver, 10).until(EC.visibility_of(driver.find_element(
+    #         by=type, value=str)))
 
+    chankan_loc = ('xpath','//span[text()="查看"]')
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    def chakan(self):
+        self.click(self.chankan_loc)
 
 
 if __name__ == '__main__':
     driver = browser()
     po = PcScenario(driver)
-    po.open_url('http://boss.pb-yun.com')
-    po.ManageLogin('13511055879', '123456', '')
-    WebDriverWait(driver, 10).until(
-        EC.visibility_of(driver.find_element(
-            by=By.XPATH, value='//*[@id="detailName"]/span')))
+    po.open_url('http://boss.pb-yun.com/')
+    po.pc_login('13511055879', '123456', '')
+    time.sleep(4)
+    po.sales()
+    time.sleep(1)
+    po.contract_operation()
+    time.sleep(1)
 
-    po.audit_through()
+
+
+
+
+
+    # WebDriverWait(driver, 10).until(
+    #     EC.visibility_of(driver.find_element(
+    #         by=By.XPATH, value='//*[@id="detailName"]/span')))
+    #
+    # po.audit_through()
 
 
 
