@@ -4,7 +4,7 @@
 @brief: 缺省消息提醒按钮的定位， 点击消息的方法
 """
 
-from common.PC_login import PCLogin, browser, pc_url
+from common.pc_login import PCLogin, browser, pc_url
 import time
 
 

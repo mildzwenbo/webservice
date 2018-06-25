@@ -5,7 +5,7 @@
 """
 import time
 
-from common.PC_login import pc_url, browser
+from common.pc_login import pc_url, browser
 from page.PC.product.product_list import ProductList
 from common.get_url import GetUrl
 

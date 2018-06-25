@@ -5,7 +5,7 @@
 """
 import time
 
-from common.PC_login import PCLogin, browser, pc_url
+from common.pc_login import PCLogin, browser, pc_url
 from common.get_url import GetUrl
 
 subscription_confirm_url = GetUrl().get_pc_url()+'#/product/subscribe?fundId=1948&fundName=test基金123&manager=江珊&' \

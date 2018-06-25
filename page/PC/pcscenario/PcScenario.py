@@ -1,4 +1,4 @@
-from common.PC_login import PCLogin,browser
+from common.pc_login import PCLogin,browser
 from page.SafeManager.ManageLogin import ManageLoginPage
 from page.PC.product.product_purchase import ProductPurchase
 from page.PC.purchaserecord.purchase_record import PurchaseRrecord

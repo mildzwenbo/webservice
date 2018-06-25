@@ -4,7 +4,7 @@
 @brief:风险不匹配警示函页面
 """
 
-from common.PC_login import PCLogin, browser, pc_url
+from common.pc_login import PCLogin, browser, pc_url
 from common.get_url import GetUrl
 import time
 

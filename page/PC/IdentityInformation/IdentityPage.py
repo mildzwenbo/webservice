@@ -4,7 +4,7 @@
 @brief:身份信息页面所有元素定位及操作
 """
 import time
-from common.PC_login import PCLogin,pc_url,browser
+from common.pc_login import PCLogin,pc_url,browser
 
 
 class IdentityInfo(PCLogin):
