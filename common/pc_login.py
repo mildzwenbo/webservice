@@ -1,11 +1,26 @@
 from common.get_url import GetUrl
 from common.find_element import FindElement, browser
 import time
+import threading
+import configparser
+from common.get_path import GetPath
 
 pc_url = GetUrl().get_pc_url() + '#/login'
 
 
 class PCLogin(FindElement):
+    mutex = threading.Lock()
+    mutex.acquire()
+    conf = configparser.ConfigParser()
+    conf_ptah = GetPath().get_conf_path('username.ini')
+    conf.read(conf_ptah, encoding='utf-8')
+    if conf.get('select', 'select') == '1':
+        pc_name = conf.get('test_name', 'pc_name')
+        pc_pwd = conf.get('test_name', 'pc_pwd')
+    else:
+        pc_name = conf.get('name', 'pc_name')
+        pc_pwd = conf.get('name', 'pc_pwd')
+    mutex.release()
 
     login_elements_loc = ('class name', 'el-input__inner') #所有的输入框
 
@@ -17,7 +32,7 @@ class PCLogin(FindElement):
     button_login_loc = ('css', '#app > div > form > div:nth-child(9) > div > button > span')
     object_loc = ('xpath', '/html/body/div[4]/div[1]/div[1]/ul/li/span')
 
-    def pc_login(self, name, password, investor='1'):
+    def pc_login(self, name=pc_name, password=pc_pwd, investor='1'):
         """
         :param name:
         :param password:
@@ -65,5 +80,5 @@ if __name__ == '__main__':
     driver = browser()
     browser = PCLogin(driver)
     browser.open_url(pc_url)
-    browser.pc_login('15822816936', 'abc123456', '1')
+    browser.pc_login()
 
