@@ -18,18 +18,23 @@ class GetUrl(object):
     conf_path = os.path.join(os.path.join(path, 'config'), 'url.ini')
     conf.read(conf_path, encoding='utf-8')
     if conf.get('select', 'select') == '1':
-        admin_url = conf.get('TESTURL', 'SafeManager')
+        manage_url = conf.get('TESTURL', 'SafeManager')
         pc_url = conf.get('TESTURL', 'pc_url')
+        rx_url = conf.get('TESTURL', 'rx_url')
     else:
-        admin_url = conf.get('URL', 'SafeManager')
+        manage_url = conf.get('URL', 'SafeManager')
         pc_url = conf.get('URL', 'pc_url')
+        rx_url = conf.get('URL', 'rx_url')
     mutex.release()
 
     def get_admin_url(self):
-        return self.admin_url
+        return self.manage_url
 
     def get_pc_url(self):
         return self.pc_url
+
+    def get_rx_url(self):
+        return self.rx_url
 
 
 if __name__ == '__main__':
