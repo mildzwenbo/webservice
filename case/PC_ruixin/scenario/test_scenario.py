@@ -117,7 +117,6 @@ class TestScenario(unittest.TestCase):
             sleep(1)
             self.browser.open_url('http://inv.pb-test.com ')                        # 登录投资者PC端
 
-
         except Exception as msg:
             self.log.info(msg)
             raise
