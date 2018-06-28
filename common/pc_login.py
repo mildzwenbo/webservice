@@ -143,6 +143,7 @@ class PCLogin(FindElement):
             elements[5].send_keys('AAAA')
             time.sleep(1)
             self.click(self.button_login_loc)
+            time.sleep(1)
         else:
             if investor == '2':
                 self.click(self.institution_loc)

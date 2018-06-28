@@ -2,7 +2,7 @@ from common.find_element import FindElement,browser
 from common.get_url import GetUrl
 from time import sleep
 
-ManageLoginUrl = GetUrl.admin_url
+ManageLoginUrl = 'http://boss.pb-test.com'
 
 class ManageLoginPage(FindElement):
     """管理端登录页面的元素定位及方法"""
