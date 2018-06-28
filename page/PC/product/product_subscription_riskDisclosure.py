@@ -8,10 +8,11 @@ import time
 from page.PC.product.product_list import ProductList, pc_url, browser
 from common.get_url import GetUrl
 
-risk_disclosure_url = GetUrl().get_pc_url()+'#/product/riskDisclosure?fundCode=test001&fundRiskRank=R1'
+risk_disclosure_url = GetUrl().get_pc_url()+'#/product/riskDisclosure?fundCode=ZZ0001&fundRiskRank='
+
 
 class RiskDisclosure(ProductList):
-    """申购过程中的分享揭示书"""
+    """申购过程中的风险揭示书"""
 
     list_confirm_button_loc = ('class name', 'el-checkbox__inner')  #列表中所有的确认按钮
     confirm_cancel_button_loc = ('class name', 'el-button')         #取消或确认按钮

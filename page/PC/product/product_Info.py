@@ -9,7 +9,7 @@ from common.pc_login import pc_url, browser
 from page.PC.product.product_list import ProductList
 from common.get_url import GetUrl
 
-product_info_url = GetUrl().get_pc_url()+"#/product/detail?code=test001"
+product_info_url = GetUrl().get_pc_url()+"#/product/detail?code=ZZ0001"
 
 
 class ProductInfo(ProductList):
@@ -60,12 +60,14 @@ class ProductInfo(ProductList):
 
     def input_data(self):
         """输入净值列表中的日期"""
-        self.click(self.first_data_loc)
-        self.click(self.last_data_loc)
-
-    def search_click(self):
-        """点击净值列表中的搜索按钮"""
-        self.click(self.net_worth_search_loc)
+        js1 = "document.getElementsByClassName('el-range-input')[0].removeAttribute('readonly')"
+        self.js_execute(js1)
+        self.find_elements(('class name', 'el-range-input'))[0].send_keys('2018-06-20')
+        js2 = "document.getElementsByClassName('el-range-input')[1].removeAttribute('readonly')"
+        self.js_execute(js1)
+        self.find_elements(('class name', 'el-range-input'))[1].send_keys('2018-06-26')
+        time.sleep(1)
+        self.click(('css', '#pane-2 > div > div:nth-child(1) > div:nth-child(3) > button > span'))
 
     def transaction_date_click(self):
         """点击成交列表中的日期"""
@@ -97,13 +99,16 @@ if __name__ == '__main__':
     info.open_url(pc_url)
     info.pc_login('15822816936', 'abc123456', '1')
     info.open_url(product_info_url)
-    # info.the_net_value_of_records_lco_click()
-    info.transaction_list_click()
+    info.the_net_value_of_records_lco_click()
+    time.sleep(1)
+    info.input_data()
+
+    # info.transaction_list_click()
     #     # info.product_element_click()
     # info.subscribe_click()
-    info.input_data()
-    info.business_type_click()
-    info.select_redemption()
-    info.transaction_search_click()
+    # info.input_data()
+    # info.business_type_click()
+    # info.select_redemption()
+    # info.transaction_search_click()
 
 

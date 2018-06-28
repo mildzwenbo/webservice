@@ -8,23 +8,27 @@ import time
 from common.pc_login import PCLogin, browser, pc_url
 from common.get_url import GetUrl
 
-subscription_confirm_url = GetUrl().get_pc_url()+'#/product/subscribe?fundId=1948&fundName=test基金123&manager=江珊&' \
-                                                 'netValue=1.2094&cumulativeNetValue=1.2094&netValueDt=2018-04-26&' \
-                                                 'currentYearValue=-0.0165%25&startIndexValue=-0.0165%25&' \
-                                                 'fundCreateDate=2017-04-13&briefName=test&productCode=test001&' \
-                                                 'fundType=QFII&fundStatus=正在运作&investType=股票类基金&' \
-                                                 'investTypeOther=&organizationType=契约型&organizationTypeOther=&' \
-                                                 'fundEndDate=2020-04-30&manageType=受托管理&shareType=结构化产品&' \
-                                                 'currency=人民币&valuationFrequency=存续期内不估值&' \
-                                                 'valuationFrequencyOther=&lever=12&fundManager=吴雪&' \
-                                                 'fundOperType=开放式&fundRiskRank=R1&investStrategy=&' \
-                                                 'investStrategyOther=123123123&mainInvestOrientation=投资方向123&' \
-                                                 'warningLine=1.00&stopLine=0.99&hasCustodian=Yes&outsourcing=&' \
-                                                 'outsourcingFeeType=FIXRATE&outsourcingFeePercent=10&buyFee=10&' \
-                                                 'purchaseFee=10&redeemFee=10&manageFee=0&custodianHasGuarantee=Yes&' \
-                                                 'serviceCharge=0&targetScale=10000.000000&realScale=0.000500&' \
-                                                 'investTarget=说明问题123&openDateType=&openDateDes=&latelyOpenDate=&' \
-                                                 'totalAssets=5668.951365'
+subscription_confirm_url = GetUrl().get_pc_url()+'#/product/subscribe?fundId=2015&fundName=' \
+                                                 '%E8%B5%84%E8%88%9F%E6%8A%95%E8%B5%84%E5%9F%BA%E9%87%91R3&manager=' \
+                                                 'test2&netValue=1.0576&cumulativeNetValue=1.0576&netValueDt=2018-06-26' \
+                                                 '&currentYearValue=0%25&startIndexValue=-0.03%25&' \
+                                                 'fundCreateDate=2018-06-19&briefName=%E8%B5%84%E8%88%9F%E6%8A%95%E8%B5' \
+                                                 '%84%E5%9F%BA%E9%87%91R3&productCode=ZZ0001&fundType=%E9%93%B6%E8%A1%8' \
+                                                 'C%E7%90%86%E8%B4%A2%E4%BA%A7%E5%93%81&fundStatus=%E6%AD%A3%E5%9C%A8%' \
+                                                 'E8%BF%90%E4%BD%9C&investType=%E6%9C%9F%E8%B4%A7%E5%8F%8A%E5%85%B6' \
+                                                 '%E4%BB%96%E8%A1%8D%E7%94%9F%E5%93%81%E7%B1%BB%E5%9F%BA%E9%87%91&inv' \
+                                                 'estTypeOther=&organizationType=%E5%A5%91%E7%BA%A6%E5%9E%8B&organizati' \
+                                                 'onTypeOther=&fundEndDate=9999-12-31&manageType=%E5%8F%97%E6%89%98%E7%' \
+                                                 'AE%A1%E7%90%86&shareType=%E4%BC%9E%E5%9E%8B%E5%9F%BA%E9%87%91&currenc' \
+                                                 'y=%E4%BA%BA%E6%B0%91%E5%B8%81&valuationFrequency=%E5%AD%98%E7%BB%AD%' \
+                                                 'E6%9C%9F%E5%86%85%E4%B8%8D%E4%BC%B0%E5%80%BC&valuationFrequencyOther=' \
+                                                 '&lever=0&fundManager=test2&fundOperType=%E5%BC%80%E6%94%BE%E5%BC%8F&' \
+                                                 'fundRiskRank=R3&investStrategy=&investStrategyOther=&mainInvestOrient' \
+                                                 'ation=test2&warningLine=&stopLine=&hasCustodian=No&outsourcing=&outso' \
+                                                 'urcingFeeType=&outsourcingFeePercent=0&buyFee=0&purchaseFee=0&redeem' \
+                                                 'Fee=0&manageFee=0&custodianHasGuarantee=&serviceCharge=0&targetScal' \
+                                                 'e=100,000.00&realScale=9.99&investTarget=test2&openDateType=&openDate' \
+                                                 'es=&latelyOpenDate=&totalAssets=2,632.30'
 
 
 class SubscriptionConfirm(PCLogin):

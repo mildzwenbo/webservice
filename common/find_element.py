@@ -401,11 +401,6 @@ class FindElement():
         """
         self.driver.quit()
 
-    def WebDriverWait(self,driver,type,str):
-        '''显示等待'''
-        WebDriverWait(driver, 10).until(EC.visibility_of(driver.find_element(
-            by=type, value=str)))
-
 
 if __name__ == '__main__':
     driver = browser()
