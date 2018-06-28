@@ -152,7 +152,7 @@ class TestScenario(unittest.TestCase):
             sleep(1)
             self.assertEqual(self.browser.conract_status(),'已付款')               #数据状态断言-已付款
             sleep(1)
-            self.browser.open_url('http://inv.pb-yun.com')                        #登录投资者PC端
+            self.browser.open_url('http://inv.pb-test.com')                        #登录投资者PC端
             sleep(1)
             self.browser.odd_sbumit()                                               #PC回访单点击否提交
             sleep(1)
