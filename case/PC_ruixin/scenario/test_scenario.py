@@ -33,7 +33,7 @@ class TestScenario(unittest.TestCase):
     def setUp(self):
         self.browser.delete_all_cookies()
         self.browser.refresh()
-        self.browser.pc_login('15822816936', 'abc123456', '1')
+        self.browser.pc_login('15822816936','abc123456','1')
         "初始化"
 
     def tearDown(self):
@@ -48,9 +48,9 @@ class TestScenario(unittest.TestCase):
             sleep(1)
             self.browser.purchase_record(self.assertEqual,'未审核')                 # 进入申赎记录页面获取数据状态断言
             sleep(1)
-            self.browser.open_url('http://boss.pb-yun.com/')                      # 进入管理端
+            self.browser.open_url('http://boss.pb-test.com/')                      # 进入管理端
             sleep(1)
-            self.browser.ManageLogin('13511055879', '123456', '')                 # 管理端输入账号密码
+            self.browser.ManageLogin('17600000000', '123456', '')                 # 管理端输入账号密码
             sleep(2)
             WebDriverWait(self.driver, 'By.XPATh', '//*[@id="detailName"]/span') # 显示等待
             sleep(1)
@@ -60,7 +60,7 @@ class TestScenario(unittest.TestCase):
             sleep(1)
             self.assertEqual(self.browser.manage_status(),'已驳回')                #获取列表状态并断言
             sleep(1)
-            self.browser.open_url('http://inv.pb-yun.com')                        #进入PC端申赎列表查看数据状态并断言
+            self.browser.open_url('http://inv.pb-test.com')                        #进入PC端申赎列表查看数据状态并断言
             sleep(1)
             self.browser.purchase_record(self.assertEqual, '已驳回')               #进入申赎记录列表页面查看数据状态并断言
 
@@ -78,9 +78,9 @@ class TestScenario(unittest.TestCase):
             sleep(1)
             self.browser.purchase_record(self.assertEqual,'未审核')                 # 进入申赎记录页面获取数据状态断言
             sleep(1)
-            self.browser.open_url('http://boss.pb-yun.com/')                      # 进入管理端
+            self.browser.open_url('http://boss.pb-test.com/')                      # 进入管理端
             sleep(1)
-            self.browser.ManageLogin('13511055879', '123456', '')                 # 管理端输入账号密码
+            self.browser.ManageLogin('17600000000', '123456', '')                 # 管理端输入账号密码
             sleep(1)
             WebDriverWait(self.driver, 'By.XPATh', '//*[@id="detailName"]/span') # 显示等待
             sleep(2)
@@ -101,13 +101,13 @@ class TestScenario(unittest.TestCase):
             sleep(1)
             self.assertEqual(self.browser.return_status(),'已发送')                #数据状态断言-已发送
             sleep(1)
-            self.browser.open_url('http://inv.pb-yun.com')                        #登录投资者PC端
+            self.browser.open_url('http://inv.pb-test.com')                        #登录投资者PC端
             sleep(1)
             self.browser.even_submit()                                              #PC回访单点击是提交
             sleep(1)
-            self.browser.open_url('http://boss.pb-yun.com/')                      # 进入管理端
+            self.browser.open_url('http://boss.pb-test.com/')                      # 进入管理端
             sleep(1)
-            self.browser.ManageLogin('13511055879', '123456', '')                 # 管理端输入账号密码
+            self.browser.ManageLogin('17600000000 ', '123456', '')                 # 管理端输入账号密码
             sleep(2)
             WebDriverWait(self.driver, 'By.XPATh', '//*[@id="detailName"]/span') # 显示等待
             sleep(1)
@@ -115,7 +115,7 @@ class TestScenario(unittest.TestCase):
             sleep(1)
             self.assertEqual(self.browser.return_status(),'想买')                  #列表数据状态断言-想买
             sleep(1)
-            self.browser.open_url('http://inv.pb-yun.com')                        # 登录投资者PC端
+            self.browser.open_url('http://inv.pb-test.com ')                        # 登录投资者PC端
 
 
         except Exception as msg:
@@ -130,9 +130,9 @@ class TestScenario(unittest.TestCase):
             sleep(1)
             self.browser.purchase_record(self.assertEqual,'未审核')                 # 进入申赎记录页面获取数据状态断言
             sleep(1)
-            self.browser.open_url('http://boss.pb-yun.com/')                      # 进入管理端
+            self.browser.open_url('http://boss.pb-test.com/')                      # 进入管理端
             sleep(1)
-            self.browser.ManageLogin('13511055879', '123456', '')                 # 管理端输入账号密码
+            self.browser.ManageLogin('17600000000 ', '123456', '')                 # 管理端输入账号密码
             sleep(1)
             WebDriverWait(self.driver, 'By.XPATh', '//*[@id="detailName"]/span') # 显示等待
             sleep(2)
@@ -156,9 +156,9 @@ class TestScenario(unittest.TestCase):
             sleep(1)
             self.browser.odd_sbumit()                                               #PC回访单点击否提交
             sleep(1)
-            self.browser.open_url('http://boss.pb-yun.com/')                      # 进入管理端
+            self.browser.open_url('http://boss.pb-test.com/')                      # 进入管理端
             sleep(2)
-            self.browser.ManageLogin('13511055879', '123456', '')                  # 管理端输入账号密码
+            self.browser.ManageLogin('17600000000', '123456', '')                  # 管理端输入账号密码
             sleep(1)
             WebDriverWait(self.driver, 'By.XPATh', '//*[@id="detailName"]/span')  # 显示等待
             sleep(1)
@@ -166,7 +166,7 @@ class TestScenario(unittest.TestCase):
             sleep(1)
             self.assertEqual(self.browser.return_status(), '不想买')                 # 列表数据状态断言-不想买
             sleep(1)
-            self.browser.open_url('http://inv.pb-yun.com')                          # 登录投资者PC端
+            self.browser.open_url('http://inv.pb-test.com')                          # 登录投资者PC端
 
         except Exception as msg:
             self.log.info(msg)
