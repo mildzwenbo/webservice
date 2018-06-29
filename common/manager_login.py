@@ -15,17 +15,37 @@ class ManagerLogin(FindElement):
     conf_ptah = GetPath().get_conf_path('username.ini')
     conf.read(conf_ptah, encoding='utf-8')
     if conf.get('select', 'select') == '1':
-        manage_name = conf.get('name', 'manage_name')
-        manage_pwd = conf.get('name', 'manage_pwd')
+        zj_manage_name = conf.get('test_name', 'zj_manage_name')
+        lx_manage_name = conf.get('test_name', 'lx_manage_name')
+        yf_manage_name = conf.get('test_name', 'yf_manage_name')
+        manage_pwd = conf.get('test_name', 'manage_pwd')
     else:
-        manage_name = conf.get('name', 'manage_name')
+        zj_manage_name = conf.get('name', 'zj_manage_name')
+        lx_manage_name = conf.get('name', 'manage_name')
+        yf_manage_name = conf.get('name', 'manage_name')
         manage_pwd = conf.get('name', 'manage_pwd')
     mutex.release()
 
     all_input = ('class name', 'layui-input')#管理端登录页面所有文本框定位
     login_button = ('id', 'login-btn')#管理端登录页面登录按钮定位
 
-    def manager_login(self, name=manage_name, password=manage_pwd):
+    def zj_manager_login(self, name=zj_manage_name, password=manage_pwd):
+        elements = self.find_elements(self.all_input)
+        elements[0].send_keys(name)
+        time.sleep(1)
+        elements[1].send_keys(password)
+        self.click(self.login_button)
+        time.sleep(3)
+
+    def lx_manager_login(self, name=lx_manage_name, password=manage_pwd):
+        elements = self.find_elements(self.all_input)
+        elements[0].send_keys(name)
+        time.sleep(1)
+        elements[1].send_keys(password)
+        self.click(self.login_button)
+        time.sleep(3)
+
+    def yf_manager_login(self, name=yf_manage_name, password=manage_pwd):
         elements = self.find_elements(self.all_input)
         elements[0].send_keys(name)
         time.sleep(1)
@@ -38,4 +58,4 @@ if __name__ == '__main__':
     driver = browser()
     browser = ManagerLogin(driver)
     browser.open_url(manager_url)
-    browser.manager_login()
+    browser.yf_manager_login()
