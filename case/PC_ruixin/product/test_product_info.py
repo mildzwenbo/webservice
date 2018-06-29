@@ -10,10 +10,12 @@ import platform
 import unittest
 import ddt
 
+
 from common.log import logger
 from page.PC.product.product_Info import ProductInfo, browser, product_info_url, pc_url
 from common.read_excel import ReadExcel
 from common.get_path import GetPath
+
 
 excelpath = GetPath().get_params_path('password.xlsx')
 sheet = 'Sheet2'
@@ -45,7 +47,7 @@ class TestProductInfo(unittest.TestCase):
     def setUp(self):
         self.browser.delete_all_cookies()
         self.browser.refresh()
-        self.browser.pc_login('15822816936', 'abc123456', '1')
+        self.browser.yf_pc_login()
         self.browser.open_url(product_info_url)
 
     def tearDown(self):
@@ -77,8 +79,9 @@ class TestProductInfo(unittest.TestCase):
         try:
             self.browser.subscribe_click()
             time.sleep(1)
-            text = self.browser.get_text(('xpath', '//*[@id="app"]/div/div[2]/ul/div[2]/span[3]/span/span'))
-            self.assertEqual('风险揭示书', text)
+            text = self.browser.get_text(('css', '#app > div > div.main-container > section > div > div:nth-child(2)'
+                                                 ' > h3'))
+            self.assertEqual('一、基金管理人承诺', text)
         except Exception as msg:
             self.log.info(str(msg))
             raise
@@ -87,15 +90,12 @@ class TestProductInfo(unittest.TestCase):
         """净值页面搜索"""
         try:
             self.browser.the_net_value_of_records_lco_click()
-            self.browser.net_worth_date_click()
+            time.sleep(1)
             self.browser.input_data()
-            self.browser.search_click()
-            try:
-                text = self.browser.find_elements('class name', 'el-table_4_column_25')[1].text
-                self.assertEqual('test基金123', text)
-            except Exception:
-                text = self.browser.get_text(('class name', 'el-table__empty-text'))
-                self.assertEqual('暂无数据', text)
+            self.browser.net_worth_search_click()
+            time.sleep(2)
+            text = self.browser.get_text(('xpath', '//*[@id="pane-2"]/div/div[2]/div/div[3]/table/tbody/tr[1]/td[2]/div'))
+            self.assertEqual('资舟投资基金R3', text)
         except Exception as msg:
             self.log.info(str(msg))
             raise
@@ -105,24 +105,18 @@ class TestProductInfo(unittest.TestCase):
         """成交列表中的搜索"""
         try:
             self.browser.transaction_list_click()
-            self.browser.transaction_date_click()
-            self.browser.input_data()
+            time.sleep(1)
+            self.browser.input_transaction_date()
             self.browser.business_type_click()
             if data['business'] == '1':
                 self.browser.select_subscribe()
             else:
                 self.browser.select_redemption()
-            time.sleep(2)
             self.browser.transaction_search_click()
             time.sleep(2)
-            try:
-                text = self.browser.find_elements(('class name', 'el-table_3_column_16'))[1].text
-                print(text)
-                self.assertEqual('test基金', text)
-            except Exception:
-                text = self.browser.find_elements(('class name', 'el-table__empty-text'))[1].text
-                print(text)
-                self.assertEqual('暂无数据', text)
+            text = self.browser.get_text(('xpath', '//*[@id="pane-3"]/div/div[2]/div/div[3]/table/tbody/tr/td[2]/div'))
+            print(text)
+            self.assertEqual('资舟投资基金R3', text)
         except Exception as msg:
             self.log.info(str(msg))
             raise

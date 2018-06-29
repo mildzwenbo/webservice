@@ -29,7 +29,7 @@ class TestHome(unittest.TestCase):
             cls.display.stop()
 
     def setUp(self):
-        self.browser.pc_login('15822816936', 'abc123456', '1')
+        self.browser.yf_pc_login()
 
     def tearDown(self):
         self.browser.delete_all_cookies()
@@ -42,7 +42,7 @@ class TestHome(unittest.TestCase):
             time.sleep(1)
             text = self.browser.get_text(('css', '#app > div > div.main-container > section >'
                                                  ' div > div > div:nth-child(2) > span'))
-            self.assertEqual('产品名称', text)
+            self.assertEqual('产品名称：', text)
         except Exception as msg:
             self.log.info(str(msg))
             raise
@@ -78,6 +78,7 @@ class TestHome(unittest.TestCase):
                                                  ' div > div > div:nth-child(4) > div > div.el-table'
                                                  '__body-wrapper.is-scrolling-none > table > tbody >'
                                                  ' tr:nth-child(1) > td.el-table_1_column_2 > div'))
+            print('显示的结果为%s' % text)
             self.assertIn('测试', text)
         except Exception as msg:
             self.log.info(str(msg))

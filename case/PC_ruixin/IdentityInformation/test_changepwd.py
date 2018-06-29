@@ -144,6 +144,7 @@ class ChangePwd(unittest.TestCase):
             self.log.info(str(msg))
             raise
 
+
 if __name__ == '__main__':
     unittest.main()
 

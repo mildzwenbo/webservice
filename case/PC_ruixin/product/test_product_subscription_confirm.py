@@ -37,7 +37,7 @@ class TestSubscriptionConfirm(unittest.TestCase):
     def setUp(self):
         self.browser.delete_all_cookies()
         self.browser.refresh()
-        self.browser.pc_login('15822816936', 'abc123456', '1')
+        self.browser.yf_pc_login()
         self.browser.open_url(subscription_confirm_url)
         time.sleep(1)
 
@@ -59,9 +59,8 @@ class TestSubscriptionConfirm(unittest.TestCase):
         """点击确定按钮"""
         try:
             self.browser.confirm_button_click('20000')
-            time.sleep(2 )
-            text = self.browser.get_text(('css', '#app > div > div.main-container >'
-                                                 ' section > div > div > p:nth-child(2)'))
+            time.sleep(2)
+            text = self.browser.get_text(('css', '#app > div > div.main-container > section > div > div > h1'))
             self.assertEqual('提交成功！', text)
         except Exception as msg:
             self.log.info(str(msg))

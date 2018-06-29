@@ -37,7 +37,7 @@ class TestRiskDisclosure(unittest.TestCase):
     def setUp(self):
         self.browser.delete_all_cookies()
         self.browser.refresh()
-        self.browser.pc_login('15822816936', 'abc123456', '1')
+        self.browser.yf_pc_login()
         self.browser.open_url(risk_disclosure_url)
         time.sleep(1)
 

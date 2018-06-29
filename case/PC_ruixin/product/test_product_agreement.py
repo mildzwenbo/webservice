@@ -37,7 +37,7 @@ class TestAgreement(unittest.TestCase):
     def setUp(self):
         self.browser.delete_all_cookies()
         self.browser.refresh()
-        self.browser.pc_login('15822816936', 'abc123456', '1')
+        self.browser.yf_pc_login()
         self.browser.open_url(agreement_url)
 
     def tearDown(self):
@@ -60,7 +60,7 @@ class TestAgreement(unittest.TestCase):
             self.browser.check_click()
             self.browser.confirm_click()
             time.sleep(1)
-            text = self.browser.find_elements(('class name', 'el-breadcrumb__inner'))[2].text
+            text = self.browser.find_elements(('class name', 'el-breadcrumb__inner'))[1].text
             self.assertEqual('更高等级产品列表', text)
 
         except Exception as msg:
