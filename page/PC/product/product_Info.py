@@ -28,9 +28,9 @@ class ProductInfo(ProductList):
     net_worth_search_loc = ('xpath', '//*[@id="pane-2"]/div/div[1]/div[3]/button')  #搜索按钮
     #成交列表
     business_type_loc = ('xpath', '//*[@id="pane-3"]/div/div[1]/div[4]/div/div[1]/input') #业务类型按钮
-    subscribe_loc = ('xpath', '/html/body/div[3]/div[1]/div[1]/ul/li[2]') #业务类型申购
-    redemption_loc = ('xpath', '/html/body/div[3]/div[1]/div[1]/ul/li[3]') #业务类型赎回
-    transaction_search_loc = ('xpath', '//*[@id="pane-3"]/div/div[1]/div[5]/button')
+    subscribe_loc = ('xpath', '/html/body/div[4]/div[1]/div[1]/ul/li[2]') #业务类型申购
+    redemption_loc = ('xpath', '/html/body/div[4]/div[1]/div[1]/ul/li[3]') #业务类型赎回
+    transaction_search_loc = ('xpath', '//*[@id="pane-3"]/div/div[1]/div[5]/button/span')
 
     def product_element_click(self):
         """点击基本要素"""
@@ -67,13 +67,22 @@ class ProductInfo(ProductList):
         self.js_execute(js1)
         self.find_elements(('class name', 'el-range-input'))[1].send_keys('2018-06-26')
         time.sleep(1)
+
+    def net_worth_search_click(self):
+        """净值列表中的点击操作"""
         self.click(('css', '#pane-2 > div > div:nth-child(1) > div:nth-child(3) > button > span'))
 
-    def transaction_date_click(self):
+    def input_transaction_date(self):
         """点击成交列表中的日期"""
-        element = self.find_elements(self.date_loc)[3]
-        element.click()
-        time.sleep(2)
+        js1 = "document.getElementsByClassName('el-range-input')[2].value='2018-06-20'"
+        js2 = "document.getElementsByClassName('el-range-input')[3].value='2018-06-26'"
+        self.js_execute(js1)
+        self.js_execute(js2)
+        # self.find_elements(('class name', 'el-range-input'))[2].send_keys('2018-06-20')
+        # js2 = "document.getElementsByClassName('el-range-input')[3].removeAttribute('readonly')"
+        # self.js_execute(js2)
+        # self.find_elements(('class name', 'el-range-input'))[1].send_keys('2018-06-26')
+        time.sleep(1)
 
     def business_type_click(self):
         """点击成交列表中的业务类型"""
@@ -81,11 +90,11 @@ class ProductInfo(ProductList):
 
     def select_subscribe(self):
         """成交列表中业务类型申购"""
-        self.click(self.subscribe_loc)
+        self.find_elements(('class name', 'el-select-dropdown__item'))[7].click()
 
     def select_redemption(self):
-        """成交列表中业务类型申购"""
-        self.click(self.redemption_loc)
+        """成交列表中业务类型赎回"""
+        self.find_elements(('class name', 'el-select-dropdown__item'))[8].click()
 
     def transaction_search_click(self):
         """成交列表查询按钮"""
@@ -97,11 +106,15 @@ if __name__ == '__main__':
     driver = browser()
     info = ProductInfo(driver)
     info.open_url(pc_url)
-    info.pc_login('15822816936', 'abc123456', '1')
+    info.yf_pc_login()
     info.open_url(product_info_url)
-    info.the_net_value_of_records_lco_click()
+    info.transaction_list_click()
     time.sleep(1)
-    info.input_data()
+    info.input_transaction_date()
+    info.business_type_click()
+    time.sleep(3)
+    info.select_subscribe()
+    info.transaction_search_click()
 
     # info.transaction_list_click()
     #     # info.product_element_click()
