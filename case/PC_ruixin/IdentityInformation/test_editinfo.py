@@ -46,12 +46,12 @@ class TestEditInfo(unittest.TestCase):
     def setUp(self):
         self.browser.delete_all_cookies()
         self.browser.refresh()
-        self.browser.pc_login('15822816936', 'abc123456')
+        self.browser.lx_pc_login()
 
     def tearDown(self):
         time.sleep(2)
 
-    #@unittest.skip('pass')
+    @unittest.skip('pass')
     def test_clean_all(self):
         """清空必填项后点击保存按钮，测试用例"""
         try:
@@ -74,47 +74,42 @@ class TestEditInfo(unittest.TestCase):
             self.log.info(str(msg))
             raise
 
-    def edit(self, name, certificate, number, emil, phone, company, duty, site, postcode):
+    def edit(self, name, certificate, number, emil, phone, postcode):
         self.browser.menu_bar()
         time.sleep(1)
         self.browser.click_edit()
         self.browser.clear_name()
         self.browser.import_name(name)
         #选择性别
-
         gender = self.browser.find_elements(self.browser.gender)[0]
         aria_checked = gender.get_attribute('aria-checked')
         if aria_checked == 'true':
             self.browser.click_woman()
         else:
             self.browser.click_man()
-        self.browser.select_birthday()
+        self.browser.select_birthday('1993-01-01')
         # 选择证件类型
         content = self.browser.find_elements(self.browser.message_input)[2]
         value = content.get_attribute('value')
         if value == certificate:
             if value == '身份证':
+                self.browser.select_birthday('1993-01-01')
                 self.browser.select_Taiwan() #点击台湾居民来往内地通行证
                 time.sleep(1)
                 self.browser.input_emil(emil)
             elif value == '护照':
-                self.browser.select_identity_card()
-                print("点击身份证")
+                self.browser.select_birthday('1992-06-12')
+                self.browser.select_identity_card()#点击身份证
                 time.sleep(1)
                 self.browser.certificate_mub(number)
             elif value == '港澳居民来往内地通行证':
-                self.browser.select_passport()#点击港澳居民来往内地通行证
+                self.browser.select_passport()#点击护照
                 time.sleep(1)
                 self.browser.input_postcode(postcode)
             elif value == '台湾居民来往内地通行证':
                 self.browser.select_HK()#点击港澳居民来往内地通行证
                 time.sleep(1)
                 self.browser.input_phone(phone)
-        #     self.browser.input_phone(phone)
-        #     self.browser.input_company(company)
-        #     self.browser.input_duty(duty)
-        #     self.browser.input_site(site)
-        #     self.browser.input_postcode(postcode)
         time.sleep(1)
         self.browser.click_save()
 
@@ -123,7 +118,7 @@ class TestEditInfo(unittest.TestCase):
     @ddt.data(*data)
     def test_edit_information(self, data):
         try:
-            self.edit(data['name'], data['certificate'], data['number'], data['emil'], data['phone'], data['company'], data['duty'], data['site'], data['postcode'])
+            self.edit(data['name'], data['certificate'], data['number'], data['emil'], data['phone'], data['postcode'])
             time.sleep(2)
             el_error = (data['type'], data['selector'])
             text = self.browser.get_text(el_error)

@@ -14,7 +14,7 @@ class IdentityInfo(PCLogin):
 
     def menu_bar(self):
         """点击右上角人头图标下的个人中心"""
-        personal_center = self.find_elements(self.identity)[1]
+        personal_center = self.find_elements(self.identity)[2]
         personal_center.click()
 
     def click_pwd(self):
@@ -31,6 +31,7 @@ class IdentityInfo(PCLogin):
         """点击身份信息页面，申请转化投资者类型链接"""
         elements = self.find_elements(self.link)[2]
         elements.click()
+
     def click_risk(self):
         """点击身份信息页面，重新评定投资者风险等级链接"""
         elements = self.find_elements(self.link)[3]
@@ -46,8 +47,9 @@ if __name__ == '__main__':
     driver = browser()
     Iinfo = IdentityInfo(driver)
     Iinfo.open_url(pc_url)
-    Iinfo.pc_login("15822816936","abc123456")
+    Iinfo.lx_pc_login()
     time.sleep(2)
     Iinfo.menu_bar()
+    Iinfo.click_edit()
     # time.sleep(2)
     # Iinfo.click_phone()

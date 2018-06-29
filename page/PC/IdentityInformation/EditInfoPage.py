@@ -13,7 +13,7 @@ class EditInfo(IdentityInfo):
     gender = ('class name', 'el-radio')#身份信息-编辑基本信息页面，性别按钮定位
     certificate = ('class name', 'el-select-dropdown__item')#身份信息-编辑基本信息页面,证件类型定位
     save = ('class name','el-button--medium')#身份信息-编辑基本信息页面,保存按钮定位
-    birthday_time = ('xpath', '/html/body/div[2]/div[1]/div/div[2]/table[1]/tbody/tr[5]/td[5]/div/span')
+    upload_papers = ('id', '1')
 
     def clear_name(self):
         """清空客户名称文本框内容"""
@@ -49,15 +49,16 @@ class EditInfo(IdentityInfo):
         gender_woman = self.find_elements(self.gender)[1]
         gender_woman.click()
 
-    def select_birthday(self):
+    def select_birthday(self, day):
         """点击生日日期"""
-        # js = "document.getElementsByClassName('el-input__inner')[1].removeAttribute('readonly')"
-        # self.js_execute(js)
         birthday = self.find_elements(self.message_input)[1]
-        birthday.click()
-        # js1 = "document.getElementsByClassName('el-input__inner')[1].value='2018-05-02'"
-        # self.js_execute(js1)
-        self.click(self.birthday_time)
+        js1 = "document.getElementsByClassName('el-input__inner')[1].removeAttribute('readonly')"
+        self.js_execute(js1)
+        birthday.send_keys(Keys.CONTROL, 'a')
+        birthday.send_keys(Keys.BACK_SPACE)
+        birthday.send_keys(day)
+        birthday.send_keys(Keys.TAB)
+        time.sleep(2)
 
     def select_identity_card(self):
         """选择证件类型：身份证"""
@@ -91,31 +92,6 @@ class EditInfo(IdentityInfo):
         Taiwan = self.find_elements(self.certificate)[3]  # 台湾居民来往大陆通行证
         Taiwan.click()
 
-
-
-    # def alter_certificate(self):
-    #     """更改证件类型"""
-    #     identity_card_text = self.find_elements(self.message_input)[2] #文本框定位
-    #     time.sleep(1)
-    #     value = identity_card_text.get_attribute('value')
-    #     identity_card_text.click()
-    #     if value == '身份证':
-    #         time.sleep(1)
-    #         passport = self.find_elements(self.certificate)[1]  # 护照
-    #         passport.click()
-    #     elif value == '护照':
-    #         time.sleep(1)
-    #         identity_card = self.find_elements(self.certificate)[0]  # 身份证
-    #         identity_card.click()
-    #     elif value == '港澳居民来往内地通行证':
-    #         time.sleep(1)
-    #         Taiwan = self.find_elements(self.certificate)[3]  # 台湾居民来往大陆通行证
-    #         Taiwan.click()
-    #     elif value == '台湾居民来往大陆通行证':
-    #         time.sleep(1)
-    #         HK = self.find_elements(self.certificate)[2]  # 港澳居民来往内地通行证
-    #         HK.click()
-
     def certificate_mub(self, value):
         """输入证件号码"""
         identity_card_text = self.find_elements(self.message_input)[3]  # 文本框定位
@@ -124,6 +100,7 @@ class EditInfo(IdentityInfo):
         identity_card_text.send_keys(Keys.CONTROL, 'a')
         identity_card_text.send_keys(Keys.BACK_SPACE)
         identity_card_text.send_keys(value)
+        identity_card_text.send_keys(Keys.TAB)
 
     def input_emil(self, value):
         """输入邮箱内容"""
@@ -173,6 +150,11 @@ class EditInfo(IdentityInfo):
         postcode_value.send_keys(Keys.BACK_SPACE)
         postcode_value.send_keys(value)
 
+    def upload(self):
+        self.js_scroll_end(0, 500)
+        self.click(self.upload_papers)
+
+
     def click_save(self):
         """点击确定按钮"""
         self.click(self.save)
@@ -182,15 +164,16 @@ if __name__ == '__main__':
     driver = browser()
     ei = EditInfo(driver)
     ei.open_url(pc_url)
-    ei.pc_login("15822816936","abc123456")
+    ei.lx_pc_login()
     ei.menu_bar()
     time.sleep(1)
     ei.click_edit()
     time.sleep(2)
-    #ei.select_birthday()
+    # ei.select_birthday('2019-09-09')
+    ei.upload()
     # ei.select_Taiwan()
     # time.sleep(1)
-    ei.input_emil('自动化测试')
+    #ei.input_emil('自动化测试')
     #time.sleep(1)
     #ei.input_emil('ssss')
     # time.sleep(1)
