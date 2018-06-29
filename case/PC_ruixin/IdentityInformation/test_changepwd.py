@@ -58,7 +58,7 @@ class ChangePwd(unittest.TestCase):
             time.sleep(1)
             self.browser.click_confirm()
             time.sleep(1)
-            self.browser.lx_pc_login()
+            self.browser.lx_pc_login('15822816936','qwer123456')
             self.browser.menu_bar()
             time.sleep(1)
             self.browser.click_pwd()
@@ -71,7 +71,7 @@ class ChangePwd(unittest.TestCase):
             time.sleep(1)
             self.browser.click_confirm()
             time.sleep(1)
-            self.browser.lx_pc_login()
+            self.browser.lx_pc_login('15822816936','abc123456')
             title = ('class name', 'no-redirect')
             title = self.browser.get_text(title)
             self.assertEqual('产品列表', title)
@@ -79,6 +79,7 @@ class ChangePwd(unittest.TestCase):
             self.log.info(str(msg))
             raise
 
+    @unittest.skip('pass')
     def test_input_null(self):
         """身份信息-修改密码页面，不输入任何内容，测试用例"""
         try:
@@ -100,6 +101,7 @@ class ChangePwd(unittest.TestCase):
             self.log.info(str(msg))
             raise
 
+    @unittest.skip('pass')
     def test_input_inconformity(self):
         """身份信息-修改密码页面，两次输入的新密码不一致，测试用例"""
         try:
@@ -122,6 +124,7 @@ class ChangePwd(unittest.TestCase):
             self.log.info(str(msg))
             raise
 
+    @unittest.skip('pass')
     def test_input_oldpaw(self):
         """身份信息-修改密码页面，旧密码输入有误，测试用例"""
         try:
