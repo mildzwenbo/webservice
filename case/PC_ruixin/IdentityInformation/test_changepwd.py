@@ -37,7 +37,7 @@ class ChangePwd(unittest.TestCase):
     def setUp(self):
         self.browser.delete_all_cookies()
         self.browser.refresh()
-        self.browser.pc_login('15822816936', 'abc123456')
+        self.browser.lx_pc_login()
 
     def tearDown(self):
         time.sleep(2)
@@ -58,7 +58,7 @@ class ChangePwd(unittest.TestCase):
             time.sleep(1)
             self.browser.click_confirm()
             time.sleep(1)
-            self.browser.pc_login('15822816936', 'qwer123456')
+            self.browser.lx_pc_login()
             self.browser.menu_bar()
             time.sleep(1)
             self.browser.click_pwd()
@@ -71,7 +71,7 @@ class ChangePwd(unittest.TestCase):
             time.sleep(1)
             self.browser.click_confirm()
             time.sleep(1)
-            self.browser.pc_login('15822816936', 'abc123456')
+            self.browser.lx_pc_login()
             title = ('class name', 'no-redirect')
             title = self.browser.get_text(title)
             self.assertEqual('产品列表', title)

@@ -38,7 +38,7 @@ class TestIdentityInfo(unittest.TestCase):
     def setUp(self):
         self.browser.delete_all_cookies()
         self.browser.refresh()
-        self.browser.pc_login('15822816936','abc123456')
+        self.browser.lx_pc_login()
 
     def tearDown(self):
         time.sleep(2)
