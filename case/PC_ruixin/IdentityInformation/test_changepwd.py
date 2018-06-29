@@ -79,7 +79,7 @@ class ChangePwd(unittest.TestCase):
             self.log.info(str(msg))
             raise
 
-    @unittest.skip('pass')
+    # @unittest.skip('pass')
     def test_input_null(self):
         """身份信息-修改密码页面，不输入任何内容，测试用例"""
         try:
@@ -101,7 +101,7 @@ class ChangePwd(unittest.TestCase):
             self.log.info(str(msg))
             raise
 
-    @unittest.skip('pass')
+    # @unittest.skip('pass')
     def test_input_inconformity(self):
         """身份信息-修改密码页面，两次输入的新密码不一致，测试用例"""
         try:
@@ -124,7 +124,7 @@ class ChangePwd(unittest.TestCase):
             self.log.info(str(msg))
             raise
 
-    @unittest.skip('pass')
+    # @unittest.skip('pass')
     def test_input_oldpaw(self):
         """身份信息-修改密码页面，旧密码输入有误，测试用例"""
         try:
