@@ -63,10 +63,10 @@ class TestEditInfo(unittest.TestCase):
             time.sleep(1)
             self.browser.click_save()
 
-            el_error = ('class name', 'el-form-item__error')
-            error_message = self.browser.find_elements(el_error)
-            name_error = error_message[0].text
-            certificate_error = error_message[1].text
+            el_error1 = ('class name', 'el-form-item__error')
+            el_error2 = ('class name', 'tips-SFZ')
+            name_error = self.browser.find_element(el_error1).text
+            certificate_error = self.browser.find_element(el_error2).text
 
             self.assertEqual('必填项，不能为空', name_error)
             self.assertEqual('必填项，不能为空', certificate_error)

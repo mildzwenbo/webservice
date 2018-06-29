@@ -63,6 +63,7 @@ class TestIdentityInfo(unittest.TestCase):
             self.browser.menu_bar()
             time.sleep(1)
             self.browser.click_phone()
+            time.sleep(1)
             phone_page = ('class name', "no-redirect")
             text = self.browser.get_text(phone_page)
             self.assertEqual('更换手机号', text)
