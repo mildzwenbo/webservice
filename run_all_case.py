@@ -16,7 +16,6 @@ import smtplib
 from email.mime.text import MIMEText
 import configparser
 from common.get_path import GetPath
-from email.utils import formataddr
 
 
 def add_case():
