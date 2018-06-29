@@ -33,8 +33,7 @@ class TestScenario(unittest.TestCase):
     def setUp(self):
         self.browser.delete_all_cookies()
         self.browser.refresh()
-        self.browser.pc_login('15822816936','abc123456','1')
-        "初始化"
+        self.browser.zj_pc_login()
 
     def tearDown(self):
         sleep(2)
@@ -60,7 +59,7 @@ class TestScenario(unittest.TestCase):
             sleep(1)
             self.assertEqual(self.browser.manage_status(),'已驳回')                #获取列表状态并断言
             sleep(1)
-            self.browser.open_url('http://inv.pb-test.com')                        #进入PC端申赎列表查看数据状态并断言
+            self.browser.open_url('http://inv.pb-test.com')                       #进入PC端申赎列表查看数据状态并断言
             sleep(1)
             self.browser.purchase_record(self.assertEqual, '已驳回')               #进入申赎记录列表页面查看数据状态并断言
 
