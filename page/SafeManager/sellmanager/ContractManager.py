@@ -89,7 +89,7 @@ class ContractManager(FindElement):
 
     contract_payment_loc = ('id','contract-payment')
     paymentTime_loc = ('id', 'paymentTime')  # 付款时间
-    payment_current_loc = ('xpath', '//span[text()="现在"]')
+    payment_current_loc = ('xpath', '//span[text()="确定"]')
     layui_layer_btn0_loc = ('class name', 'layui-layer-btn0')  # 确认按钮
 
     def contract_payment_button(self):
@@ -112,6 +112,12 @@ class ContractManager(FindElement):
         '''点击确认按钮'''
         self.click(self.layui_layer_btn0_loc)
 
+    '''冷静期页面'''
+    calm_date_loc = ('xpath','//*[@id="layui-layer100012"]/div[3]/a[2]')
+
+    def clam_date(self):
+        self.click(self.calm_date_loc)
+
 
     '''发送回访单'''
     returm_determine_loc = ('class name', 'layui-layer-btn0')  # 回访单页面确认按钮
@@ -129,9 +135,9 @@ class ContractManager(FindElement):
 if __name__ == '__main__':
     driver = browser()
     po = PCLogin(driver)
-    po.open_url('http://boss.pb-yun.com/')
+    po.open_url('http://boss.pb-test.com/')
     po2 = ManageLoginPage(driver)
-    po2.ManageLogin('13511055879', '123456', '')
+    po2.ManageLogin('17600000000', '123456', '')
     po1 = ContractManager(driver)
     po3 =Appointment(driver)
     time.sleep(4)
