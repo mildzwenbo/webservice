@@ -95,7 +95,10 @@ class TestScenario(unittest.TestCase):
             sleep(1)
             self.browser.conract_payment()                                          #确认已付款页面点击进行确认
             sleep(1)
+            self.browser.clam_date()                                                #点击冷静期页面取消按钮
+            sleep(1)
             self.assertEqual(self.browser.conract_status(),'已付款')               #数据状态断言-已付款
+            sleep(1)
             self.browser.from_returm()                                              #回访单页面进行确认按钮
             sleep(1)
             self.assertEqual(self.browser.return_status(),'已发送')                #数据状态断言-已发送
@@ -145,6 +148,8 @@ class TestScenario(unittest.TestCase):
             self.browser.conract_edit_button('2018-04-26',1,'刘鑫','0')           #输入时间、手续费、经办人、冷静期保存
             sleep(1)
             self.browser.conract_payment()                                          #确认已付款页面点击进行确认
+            sleep(1)
+            self.browser.clam_date()                                                #点击冷静期页面取消按钮
             sleep(1)
             self.browser.from_returm()                                              #回访单页面进行确认按钮
             sleep(1)
