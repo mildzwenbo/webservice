@@ -139,101 +139,20 @@ class PcScenario(PCLogin,ManageLoginPage,ProductPurchase,PurchaseRrecord,Appoint
 
     def even_submit(self):
         '''点击是提交'''
-        self.even_number()
+        self.even_number()                                              #选取是
         time.sleep(1)
-        self.return_visit_submit()
+        self.return_visit_submit()                                      #点击回访单页面提交按钮
 
     def odd_sbumit(self):
         '''点击否提交'''
-        self.odd_number()
+        self.odd_number()                                               #选取否
         time.sleep(1)
-        self.return_visit_submit()
+        self.return_visit_submit()                                      #点击回访单页面提交按钮
 
 
 
 
 
-    '''产品列表退出'''
-    product_drop_down_loc = ('class name','el-icon-caret-bottom')#下拉
-    product_exit_loc = ('xpath','//span[text()="退出"]')#退出
-
-    def product_drop_down(self):
-        '''点击下拉'''
-        self.click(self.product_drop_down_loc)
-
-    def product_eixt(self):
-        '''点击退出按钮'''
-        self.click(self.product_exit_loc)
-
-    def pc_exit(self):
-        '''PC端退出'''
-        self.product_drop_down()
-        time.sleep(1)
-        self.product_eixt()
-
-    '''回访确认'''
-    visit_confirm_button_loc = ('class name','layui-layer-btn0')#确认回访页面确认按钮
-    visit_rejected_loc = ('xpath','//div[text()="驳回"]')#确认回访页面驳回单选框
-
-    def visit_rejected(self):
-        self.click(self.visit_rejected_loc)
-
-    def confirm_page_confirm_butten(self):
-        '''点击回访确认按钮，跳转回访确认页面，点击确认按钮'''
-        js = "document.getElementById('make-sure').click()"
-        self.js_execute(js)
-        time.sleep(1)
-        '''点击确认按钮'''
-        self.click(self.visit_confirm_button_loc)
-
-    '''合同页面 进行合同编辑，发送回访单'''
-    def contract_eidt_returm_buy(self):
-        '''合同-编辑-回访'''
-        self.contract_menu()
-        time.sleep(1)
-        self.edit()
-        time.sleep(1)
-        self.payment()
-        time.sleep(1)
-        self.from_returm()
-
-    '''合同页面，进行客户回访单不想买，管理员进行拒绝'''
-    def contract_returm_refused(self):
-        '''合同-回访单拒绝'''
-        self.sales()
-        time.sleep(1)
-        self.contract_menu()
-        time.sleep(1)
-        self.conract_operation()
-        time.sleep(1)
-        js = "document.getElementById('make-sure').click()"
-        self.js_execute(js)
-        time.sleep(1)
-        self.js_scroll_end(0,1000)
-        time.sleep(1)
-        self.visit_rejected()
-        time.sleep(1)
-        self.click(self.visit_confirm_button_loc)
-
-    def contract_returm_through(self):
-        '''合同-回访单通过'''
-        self.sales()
-        time.sleep(1)
-        self.contract_menu()
-        time.sleep(1)
-        self.conract_operation()
-        time.sleep(1)
-        self.confirm_page_confirm_butten()
-
-    # def WebDriverWait(self,driver,type,str):
-    #     '''显示等待'''
-    #     WebDriverWait(driver, 10).until(EC.visibility_of(driver.find_element(
-    #         by=type, value=str)))
-
-    chankan_loc = ('xpath','//span[text()="查看"]')
-
-    def chakan(self):
-        self.click(self.chankan_loc)
 
 
 if __name__ == '__main__':
@@ -252,11 +171,7 @@ if __name__ == '__main__':
 
 
 
-    # WebDriverWait(driver, 10).until(
-    #     EC.visibility_of(driver.find_element(
-    #         by=By.XPATH, value='//*[@id="detailName"]/span')))
-    #
-    # po.audit_through()
+
 
 
 
