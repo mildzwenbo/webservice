@@ -20,7 +20,7 @@ class TestThePositionInformation(unittest.TestCase):
     def setUpClass(cls):
         cls.syt = platform.platform()
         if cls.syt[:5] == 'Linux':
-            cls.display = pyvirtualdisplay.Display(visible=0, set=(1280, 900))
+            cls.display = pyvirtualdisplay.Display(visible=0, size=(1280, 900))
             cls.display.start()
         cls.log = logger
         cls.browser = browser()
