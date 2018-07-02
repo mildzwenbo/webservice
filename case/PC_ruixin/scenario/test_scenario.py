@@ -51,8 +51,6 @@ class TestScenario(unittest.TestCase):
             sleep(1)
             self.browser.ManageLogin('17600000000', '123456', '')                 # 管理端输入账号密码
             sleep(2)
-            # WebDriverWait(self.driver, 'By.XPATh', '//*[@id="detailName"]/span') # 显示等待
-            sleep(1)
             self.browser.appointment_apply(self.assertEqual)                        # 进入销售管理-预约申请页面-获取数据状态-断言
             sleep(1)
             self.browser.audit_rejected()                                           #审核驳回
@@ -80,8 +78,6 @@ class TestScenario(unittest.TestCase):
             self.browser.open_url('http://boss.pb-test.com/')                      # 进入管理端
             sleep(1)
             self.browser.ManageLogin('17600000000', '123456', '')                 # 管理端输入账号密码
-            sleep(1)
-            # WebDriverWait(self.driver, 'By.XPATh', '//*[@id="detailName"]/span') # 显示等待
             sleep(2)
             self.browser.appointment_apply(self.assertEqual)                        # 进入销售管理-预约申请页面-获取数据状态-断言
             sleep(1)
@@ -111,8 +107,6 @@ class TestScenario(unittest.TestCase):
             sleep(1)
             self.browser.ManageLogin('17600000000 ', '123456', '')                 # 管理端输入账号密码
             sleep(2)
-            # WebDriverWait(self.driver, 'By.XPATh', '//*[@id="detailName"]/span') # 显示等待
-            sleep(1)
             self.browser.sell_contract()                                            #点击销售管理-合同管理菜单
             sleep(1)
             self.assertEqual(self.browser.return_status(),'想买')                  #列表数据状态断言-想买
@@ -134,8 +128,6 @@ class TestScenario(unittest.TestCase):
             self.browser.open_url('http://boss.pb-test.com/')                      # 进入管理端
             sleep(1)
             self.browser.ManageLogin('17600000000 ', '123456', '')                 # 管理端输入账号密码
-            sleep(1)
-            # WebDriverWait(self.driver, 'By.XPATh', '//*[@id="detailName"]/span') # 显示等待
             sleep(2)
             self.browser.appointment_apply(self.assertEqual)                        # 进入销售管理-预约申请页面-获取数据状态-断言
             sleep(1)
@@ -162,9 +154,7 @@ class TestScenario(unittest.TestCase):
             self.browser.open_url('http://boss.pb-test.com/')                      # 进入管理端
             sleep(2)
             self.browser.ManageLogin('17600000000', '123456', '')                  # 管理端输入账号密码
-            sleep(1)
-            # WebDriverWait(self.driver, 'By.XPATh', '//*[@id="detailName"]/span')  # 显示等待
-            sleep(1)
+            sleep(2)
             self.browser.sell_contract()                                             # 点击销售管理-合同管理菜单
             sleep(1)
             self.assertEqual(self.browser.return_status(), '不想买')                 # 列表数据状态断言-不想买
