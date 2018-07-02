@@ -20,7 +20,7 @@ excel_path = GetPath().get_params_path('change_information.xlsx')
 sheet = 'Sheet1'
 data = ReadExcel(excel_path, sheet).data_list()
 
-
+@unittest.skip('pass')
 @ddt.ddt
 class TestEditInfo(unittest.TestCase):
     """登录页面等测试用例"""
