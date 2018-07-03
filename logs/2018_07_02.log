@@ -1,9 +1,0 @@
-2018-07-02 13:19:57,845 test_net_value_of_history.py[line: 85] INFO: Message: Element not found in the cache - perhaps the page has changed since it was looked up
-Stacktrace:
-    at fxdriver.cache.getElementAt (resource://fxdriver/modules/web-element-cache.js:9454)
-    at Utils.getElementAt (file:///C:/Users/ADMINI~1/AppData/Local/Temp/tmpluztsmeg/extensions/fxdriver@googlecode.com/components/command-processor.js:9039)
-    at fxdriver.preconditions.visible (file:///C:/Users/ADMINI~1/AppData/Local/Temp/tmpluztsmeg/extensions/fxdriver@googlecode.com/components/command-processor.js:10090)
-    at DelayedCommand.prototype.checkPreconditions_ (file:///C:/Users/ADMINI~1/AppData/Local/Temp/tmpluztsmeg/extensions/fxdriver@googlecode.com/components/command-processor.js:12644)
-    at DelayedCommand.prototype.executeInternal_/h (file:///C:/Users/ADMINI~1/AppData/Local/Temp/tmpluztsmeg/extensions/fxdriver@googlecode.com/components/command-processor.js:12661)
-    at fxdriver.Timer.prototype.setTimeout/<.notify (file:///C:/Users/ADMINI~1/AppData/Local/Temp/tmpluztsmeg/extensions/fxdriver@googlecode.com/components/command-processor.js:625)
-2018-07-02 15:33:25,142 test_position_information.py[line: 99] INFO:  :: 赎回申请 != 
