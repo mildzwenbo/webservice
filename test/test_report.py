@@ -27,7 +27,7 @@ class TestReport(unittest.TestCase):
     def setUpClass(cls):
         cls.syt = platform.platform()
         if cls.syt[:5] == "Linux":
-            cls.display = pyvirtualdisplay.Display(visible=0, size=(1280, 800))
+            cls.display = pyvirtualdisplay.Display(visible=0, size=(5120, 2280))
             cls.display.start()
         cls.log = logger
         cls.browser = browser()
