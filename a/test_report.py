@@ -27,7 +27,7 @@ class TestReport(unittest.TestCase):
     def setUpClass(cls):
         cls.syt = platform.platform()
         if cls.syt[:5] == "Linux":
-            cls.display = pyvirtualdisplay.Display(visible=0, size=(1280, 900))
+            cls.display = pyvirtualdisplay.Display(visible=0, size=(1280, 800))
             cls.display.start()
         cls.log = logger
         cls.browser = browser()
@@ -53,11 +53,12 @@ class TestReport(unittest.TestCase):
     def tearDown(self):
         time.sleep(1)
 
-    # @ddt.data(*data)
-    def test_search(self):
+    @ddt.data(*data)
+    def test_search(self, data):
         """查询不同的报告类型：日报、周报、月报、季报、年报，对应不同的数据"""
         try:
-            self.driver.search("R3", "1")
+            print(data['name'])
+            self.driver.search(data['product_name'], data['type_report'])
             time.sleep(2)
             text = self.driver.get_text(('xpath', '//*[@id="pane-1"]/div/div[2]/div/div[3]/table/tbody/tr/td[1]/div'))
             self.assertEqual('资舟投资基金R3', text)
