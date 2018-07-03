@@ -55,7 +55,6 @@ class EditInfo(IdentityInfo):
         js1 = "document.getElementsByClassName('el-input__inner')[1].removeAttribute('readonly')"
         self.js_execute(js1)
         birthday.send_keys(Keys.CONTROL, 'a')
-        birthday.send_keys(Keys.BACK_SPACE)
         birthday.send_keys(day)
         birthday.send_keys(Keys.TAB)
         time.sleep(2)
@@ -98,8 +97,9 @@ class EditInfo(IdentityInfo):
         time.sleep(1)
         identity_card_text.click()
         identity_card_text.send_keys(Keys.CONTROL, 'a')
-        identity_card_text.send_keys(Keys.BACK_SPACE)
+        #identity_card_text.send_keys(Keys.BACK_SPACE)
         identity_card_text.send_keys(value)
+        time.sleep(1)
         identity_card_text.send_keys(Keys.TAB)
 
     def input_emil(self, value):
@@ -168,9 +168,12 @@ if __name__ == '__main__':
     ei.menu_bar()
     time.sleep(1)
     ei.click_edit()
+    ei.certificate_mub('41142519720828083X')
+    ei.click_save()
     time.sleep(2)
+
     # ei.select_birthday('2019-09-09')
-    ei.upload()
+    # ei.upload()
     # ei.select_Taiwan()
     # time.sleep(1)
     #ei.input_emil('自动化测试')

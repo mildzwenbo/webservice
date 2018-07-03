@@ -51,7 +51,7 @@ class TestEditInfo(unittest.TestCase):
     def tearDown(self):
         time.sleep(2)
 
-    #@unittest.skip('pass')
+    @unittest.skip('pass')
     def test_clean_all(self):
         """清空必填项后点击保存按钮，测试用例"""
         try:
@@ -74,7 +74,7 @@ class TestEditInfo(unittest.TestCase):
             self.log.info(str(msg))
             raise
 
-    def edit(self, name, certificate, number, emil, phone, postcode):
+    def edit(self, name, birthday_time, certificate, number, emil, phone, postcode):
         self.browser.menu_bar()
         time.sleep(1)
         self.browser.click_edit()
@@ -87,21 +87,20 @@ class TestEditInfo(unittest.TestCase):
             self.browser.click_woman()
         else:
             self.browser.click_man()
-        self.browser.select_birthday('1993-01-01')
         # 选择证件类型
         content = self.browser.find_elements(self.browser.message_input)[2]
         value = content.get_attribute('value')
         if value == certificate:
             if value == '身份证':
-                self.browser.select_birthday('1993-01-01')
+                self.browser.select_birthday(birthday_time)
                 self.browser.select_Taiwan() #点击台湾居民来往内地通行证
                 time.sleep(1)
                 self.browser.input_emil(emil)
             elif value == '护照':
-                self.browser.select_birthday('1992-06-12')
+                self.browser.select_birthday(birthday_time)
                 self.browser.select_identity_card()#点击身份证
-                time.sleep(1)
                 self.browser.certificate_mub(number)
+                time.sleep(1)
             elif value == '港澳居民来往内地通行证':
                 self.browser.select_passport()#点击护照
                 time.sleep(1)
@@ -118,7 +117,7 @@ class TestEditInfo(unittest.TestCase):
     @ddt.data(*data)
     def test_edit_information(self, data):
         try:
-            self.edit(data['name'], data['certificate'], data['number'], data['emil'], data['phone'], data['postcode'])
+            self.edit(data['name'], data['birthday_time'], data['certificate'], data['number'], data['emil'], data['phone'], data['postcode'])
             time.sleep(2)
             el_error = (data['type'], data['selector'])
             text = self.browser.get_text(el_error)
