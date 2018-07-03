@@ -21,6 +21,10 @@ class Report(PCLogin):
     report_search_loc = ('class name', 'el-button--primary')
     # 报告按钮
     report_loc = ('id', 'tab-1')
+    #点击报告类型，列表中的第六个
+    report_type_loc = ('class name', 'el-input__inner')
+    #选择的条件、日报、周报、月报、季报、年报列表中8到11
+    select_loc = ('class name', 'el-select-dropdown__item')
 
     def search(self, text, type_value):
         """
@@ -29,20 +33,25 @@ class Report(PCLogin):
         """
         name_input_element = self.find_elements(self.inputs_loc)[4]
         name_input_element.send_keys(text)
-
-        remove_readonly = 'document.getElementsByClassName("el-input__inner")[5].removeAttribute("readonly")'
-        self.js_execute(remove_readonly)
+        self.find_elements(self.report_type_loc)[5].click()
         time.sleep(1)
         if type_value == '1':
-            type_report = 'document.getElementsByClassName("el-input__inner")[5].value="日报"'
-        self.js_execute(js=type_report)
-        time.sleep(1)
+            self.find_elements(self.select_loc)[7].click()
+        elif type_value == '2':
+            self.find_elements(self.select_loc)[8].click()
+        elif type_value == '3':
+            self.find_elements(self.select_loc)[9].click()
+        elif type_value == '4':
+            self.find_elements(self.select_loc)[10].click()
+        elif type_value == '5':
+            self.find_elements(self.select_loc)[11].click()
         js1 = "document.getElementsByClassName('el-range-input')[2].value = '2018-06-10'"
         js2 = "document.getElementsByClassName('el-range-input')[3].value = '2018-06-27'"
         self.js_execute(js1)
         self.js_execute(js2)
         search_element = self.find_elements(self.report_search_loc)[1]
         search_element.click()
+        time.sleep(1)
 
     def report_click(self):
         """
@@ -61,5 +70,5 @@ if __name__ == '__main__':
     time.sleep(1)
     r.report_click()
     time.sleep(1)
-    r.search(text="Rx", type_value="1")
+    r.search(text="R3", type_value="2")
 
