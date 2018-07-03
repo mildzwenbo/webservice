@@ -11,6 +11,16 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import *
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.select import Select
+import platform
+import os
+
+path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+download_path = os.path.join(path, 'Download')
+if os.path.isdir(download_path):
+    pass
+else:
+    os.makedirs(download_path)
+
 # import time
 
 
@@ -22,7 +32,12 @@ def browser(browser='firefox'):
     """
     try:
         if browser == 'firefox':
-            driver = webdriver.Firefox()
+            fp = webdriver.FirefoxProfile()
+            fp.set_preference("browser.download.folderList", 2)
+            fp.set_preference("browser.download.manager.showWhenStarting", False)
+            fp.set_preference("browser.download.dir", download_path)
+            fp.set_preference("browser.helperApps.neverAsk.saveToDisk", "application/x-execl")
+            driver = webdriver.Firefox(firefox_profile=fp)
             # file_path = r'C:\Users\Administrator\AppData\Roaming\Mozilla\Firefox\Profiles\2mnajvb0.default'
             # f = webdriver.FirefoxProfile(file_path)
             # driver = webdriver.Firefox(f)
@@ -402,22 +417,3 @@ class FindElement():
         self.driver.quit()
 
 
-if __name__ == '__main__':
-    driver = browser()
-    driver.refresh()
-    browser = FindElement(driver)
-    browser.open_url('http://www.baidu.com')
-    # set_locator = ('css', '#u1 > a.pf')
-    # browser.move_to_element(set_locator)
-    # browser.click(('css', '#wrapper > div.bdpfmenu > a.setpref'))
-    # search_locator = ('css', '#nr')
-    input_locator = ('css', '#kw')
-    a = browser.find_element(input_locator)
-    # browser.send_keys(input_locator, 'python')
-    if a:
-        print(1)
-    else:
-        print(2)
-
-
-    browser.quit()
