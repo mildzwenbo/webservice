@@ -46,8 +46,8 @@ class TestLogin(unittest.TestCase):
     def test_2(self):
         """用户名密码正确登录"""
         try:
-            self.browser.ManageLogin('13511055879','123456','')
-            self.assertEqual(self.browser.type_username(),'金战军')
+            self.browser.ManageLogin('17600000000', '123456', '')
+            self.assertEqual(self.browser.type_username(), 'test')
         except Exception as msg:
             self.log.info(msg)
             raise
