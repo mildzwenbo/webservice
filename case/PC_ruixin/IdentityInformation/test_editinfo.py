@@ -20,7 +20,6 @@ excel_path = GetPath().get_params_path('change_information.xlsx')
 sheet = 'Sheet1'
 data = ReadExcel(excel_path, sheet).data_list()
 
-@unittest.skip('pass')
 @ddt.ddt
 class TestEditInfo(unittest.TestCase):
     """登录页面等测试用例"""
@@ -51,7 +50,7 @@ class TestEditInfo(unittest.TestCase):
     def tearDown(self):
         time.sleep(2)
 
-    @unittest.skip('pass')
+    #@unittest.skip('pass')
     def test_clean_all(self):
         """清空必填项后点击保存按钮，测试用例"""
         try:

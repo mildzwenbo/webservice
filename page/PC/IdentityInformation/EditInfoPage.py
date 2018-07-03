@@ -107,7 +107,6 @@ class EditInfo(IdentityInfo):
         emil_value = self.find_elements(self.message_input)[4]
         emil_value.click()
         emil_value.send_keys(Keys.CONTROL, 'a')
-        emil_value.send_keys(Keys.BACK_SPACE)
         emil_value.send_keys(value)
 
     def input_phone(self, value):
@@ -115,7 +114,6 @@ class EditInfo(IdentityInfo):
         phone_value = self.find_elements(self.message_input)[5]
         phone_value.click()
         phone_value.send_keys(Keys.CONTROL, 'a')
-        phone_value.send_keys(Keys.BACK_SPACE)
         phone_value.send_keys(value)
 
     def input_company(self, value):
@@ -123,7 +121,6 @@ class EditInfo(IdentityInfo):
         company_value = self.find_elements(self.message_input)[6]
         company_value.click()
         company_value.send_keys(Keys.CONTROL, 'a')
-        company_value.send_keys(Keys.BACK_SPACE)
         company_value.send_keys(value)
 
     def input_duty(self, value):
@@ -131,7 +128,6 @@ class EditInfo(IdentityInfo):
         duty_value = self.find_elements(self.message_input)[7]
         duty_value.click()
         duty_value.send_keys(Keys.CONTROL, 'a')
-        duty_value.send_keys(Keys.BACK_SPACE)
         duty_value.send_keys(value)
 
     def input_site(self, value):
@@ -139,7 +135,6 @@ class EditInfo(IdentityInfo):
         site_value = self.find_elements(self.message_input)[8]
         site_value.click()
         site_value.send_keys(Keys.CONTROL, 'a')
-        site_value.send_keys(Keys.BACK_SPACE)
         site_value.send_keys(value)
 
     def input_postcode(self, value):
@@ -147,7 +142,6 @@ class EditInfo(IdentityInfo):
         postcode_value = self.find_elements(self.message_input)[9]
         postcode_value.click()
         postcode_value.send_keys(Keys.CONTROL, 'a')
-        postcode_value.send_keys(Keys.BACK_SPACE)
         postcode_value.send_keys(value)
 
     def upload(self):
