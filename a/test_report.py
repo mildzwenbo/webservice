@@ -53,12 +53,11 @@ class TestReport(unittest.TestCase):
     def tearDown(self):
         time.sleep(1)
 
-    @ddt.data(*data)
-    def test_search(self, data):
+    # @ddt.data(*data)
+    def test_search(self):
         """查询不同的报告类型：日报、周报、月报、季报、年报，对应不同的数据"""
         try:
-            print(data['name'])
-            self.driver.search(data['product_name'], data['type_report'])
+            self.driver.search("R3", "1")
             time.sleep(2)
             text = self.driver.get_text(('xpath', '//*[@id="pane-1"]/div/div[2]/div/div[3]/table/tbody/tr/td[1]/div'))
             self.assertEqual('资舟投资基金R3', text)
