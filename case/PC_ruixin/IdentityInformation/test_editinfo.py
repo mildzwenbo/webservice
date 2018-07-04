@@ -1,7 +1,7 @@
 """
-@author:fei
+@author:xin
 @date:2018-5-26
-@brief:登录页面等测试用例
+@brief:身份信息-编辑个人信息页面测试用例
 """
 
 import platform
@@ -9,7 +9,6 @@ from pyvirtualdisplay import Display
 import time
 import unittest
 import ddt
-
 from common.log import logger
 from page.PC.IdentityInformation.EditInfoPage import EditInfo, browser, pc_url
 from common.get_path import GetPath
@@ -22,7 +21,7 @@ data = ReadExcel(excel_path, sheet).data_list()
 
 @ddt.ddt
 class TestEditInfo(unittest.TestCase):
-    """登录页面等测试用例"""
+    """身份信息-编辑个人信息页面测试用例"""
 
     @classmethod
     def setUpClass(cls):
@@ -46,7 +45,9 @@ class TestEditInfo(unittest.TestCase):
         self.browser.delete_all_cookies()
         self.browser.refresh()
         self.browser.lx_pc_login()
-
+        self.browser.menu_bar()
+        time.sleep(1)
+        self.browser.click_edit()
     def tearDown(self):
         time.sleep(2)
 
@@ -54,9 +55,6 @@ class TestEditInfo(unittest.TestCase):
     def test_clean_all(self):
         """清空必填项后点击保存按钮，测试用例"""
         try:
-            self.browser.menu_bar()
-            time.sleep(1)
-            self.browser.click_edit()
             self.browser.clear_name()
             self.browser.clear_certificate()
             time.sleep(1)
@@ -74,9 +72,6 @@ class TestEditInfo(unittest.TestCase):
             raise
 
     def edit(self, name, birthday_time, certificate, number, emil, phone, postcode):
-        self.browser.menu_bar()
-        time.sleep(1)
-        self.browser.click_edit()
         self.browser.clear_name()
         self.browser.import_name(name)
         #选择性别
@@ -115,6 +110,7 @@ class TestEditInfo(unittest.TestCase):
 
     @ddt.data(*data)
     def test_edit_information(self, data):
+        """各个字段规则验证"""
         try:
             self.edit(data['name'], data['birthday_time'], data['certificate'], data['number'], data['emil'], data['phone'], data['postcode'])
             time.sleep(2)
