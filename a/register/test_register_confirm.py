@@ -57,6 +57,7 @@ class TestRegisterConfirm(unittest.TestCase):
         """点击个人投资者进行注册，进入到验证页面"""
         try:
             self.driver.individual_investor('1')
+            time.sleep(1)
             text = self.driver.find_elements(('class name', 'el-step__title'))[0].text
             self.assertEqual('输入注册信息', text)
         except Exception as msg:
@@ -67,6 +68,7 @@ class TestRegisterConfirm(unittest.TestCase):
         """点击机构投资者进行注册，进入到验证页面"""
         try:
             self.driver.individual_investor('2')
+            time.sleep(1)
             text = self.driver.find_elements(('class name', 'el-step__title'))[0].text
             self.assertEqual('输入注册信息', text)
         except Exception as msg:
@@ -77,6 +79,7 @@ class TestRegisterConfirm(unittest.TestCase):
         """不输入基金管理人点击下一步，查看报错信息"""
         try:
             self.driver.do_not_enter_the_fund_manager()
+            time.sleep(1)
             text = self.driver.get_text(('class name', 'el-form-item__error'))
             self.assertEqual('请选择基金管理人', text)
         except Exception as msg:
