@@ -132,10 +132,12 @@ class Individual(unittest.TestCase):
             time.sleep(1)
             self.browser.click_template()
             # 删除文件夹下的指定文件
-            path = "..\..\..\Download\个人投资者模板.xlsx"
-            file = os.path.exists(path)
-            self.assertEqual(file, True)
-            if file:
+            # path = "..\..\..\Download\个人投资者模板.xlsx"
+            path = "..\Download\个人投资者模板.xlsx"
+            print(os.path.exists(path))
+            self.assertEqual(os.path.exists(path), True)
+            time.sleep(1)
+            if os.path.exists(path):
                 # 删除文件，可使用以下两种方法。
                 os.remove(path)
                 # os.unlink(my_file)
@@ -178,10 +180,10 @@ class Individual(unittest.TestCase):
         try:
             time.sleep(1)
             self.browser.derive()
-            path = "..\..\..\Download\个人投资者.xlsx"
-            file = os.path.exists(path)
-            self.assertEqual(file, True)
-            if file:
+            # path = "..\..\..\Download\个人投资者.xlsx"
+            path = "..\Download\个人投资者.xlsx"
+            self.assertEqual(os.path.exists(path), True)
+            if os.path.exists(path):
                 # 删除文件，可使用以下两种方法。
                 os.remove(path)
                 # os.unlink(my_file)
@@ -199,12 +201,12 @@ class Individual(unittest.TestCase):
             self.browser.click_inquire()
             time.sleep(1)
             self.browser.derive()
-            path = "..\..\..\Download\个人投资者.xlsx"
+            # path = "..\..\..\Download\个人投资者.xlsx"
+            path = "..\Download\个人投资者.xlsx"
             data = ReadExcel(path, 'Sheet1').data_list()
-            self.assertEqual(len(data)-2, 3)
-            file = os.path.exists(path)
-            self.assertEqual(file, True)
-            if file:
+            self.assertEqual(len(data), 5)
+            self.assertEqual(os.path.exists(path), True)
+            if os.path.exists(path):
                 # 删除文件，可使用以下两种方法。
                 os.remove(path)
                 # os.unlink(my_file)
@@ -222,12 +224,12 @@ class Individual(unittest.TestCase):
             self.browser.find_elements(self.browser.check_box)[5].click()
             self.browser.find_elements(self.browser.check_box)[6].click()
             self.browser.derive()
-            path = "..\..\..\Download\个人投资者.xlsx"
+            # path = "..\..\..\Download\个人投资者.xlsx"
+            path = "..\Download\个人投资者.xlsx"
             data = ReadExcel(path, 'Sheet1').data_list()
-            self.assertEqual(len(data)-2, 3)
-            file = os.path.exists(path)
-            self.assertEqual(file, True)
-            if file:
+            self.assertEqual(len(data), 5)
+            self.assertEqual(os.path.exists(path), True)
+            if os.path.exists(path):
                 # 删除文件，可使用以下两种方法。
                 os.remove(path)
                 # os.unlink(my_file)
@@ -345,6 +347,14 @@ class Individual(unittest.TestCase):
         state_freeze = self.browser.find_elements(('class name', 'laytable-cell-6-riskLevelCode'))[3].text
         self.assertEqual(state_freeze, 'C1')
 
+    # def test_questionnaire_score(self):
+    # 分数验证
+    #     self.browser.scroll_right()
+    #     self.browser.click_risk()
+    #     self.browser.fill_score('1000')
+    #     self.browser.click(self.browser.confirm)
+    #     time.sleep(1)
+    #     print(self.browser.find_element(('class name', 'layui-layer-content')).text)
 
 if __name__ == '__main__':
     unittest.main()

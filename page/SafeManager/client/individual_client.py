@@ -10,8 +10,10 @@ from selenium.webdriver.common.keys import Keys
 
 
 class IndividualClient(ManagerLogin):
-    quit_button = ('id', 'go-out')
-    nav_bar = ('class name', 'nav-tit')  # 住导航栏定位
+    quit_button = ('id', 'go-out')  # 管理端退出按钮定位
+    close_button = ('class name', 'layui-layer-close1')  # 弹框的关闭按钮
+    confirm = ('class name', 'layui-layer-btn0')  # 弹框里的确定按钮
+    nav_bar = ('class name', 'nav-tit')  # 客户管理导航栏定位
     individual_client = ('link text', '个人客户')  # 二级导航栏个人中心定位
     search = ('class name', 'layui-input')  # 查询字段所有文本框定位
     find_button = ('id', 'btn-search')  # 查询按钮定位
@@ -22,7 +24,6 @@ class IndividualClient(ManagerLogin):
     sell_button = ('id', 'btn-sellRepresentative')  # 销售代表按钮定位
     add_button = ('id', 'add-sellRepresentative')  # 批量添加销售代表按钮定位
     remove_button = ('id', 'remove-sellRepresentative')  # 批量移除销售代表按钮定位
-    confirm = ('class name', 'layui-layer-btn0')  # 弹框里的确定按钮
     derived_data = ('id', 'btn-LeadingOutData')  # 导出数据按钮定位
     check_box = ('class name', 'layui-form-checkbox')  # 页面复选框
     operation = ('class name', 'btn-edit')  # 列表中所有操作按钮定位
@@ -33,6 +34,7 @@ class IndividualClient(ManagerLogin):
     send = ('id', 'sendRiskEval')  # 操作>发送调查问卷按钮定位
     send_return = ('id', 'sendReturn')  # 操作>适当性回访按钮定位
     document_manage = ('id', 'documentManage')  # 操作>文档管理按钮定位
+
 
     def click_client(self):
         """进入客户管理-个人客户页面"""
@@ -206,4 +208,3 @@ if __name__ == '__main__':
     c.lx_manager_login()
     c.click_client()
     time.sleep(1)
-    c.click_validt()
