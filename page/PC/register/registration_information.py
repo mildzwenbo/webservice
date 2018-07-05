@@ -62,6 +62,13 @@ class RegistrationInformation(RegisterConfirm):
         self.find_elements(self.info_next_step_loc)[2].click()
 
     def info_institutions_input_info(self, institutions_name, name, phone):
+        """
+        输入信息
+        :param institutions_name:
+        :param name:
+        :param phone:
+        :return:
+        """
         self.individual_investor('2')
         time.sleep(1)
         self.find_elements(self.info_inputs_loc)[0].send_keys(institutions_name)
@@ -71,11 +78,6 @@ class RegistrationInformation(RegisterConfirm):
         self.click(self.info_select_loc)
         time.sleep(1)
         self.find_elements(self.info_next_step_loc)[2].click()
-        time.sleep(2)
-        text = self.find_elements(('class name', 'el-form-item__content'))
-        text = text[6].text
-        print(text)
-
 
 
 if __name__ == '__main__':
