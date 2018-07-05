@@ -8,9 +8,11 @@ import time
 from common.manager_login import ManagerLogin, manager_url, browser
 from selenium.webdriver.common.keys import Keys
 
+
 class IndividualClient(ManagerLogin):
-    nav_bar = ('class name', 'nav-tit')
-    individual_client = ('link text', '个人客户')
+    quit_button = ('id', 'go-out')
+    nav_bar = ('class name', 'nav-tit')  # 住导航栏定位
+    individual_client = ('link text', '个人客户')  # 二级导航栏个人中心定位
     search = ('class name', 'layui-input')  # 查询字段所有文本框定位
     find_button = ('id', 'btn-search')  # 查询按钮定位
     new_client = ('id', 'btn-addCustomer')  # 新建客户按钮定位

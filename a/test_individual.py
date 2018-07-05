@@ -45,7 +45,10 @@ class Individual(unittest.TestCase):
         self.browser.click_client()
 
     def tearDown(self):
-        time.sleep(2)
+        time.sleep(1)
+        self.browser.click(self.browser.quit_button)
+        self.browser.click(self.browser.confirm)
+        time.sleep(1)
 
     def test_client_inquire(self):
         """客户名称查询结果"""
@@ -341,25 +344,6 @@ class Individual(unittest.TestCase):
         time.sleep(1)
         state_freeze = self.browser.find_elements(('class name', 'laytable-cell-6-riskLevelCode'))[3].text
         self.assertEqual(state_freeze, 'C1')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 if __name__ == '__main__':
