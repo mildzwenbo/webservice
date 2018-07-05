@@ -1,5 +1,5 @@
 """
-@author:fei
+@author:xin
 @date:2018-7-3
 @brief:管理端-客户管理-个人客户各项功能测试用例
 """
@@ -10,7 +10,6 @@ import time
 import unittest
 
 from pyvirtualdisplay import Display
-
 
 from common.log import logger
 from common.read_excel import ReadExcel
