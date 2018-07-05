@@ -46,7 +46,6 @@ class ChangePwd(unittest.TestCase):
     def test_input_pwd(self):
         """身份信息-修改密码流程测试用例"""
         try:
-
             self.browser.menu_bar()
             time.sleep(1)
             self.browser.click_pwd()

@@ -8,8 +8,6 @@ import platform
 from pyvirtualdisplay import Display
 import time
 import unittest
-
-
 from common.log import logger
 from page.PC.IdentityInformation.IdentityPage import IdentityInfo, browser, pc_url
 
