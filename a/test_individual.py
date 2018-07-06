@@ -133,7 +133,8 @@ class Individual(unittest.TestCase):
             self.browser.click_template()
             # 删除文件夹下的指定文件
             if platform.system() == 'Windows':
-                path = "..\Download\个人投资者模板.xlsx"
+                each = os.path.dirname(os.path.dirname(__file__))
+                path = each + '//' + 'Download//个人投资者模板.xlsx'
                 self.assertEqual(os.path.exists(path), True)
                 if os.path.exists(path):
                     # 删除文件，可使用以下两种方法。
@@ -142,7 +143,8 @@ class Individual(unittest.TestCase):
                 else:
                     print('不存在的文件:%s' % path)
             else:
-                path = "../Download/个人投资者模板.xlsx"
+                each =os.path.dirname(os.path.dirname(__file__))
+                path = each + '//'+'Download//个人投资者模板.xlsx'
                 self.assertEqual(os.path.exists(path), True)
                 if os.path.exists(path):
                     # 删除文件，可使用以下两种方法。
