@@ -15,7 +15,7 @@ from pyvirtualdisplay import Display
 from common.log import logger
 from common.read_excel import ReadExcel
 from page.SafeManager.client.individual_client import IndividualClient, browser, manager_url
-
+from selenium.webdriver.common.keys import Keys
 
 class Individual(unittest.TestCase):
     """客户管理-个人客户各项功能测试用例"""
@@ -126,27 +126,29 @@ class Individual(unittest.TestCase):
             self.log.info(str(msg))
             raise
 
-    # def test_bulk_import(self):
-    #     """批量导入-下载模板"""
-    #     try:
-    #         time.sleep(1)
-    #         self.browser.click_template()
-    #         # 删除文件夹下的指定文件
-    #         # path = "..\..\..\Download\个人投资者模板.xlsx"
-    #         path = "..\Download\个人投资者模板.xlsx"
-    #         os.path.abspath()
-    #         print(os.path.exists(path))
-    #         self.assertEqual(os.path.exists(path), True)
-    #         time.sleep(1)
-    #         if os.path.exists(path):
-    #             # 删除文件，可使用以下两种方法。
-    #             os.remove(path)
-    #             # os.unlink(my_file)
-    #         else:
-    #             print('不存在的文件:%s' % path)
-    #     except Exception as msg:
-    #         self.log.info(str(msg))
-    #         raise
+    def test_bulk_import(self):
+        """批量导入-下载模板"""
+        try:
+            time.sleep(1)
+            self.browser.click_template()
+            # 删除文件夹下的指定文件
+            # path = "..\..\..\Download\个人投资者模板.xlsx"
+            # path = "..\Download\个人投资者模板.xlsx"
+            # each =os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
+            each = os.path.dirname(os.path.dirname(__file__))
+            path = os.path.join(each, 'Download')
+            if '个人投资者模板.xlsx' in os.listdir(path):
+                result = True
+                file = os.path.join(path, os.listdir(path)[-1])
+                os.remove(file)
+                # os.unlink(file)
+            else:
+                result = False
+            self.assertEqual(result, True)
+            time.sleep(1)
+        except Exception as msg:
+            self.log.info(str(msg))
+            raise
 
     def test_add_representative(self):
         """添加销售代表"""
