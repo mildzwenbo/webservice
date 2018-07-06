@@ -34,6 +34,19 @@ class InputPwd(Code):
         # self.find_elements(self.__pwd_confirm_loc)[2].click()
         self.click(self.pwd_confirm_loc)
 
+    def pwd_input_basic(self):
+        """
+        为填写基本信息页面提供的方法
+        :return:
+        """
+        self.code_input(name='text', phone='17600000000')
+        time.sleep(1)
+        self.find_elements(self.pwd_input_pwd_loc)[6].send_keys('abc123456')
+        self.find_elements(self.pwd_input_pwd_loc)[7].send_keys('abc123456')
+        time.sleep(1)
+        # self.find_elements(self.__pwd_confirm_loc)[2].click()
+        self.click(self.pwd_confirm_loc)
+
 
 if __name__ == '__main__':
     driver = browser()

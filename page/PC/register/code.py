@@ -24,10 +24,7 @@ class Code(RegistrationInformation):
 
     r = RedisClient()
 
-    each = random.randint(1000, 9999)
-    phone = '1290000' + str(each)
-
-    def code_input(self, name='test', phone=phone, error_code='2'):
+    def code_input(self, name='test', error_code='2'):
         """
         机构和个人的短信验证一致
         :param phone:电话号码
@@ -35,6 +32,8 @@ class Code(RegistrationInformation):
         :param error_code:0为输入错误的验证码，1为不输入验证码， 2为输入正确的验证码
         :return:
         """
+        each = random.randint(1000, 9999)
+        phone = '1290000' + str(each)
         time.sleep(1)
         self.info_personal_input_info(name, phone)
         time.sleep(2)

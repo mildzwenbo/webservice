@@ -122,13 +122,13 @@ class MysqlUtil(object):
     def mysql_recover(self):
         """
         恢复
-        :return:
+        :return:恢复
         """
         curs = self.curs
         conn = self.conn
         localsystye = MysqlUtil().system_type()
 
-        if localsystye == 'Windows':
+        if localsystye == 'Windows' or localsystye == 'Darwin':
             for i in self.db_list:
                 cmds = 'ls -rt %s/%s' % (self.backup_dir, i) + '| tail -n 1'
                 lastBakfile =self.backup_dir + '/' + i + '/' + "".join(self.ssh_linux(cmds))

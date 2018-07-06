@@ -78,11 +78,12 @@ class PCLogin(FindElement):
             self.click(self.button_login_loc)
         time.sleep(2)
 
-    def lx_pc_login(self, name=lx_pc_name, password=pc_pwd, investor='1'):
+    def lx_pc_login(self, name=lx_pc_name, password=pc_pwd, investor='1', select='1'):
         """
         :param name:
         :param password:
         :param investor:选择的类型，1为个人，2为机构，3为客户
+        :param select：机构用户1代表自动化用户，2代表PC申请
         :return:
         """
         elements = self.find_elements(self.login_elements_loc)
@@ -104,19 +105,33 @@ class PCLogin(FindElement):
         else:
             if investor == '2':
                 self.click(self.institution_loc)
+                time.sleep(1)
+                elements[3].click()
+                time.sleep(1)
+                self.click(self.organization_loc)
+                time.sleep(1)
+                elements[4].click()
+                time.sleep(1)
+                if select == '1':
+                    self.click(('xpath', '/html/body/div[4]/div[1]/div[1]/ul/li[2]'))
+                else:
+                    self.click(self.object_loc)
+                time.sleep(1)
+                elements[5].send_keys('AAAA')
+                time.sleep(1)
             else:
                 self.click(self.client_investor_loc)
-            time.sleep(1)
-            elements[3].click()
-            time.sleep(1)
-            self.click(self.organization_loc)
-            time.sleep(1)
-            elements[4].click()
-            time.sleep(1)
-            self.click(self.object_loc)
-            time.sleep(1)
-            elements[5].send_keys('AAAA')
-            time.sleep(1)
+                time.sleep(1)
+                elements[3].click()
+                time.sleep(1)
+                self.click(self.organization_loc)
+                time.sleep(1)
+                elements[4].click()
+                time.sleep(1)
+                self.click(self.object_loc)
+                time.sleep(1)
+                elements[5].send_keys('AAAA')
+                time.sleep(1)
             self.click(self.button_login_loc)
         time.sleep(2)
 
