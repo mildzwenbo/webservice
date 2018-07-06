@@ -132,20 +132,25 @@ class Individual(unittest.TestCase):
             time.sleep(1)
             self.browser.click_template()
             # 删除文件夹下的指定文件
-            # path = "..\..\..\Download\个人投资者模板.xlsx"
-            # path = "..\Download\个人投资者模板.xlsx"
-            # each =os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
-            each = os.path.dirname(os.path.dirname(__file__))
-            path = os.path.join(each, 'Download')
-            if '个人投资者模板.xlsx' in os.listdir(path):
-                result = True
-                file = os.path.join(path, os.listdir(path)[-1])
-                os.remove(file)
-                # os.unlink(file)
+            if platform.system() == 'Windows':
+                path = "..\Download\个人投资者.xlsx"
+                self.assertEqual(os.path.exists(path), True)
+                if os.path.exists(path):
+                    # 删除文件，可使用以下两种方法。
+                    os.remove(path)
+                    # os.unlink(my_file)
+                else:
+                    print('不存在的文件:%s' % path)
             else:
-                result = False
-            self.assertEqual(result, True)
-            time.sleep(1)
+                path = "../Download/个人投资者.xlsx"
+                self.assertEqual(os.path.exists(path), True)
+                if os.path.exists(path):
+                    # 删除文件，可使用以下两种方法。
+                    os.remove(path)
+                    # os.unlink(my_file)
+                else:
+                    print('不存在的文件:%s' % path)
+
         except Exception as msg:
             self.log.info(str(msg))
             raise
