@@ -134,7 +134,7 @@ class Individual(unittest.TestCase):
             # 删除文件夹下的指定文件
             if platform.system() == 'Windows':
                 path = "..\Download\个人投资者.xlsx"
-                # self.assertEqual(os.path.exists(path), True)
+                self.assertEqual(os.path.exists(path), True)
                 if os.path.exists(path):
                     # 删除文件，可使用以下两种方法。
                     os.remove(path)
