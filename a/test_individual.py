@@ -174,46 +174,43 @@ class Individual(unittest.TestCase):
             self.log.info(str(msg))
             raise
 
-    # def test_derived_data(self):
-    #     """导出全部数据"""
-    #     try:
-    #         time.sleep(1)
-    #         self.browser.derive()
-    #         # path = "..\..\..\Download\个人投资者.xlsx"
-    #         path = "..\Download\个人投资者.xlsx"
-    #         self.assertEqual(os.path.exists(path), True)
-    #         if os.path.exists(path):
-    #             # 删除文件，可使用以下两种方法。
-    #             os.remove(path)
-    #             # os.unlink(my_file)
-    #         else:
-    #             print('不存在的文件:%s' % path)
-    #     except Exception as msg:
-    #         self.log.info(str(msg))
-    #         raise
+    def test_derived_data(self):
+        """导出全部数据"""
+        try:
+            time.sleep(1)
+            self.browser.derive()
+            each = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'Download')
+            path = os.listdir(each)
+            if len(path) > 0:
+                len(path)
+                result = True
+                self.assertTrue(result)
+                self.browser.delete_file(each)
+            else:
+                print('文件不存在')
+        except Exception as msg:
+            self.log.info(str(msg))
+            raise
 
-    # def test_inquire_derived_data(self):
-    #     """导出查询结果数据"""
-    #     try:
-    #         time.sleep(1)
-    #         self.browser.find_client('查询')
-    #         self.browser.click_inquire()
-    #         time.sleep(1)
-    #         self.browser.derive()
-    #         # path = "..\..\..\Download\个人投资者.xlsx"
-    #         path = "..\Download\个人投资者.xlsx"
-    #         data = ReadExcel(path, 'Sheet1').data_list()
-    #         self.assertEqual(len(data), 5)
-    #         self.assertEqual(os.path.exists(path), True)
-    #         if os.path.exists(path):
-    #             # 删除文件，可使用以下两种方法。
-    #             os.remove(path)
-    #             # os.unlink(my_file)
-    #         else:
-    #             print('不存在的文件:%s' % path)
-    #     except Exception as msg:
-    #         self.log.info(str(msg))
-    #         raise
+    def test_inquire_derived_data(self):
+        """导出查询结果数据"""
+        try:
+            time.sleep(1)
+            self.browser.find_client('查询')
+            self.browser.click_inquire()
+            time.sleep(1)
+            self.browser.derive()
+            each = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'Download')
+            path = os.listdir(each)
+            if len(path) > 0:
+                data = ReadExcel(os.path.join(each, path[-1]), 'Sheet1').data_list()
+                self.assertEqual(len(data), 5)
+                self.browser.delete_file(each)
+            else:
+                print('文件不存在')
+        except Exception as msg:
+            self.log.info(str(msg))
+            raise
 
     # def test_select_derived_data(self):
     #     """导出选中客户的数据"""
