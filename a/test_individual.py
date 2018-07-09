@@ -220,8 +220,7 @@ class Individual(unittest.TestCase):
     #         self.browser.find_elements(self.browser.check_box)[5].click()
     #         self.browser.find_elements(self.browser.check_box)[6].click()
     #         self.browser.derive()
-    #         # path = "..\..\..\Download\个人投资者.xlsx"
-    #         path = "..\Download\个人投资者.xlsx"
+
     #         data = ReadExcel(path, 'Sheet1').data_list()
     #         self.assertEqual(len(data), 5)
     #         self.assertEqual(os.path.exists(path), True)
