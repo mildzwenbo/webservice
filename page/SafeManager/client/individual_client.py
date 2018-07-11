@@ -8,8 +8,10 @@ import time
 from common.manager_login import ManagerLogin, manager_url, browser
 from selenium.webdriver.common.keys import Keys
 
+import os
 
 class IndividualClient(ManagerLogin):
+
     quit_button = ('id', 'go-out')  # 管理端退出按钮定位
     close_button = ('class name', 'layui-layer-close1')  # 弹框的关闭按钮
     confirm = ('class name', 'layui-layer-btn0')  # 弹框里的确定按钮
@@ -34,7 +36,6 @@ class IndividualClient(ManagerLogin):
     send = ('id', 'sendRiskEval')  # 操作>发送调查问卷按钮定位
     send_return = ('id', 'sendReturn')  # 操作>适当性回访按钮定位
     document_manage = ('id', 'documentManage')  # 操作>文档管理按钮定位
-
 
     def click_client(self):
         """进入客户管理-个人客户页面"""
@@ -200,11 +201,20 @@ class IndividualClient(ManagerLogin):
         """导出数据"""
         self.click(self.derived_data)
 
+    def delete_file(self, path):
+        ls = os.listdir(path)
+        for i in ls:
+            c_path = os.path.join(path, i)
+            if os.path.isdir(c_path):
+                IndividualClient(c_path)
+            else:
+                os.remove(c_path)
+
 
 if __name__ == '__main__':
     driver = browser()
     c = IndividualClient(driver)
     c.open_url(manager_url)
     c.lx_manager_login()
-    c.click_client()
+    c.del_file('D:\project\Download')
     time.sleep(1)
