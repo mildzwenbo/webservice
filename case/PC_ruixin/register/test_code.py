@@ -21,6 +21,7 @@ sheet = "Sheet3"
 data = ReadExcel(excel_path, sheet).data_list()
 
 
+@unittest.skip('pass')
 @ddt.ddt
 class TestCode(unittest.TestCase):
     """对验证码的操作"""
