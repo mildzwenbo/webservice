@@ -57,17 +57,17 @@ class FindPassword(unittest.TestCase):
         self.assertEqual(custodian, '请选择基金管理人')
         self.assertEqual(verify, '请输入验证码')
 
-    def test_verify_error(self):
-        # 验证码输入错误测试用例
-        self.browser.input_phone('15822816936')
-        self.browser.select_personage_investor()
-        time.sleep(1)
-        self.browser.select_custodian()
-        self.browser.input_verify(111)
-        self.browser.click_next_step()
-        error = ('class name', 'el-form-item__error')
-        error_text = self.browser.find_element(error).text
-        self.assertEqual(error_text, '验证码错误')
+    # def test_verify_error(self):
+    #     # 验证码输入错误测试用例
+    #     self.browser.input_phone('15822816936')
+    #     self.browser.select_personage_investor()
+    #     time.sleep(1)
+    #     self.browser.select_custodian()
+    #     self.browser.input_verify(111)
+    #     self.browser.click_next_step()
+    #     error = ('class name', 'el-form-item__error')
+    #     error_text = self.browser.find_element(error).text
+    #     self.assertEqual(error_text, '验证码错误')
 
     def test_verify_correct (self):
         # 个人客户：所有文本框输入正确，点击下一步按钮跳转到下一页
@@ -188,32 +188,32 @@ class FindPassword(unittest.TestCase):
         title = self.browser.find_element(('class name', 'no-redirect')).text
         self.assertEqual(title, '产品列表')
 
-    def test_product_password(self):
-        """产品客户：成功修改密码的流程"""
-        self.browser.change_password('15822816936', '3')
-        self.browser.input_get_code('15822816936')
-        self.browser.click_next_step()
-        time.sleep(1)
-        self.browser.new_password('qwe123456')
-        self.browser.confirm_password('qwe123456')
-        self.browser.find_elements(('class name', 'el-button--primary'))[2].click()
-        time.sleep(1)
-        self.browser.lx_pc_login('15822816936', 'qwe123456', '3')
-        self.browser.find_elements(('class name', 'svg-container'))[3].click()
-        self.browser.find_elements(('class name', 'el-button--primary'))[1].click()
-        self.browser.open_url(pc_url)
-        self.browser.change_password('15822816936', '3')
-        self.browser.input_get_code('15822816936')
-        self.browser.click_next_step()
-        time.sleep(1)
-        self.browser.new_password('abc123456')
-        self.browser.confirm_password('abc123456')
-        self.browser.find_elements(('class name', 'el-button--primary'))[2].click()
-        time.sleep(1)
-        self.browser.lx_pc_login('15822816936', 'abc123456', '3')
-        time.sleep(1)
-        title = self.browser.find_element(('class name', 'no-redirect')).text
-        self.assertEqual(title, '产品列表')
+    # def test_product_password(self):
+    #     """产品客户：成功修改密码的流程"""
+    #     self.browser.change_password('15822816936', '3')
+    #     self.browser.input_get_code('15822816936')
+    #     self.browser.click_next_step()
+    #     time.sleep(1)
+    #     self.browser.new_password('qwe123456')
+    #     self.browser.confirm_password('qwe123456')
+    #     self.browser.find_elements(('class name', 'el-button--primary'))[2].click()
+    #     time.sleep(1)
+    #     self.browser.lx_pc_login('15822816936', 'qwe123456', '3')
+    #     self.browser.find_elements(('class name', 'svg-container'))[3].click()
+    #     self.browser.find_elements(('class name', 'el-button--primary'))[1].click()
+    #     self.browser.open_url(pc_url)
+    #     self.browser.change_password('15822816936', '3')
+    #     self.browser.input_get_code('15822816936')
+    #     self.browser.click_next_step()
+    #     time.sleep(1)
+    #     self.browser.new_password('abc123456')
+    #     self.browser.confirm_password('abc123456')
+    #     self.browser.find_elements(('class name', 'el-button--primary'))[2].click()
+    #     time.sleep(1)
+    #     self.browser.lx_pc_login('15822816936', 'abc123456', '3')
+    #     time.sleep(1)
+    #     title = self.browser.find_element(('class name', 'no-redirect')).text
+    #     self.assertEqual(title, '产品列表')
 
 
 if __name__ == '__main__':
