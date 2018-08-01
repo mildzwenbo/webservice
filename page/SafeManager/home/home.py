@@ -16,6 +16,10 @@ class Home(ManagerLogin):
     data_management_loc = ('css', '#app > div > div.app-wrapper > div.main-container > section > div > div.main_header > ul > li.main-bgitem2 > a')
     #系统管理入口
     system_management_loc = ('css', '#app > div > div.app-wrapper > div.main-container > section > div > div.main_header > ul > li.main-bgitem3 > a > span')
+    #退出按钮
+    logout_loc = ('id', 'logout')
+    #退出确认下的确定和取消按钮：0取消，1确定
+    logout_confirm_loc = ('class name', 'el-button')
 
 
 
@@ -40,6 +44,27 @@ class Home(ManagerLogin):
         """
         self.click(self.system_management_loc)
 
+    def logout_confirm_click(self):
+        """
+        点击退出按钮成功退出
+        :return:
+        """
+        self.click(self.logout_loc)
+        time.sleep(1)
+        self.find_elements(self.logout_confirm_loc)[1].click()
+
+
+    def logout_cancel_click(self):
+        """
+        点击退出按钮，点击取消
+        :return:
+        """
+        self.click(self.logout_loc)
+        time.sleep(1)
+        self.find_elements(self.logout_confirm_loc)[0].click()
+
+
+
 
 
 
@@ -48,7 +73,7 @@ if __name__ == '__main__':
     home = Home(driver)
     home.open_url(manager_url)
     home.yf_manager_login()
-    home.data_management_click()
+    home.logout_cancel_click()
 
 
 

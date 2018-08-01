@@ -74,6 +74,29 @@ class TestHome(unittest.TestCase):
             logger.info(str(msg))
             raise
 
+    def test_logout_confirm_click(self):
+        """点击退出按钮，点击确定"""
+        try:
+            self.driver.logout_confirm_click()
+            time.sleep(1)
+            text = self.driver.get_text(('id', 'logo'))
+            self.assertEqual(text, '基金运营管理平台')
+        except Exception as msg:
+            logger.info(str(msg))
+            raise
+
+    def test_logout_cancel_click(self):
+        """点击退出按钮，点击取消"""
+        try:
+            self.driver.logout_cancel_click()
+            time.sleep(1)
+            text = self.driver.get_text(('id', 'user'))
+            self.assertEqual(text, '王云飞')
+        except Exception as msg:
+            logger.info(str(msg))
+            raise
+
+
 
 if __name__ == '__main__':
     unittest.main()
