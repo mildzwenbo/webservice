@@ -10,7 +10,7 @@ from pyvirtualdisplay import Display
 import time
 
 
-from page.SafeManager.home import Home, browser, manager_url
+from page.SafeManager.home.home import Home, browser, manager_url
 from common.log import logger
 
 
@@ -27,6 +27,7 @@ class TestHome(unittest.TestCase):
         cls.browser = browser()
         cls.driver = Home(cls.browser)
         cls.driver.open_url(manager_url)
+        time.sleep(1)
 
     @classmethod
     def tearDownClass(cls):
