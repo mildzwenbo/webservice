@@ -27,7 +27,10 @@ class ManagerLogin(FindElement):
     mutex.release()
 
     all_input = ('class name', 'layui-input')#管理端登录页面所有文本框定位
+    all_inputs = ('class name', 'el-input__inner')
     login_button = ('id', 'login-btn')#管理端登录页面登录按钮定位
+    login_buttons = ('class name', 'el-button')
+    select_elements = ('class name', 'el-select-dropdown__item')
 
     def zj_manager_login(self, name=zj_manage_name, password=manage_pwd):
         elements = self.find_elements(self.all_input)
@@ -46,12 +49,17 @@ class ManagerLogin(FindElement):
         time.sleep(3)
 
     def yf_manager_login(self, name=yf_manage_name, password=manage_pwd):
-        elements = self.find_elements(self.all_input)
+        elements = self.find_elements(self.all_inputs)
         elements[0].send_keys(name)
         time.sleep(1)
         elements[1].send_keys(password)
-        self.click(self.login_button)
-        time.sleep(3)
+        elements[2].click()
+        time.sleep(1)
+        select_elements = self.find_elements(self.select_elements)
+        select_elements[0].click()
+        elements[3].send_keys('abc')
+        self.find_elements(self.login_buttons)[0].click()
+        time.sleep(1)
 
 
 if __name__ == '__main__':
