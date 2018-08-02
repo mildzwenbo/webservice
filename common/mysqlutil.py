@@ -33,6 +33,15 @@ class MysqlUtil(object):
     conf_ptah = GetPath().get_conf_path('mysql.ini')
     conf.read(conf_ptah, encoding='utf-8')
     if conf.get('select', 'select') == '1':
+        db_user = conf.get('test_mysql_raising', 'db_user')
+        db_pwd = conf.get('test_mysql_raising', 'db_pwd')
+        db_host = conf.get('test_mysql_raising', 'db_host')
+        db_charset = conf.get('test_mysql_raising', 'db_charset')
+        backup_dir = conf.get('test_mysql_raising', 'backup_dir')
+        db_list = conf.get('test_mysql_raising', 'db_list').split(',')
+        sys_user = conf.get('test_mysql_raising', 'sys_user')
+        sys_pwd = conf.get('test_mysql_raising', 'sys_pwd')
+    elif conf.get('select', 'select') == '2':
         db_user = conf.get('test_mysql', 'db_user')
         db_pwd = conf.get('test_mysql', 'db_pwd')
         db_host = conf.get('test_mysql', 'db_host')
@@ -50,6 +59,7 @@ class MysqlUtil(object):
         db_list = conf.get('test_mysql', 'db_list').split(',')
         sys_user = conf.get('test_mysql', 'sys_user')
         sys_pwd = conf.get('test_mysql', 'sys_pwd')
+
     mutex.release()
 
     # Mysql连接
@@ -156,5 +166,5 @@ class MysqlUtil(object):
 
 if __name__ == '__main__':
     m = MysqlUtil()
-    m.mysql_recover()
+    m.mysql_bck()
 
