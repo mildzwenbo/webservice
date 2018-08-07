@@ -39,6 +39,7 @@ class DataCalendar(unittest.TestCase):
         self.driver.lx_manager_login()
         self.driver.click_bar()
         self.driver.click_date()
+        time.sleep(1)
 
     def tearDown(self):
         time.sleep(1)
