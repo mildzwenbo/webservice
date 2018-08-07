@@ -20,5 +20,5 @@ class RedisClient(object):
 
 if __name__ == '__main__':
     r = RedisClient()
-    b = r.get_code('17600661017')
+    b = r.get_code('15822816936')
     print(b)
