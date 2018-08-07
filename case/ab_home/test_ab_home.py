@@ -14,7 +14,7 @@ from page.SafeManager.home.home import Home, browser, manager_url
 from common.log import logger
 
 
-
+@unittest.skip('pass')
 class TestHome(unittest.TestCase):
     """对首页所有元素的测试用例"""
 
