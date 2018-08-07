@@ -39,7 +39,6 @@ class DataCalendar(unittest.TestCase):
         self.driver.lx_manager_login()
         self.driver.click_bar()
         self.driver.click_date()
-        time.sleep(1)
 
     def tearDown(self):
         time.sleep(1)
@@ -69,7 +68,8 @@ class DataCalendar(unittest.TestCase):
     def test_c_return(self):
         """点击数据日历页面的返回列表按钮测试用例"""
         try:
-            self.driver.click_return()
+            time.sleep(1)
+            self.driver.find_elements(self.driver.operate_button)[2].click()
             time.sleep(1)
             log_text = self.driver.find_element(('class name', 'hovers')).text
             self.assertEqual(log_text, '所有产品')

@@ -40,8 +40,9 @@ class Calendar(Product):
 
     def click_return(self):
         """点击数据日历页面，返回列表按钮"""
-        time.sleep(2)
+        time.sleep(1)
         self.find_elements(self.operate_button)[2].click()
+
 
     def select_date(self):
         """选择日期：2018-8-8"""
@@ -68,12 +69,10 @@ class Calendar(Product):
 
     def sure_button(self):
         """点击删除估值表按钮显示的弹框里，确定按钮"""
-        time.sleep(1)
         self.find_elements(self.button)[1].click()
 
     def cancel_button(self):
         """点击删除估值表按钮显示的弹框里，取消按钮"""
-        time.sleep(1)
         self.find_elements(self.button)[0].click()
 
 
