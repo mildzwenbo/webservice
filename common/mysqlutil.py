@@ -16,14 +16,7 @@ import threading
 from common.get_path import GetPath
 
 
-# dbUser='root'
-# dbPasswd='Cisco123,'
-# dbHost='172.16.33.4'
-# dbCharset = 'utf8'
-# backupDir = '/home/mysql/db_bak'
-# dbList = ['boss', 'ruixin']
-# sysUser = 'wangyunfei'
-# sysPwd = 'Wyf123456'
+
 
 
 class MysqlUtil(object):

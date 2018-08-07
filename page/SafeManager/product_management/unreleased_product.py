@@ -23,6 +23,8 @@ class UnreleasedProduct(ManagerLogin):
     elements_loc = ('class name', 'el-button')
     #操作按钮
     operation_loc = ('class name', 'el-dropdown-link')
+    #操作按钮下的列表，9位编辑，10删除，11发布产品
+    operation_list_loc = ('class name', 'el-dropdown-menu__item')
 
 
 
@@ -34,16 +36,23 @@ class UnreleasedProduct(ManagerLogin):
         只输入产品名称，点击搜索
         :return:
         """
-        self.find_elements(self.search_loc)[0].send_keys('1')
+        self.find_elements(self.search_loc)[0].send_keys('4')
         self.click(self.search_button_loc)
+        elements = self.find_elements(('class name', 'el-tooltip'))
+        text = elements[1].text
+        return text
+
 
     def search_input_code(self):
         """
         只输入基金编码，点击搜索
         :return:
         """
-        self.find_elements(self.search_loc)[1].send_keys('1')
+        self.find_elements(self.search_loc)[1].send_keys('4')
         self.click(self.search_button_loc)
+        elements = self.find_elements(('class name', 'el-tooltip'))
+        text = elements[1].text
+        return text
 
     def registration_of_products(self):
         """
@@ -82,16 +91,34 @@ class UnreleasedProduct(ManagerLogin):
         """
         self.find_elements(self.elements_loc)[5].click()
 
-    def operation_click(self):
+    def operation_product_click(self):
         """列表中的操作按钮，基金名称为：自动化测试产品1"""
         self.find_elements(self.operation_loc)[3].click()
 
 
-    def editor_click(self):
+    def editor_product_click(self):
         """列表中的操作按钮,点击编辑，基金名称为：自动化测试产品1"""
-        self.operation_click()
+        self.operation_product_click()
         time.sleep(1)
-        self.find_elements(self.operation_loc)
+        self.find_elements(self.operation_list_loc)[9].click()
+
+
+    def release_product_click(self):
+        """列表中的操作按钮,点击发布，基金名称为：自动化测试产品1"""
+        self.operation_product_click()
+        time.sleep(1)
+        self.find_elements(self.operation_list_loc)[11].click()
+        self.click(('class name', 'el-button--primary'))
+
+
+    def delete_product_click(self):
+        """列表中的操作按钮,点击删除，基金名称为：自动化测试产品2"""
+        self.find_elements(self.operation_loc)[2].click()
+        time.sleep(1)
+        self.find_elements(self.operation_list_loc)[7].click()
+        self.click(('class name', 'el-button--primary'))
+
+
 
 
 
@@ -111,5 +138,6 @@ if __name__ == '__main__':
     time.sleep(1)
     a.open_url(unreleased_product_url)
     time.sleep(2)
-    a.operation_click()
+    a.search_input_name()
+
 
