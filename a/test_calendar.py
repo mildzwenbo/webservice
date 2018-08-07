@@ -43,7 +43,7 @@ class DataCalendar(unittest.TestCase):
     def tearDown(self):
         time.sleep(1)
 
-    def test_1_log(self):
+    def test_a_log(self):
         """点击数据日历页面的操作日志按钮测试用例"""
         try:
             self.driver.click_log()
@@ -54,7 +54,7 @@ class DataCalendar(unittest.TestCase):
             logger.info(str(msg))
             raise
 
-    def test_2_import_data(self):
+    def test_b_import_data(self):
         """点击数据日历页面的导入数据按钮测试用例"""
         try:
             self.driver.click_import_data()
@@ -65,7 +65,7 @@ class DataCalendar(unittest.TestCase):
             logger.info(str(msg))
             raise
 
-    def test_3_return(self):
+    def test_c_return(self):
         """点击数据日历页面的返回列表按钮测试用例"""
         try:
             self.driver.click_return()
@@ -76,7 +76,7 @@ class DataCalendar(unittest.TestCase):
             logger.info(str(msg))
             raise
 
-    def test_4_crumbs(self):
+    def test_d_crumbs(self):
         """点击数据日历页面可点击的面包屑链接测试用例"""
         try:
             self.driver.click(self.driver.crumbs)
@@ -87,7 +87,7 @@ class DataCalendar(unittest.TestCase):
             logger.info(str(msg))
             raise
 
-    def test_5_cancel_delete(self):
+    def test_e_cancel_delete(self):
         """点击数据日历页面取消删除估值表测试用例"""
         try:
             self.driver.click_delete_excel()
@@ -99,7 +99,7 @@ class DataCalendar(unittest.TestCase):
             logger.info(str(msg))
             raise
 
-    def test_6_sure_delete(self):
+    def test_f_sure_delete(self):
         """点击数据日历页面确定删除估值表测试用例"""
         try:
             self.driver.click_delete_excel()
@@ -111,7 +111,7 @@ class DataCalendar(unittest.TestCase):
             logger.info(str(msg))
             raise
 
-    def test_7_empty_delete(self):
+    def test_g_empty_delete(self):
         """点击数据日历页面空删除估值表测试用例"""
         try:
             self.driver.click_delete_excel()
@@ -122,7 +122,7 @@ class DataCalendar(unittest.TestCase):
             logger.info(str(msg))
             raise
 
-    def test_8_import_return(self):
+    def test_h_import_return(self):
         """点击导入数据页面，返回按钮测试用例"""
         try:
             self.driver.click_import_data()
@@ -134,7 +134,7 @@ class DataCalendar(unittest.TestCase):
             logger.info(str(msg))
             raise
 
-    def test_9_log(self):
+    def test_i_log(self):
         """点击导入数据页面，操作日志按钮测试用例"""
         try:
             self.driver.click_import_data()
@@ -146,7 +146,7 @@ class DataCalendar(unittest.TestCase):
             logger.info(str(msg))
             raise
 
-    def test_10_crumbs(self):
+    def test_j_crumbs(self):
         """点击导入数据页面可点击的面包屑链接测试用例"""
         try:
             self.driver.click_import_data()

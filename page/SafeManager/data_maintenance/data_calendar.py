@@ -40,7 +40,7 @@ class Calendar(Product):
 
     def click_return(self):
         """点击数据日历页面，返回列表按钮"""
-        time.sleep(1)
+        time.sleep(2)
         self.find_elements(self.operate_button)[2].click()
 
     def select_date(self):
@@ -63,14 +63,17 @@ class Calendar(Product):
     def click_delete_excel(self):
         """点击删除估值表按钮"""
         self.select_date()
+        time.sleep(1)
         self.click(self.delete_excel)
 
     def sure_button(self):
         """点击删除估值表按钮显示的弹框里，确定按钮"""
+        time.sleep(1)
         self.find_elements(self.button)[1].click()
 
     def cancel_button(self):
         """点击删除估值表按钮显示的弹框里，取消按钮"""
+        time.sleep(1)
         self.find_elements(self.button)[0].click()
 
 

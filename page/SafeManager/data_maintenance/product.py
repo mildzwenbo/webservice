@@ -25,14 +25,17 @@ class Product(ManagerLogin):
 
     def query_name(self, value):
         """查询：基金名称字段输入查询内容"""
+        time.sleep(1)
         self.find_elements(self.fund_query)[0].send_keys(value)
 
     def query_code(self, value):
         """查询：基金编码字段输入查询内容"""
+        time.sleep(1)
         self.find_elements(self.fund_query)[1].send_keys(value)
 
     def click_query(self):
         """点击查询按钮"""
+        time.sleep(1)
         self.click(self.query_button)
 
     def query_number(self):

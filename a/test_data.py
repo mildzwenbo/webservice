@@ -43,7 +43,7 @@ class AllProducts(unittest.TestCase):
     def tearDown(self):
         time.sleep(1)
 
-    def test_1_name_query(self):
+    def test_a_name_query(self):
         """查询：基金名称查询结果"""
         try:
             self.driver.query_name('乾韬')
@@ -54,7 +54,7 @@ class AllProducts(unittest.TestCase):
             logger.info(str(msg))
             raise
 
-    def test_2_code_query(self):
+    def test_b_code_query(self):
         """查询：基金编码查询结果"""
         try:
 
@@ -91,6 +91,7 @@ class AllProducts(unittest.TestCase):
             input_name = self.driver.find_elements(self.driver.fund_query)[1]
             input_name.send_keys(Keys.CONTROL, 'a')
             input_name.send_keys(Keys.BACKSPACE)
+            time.sleep(1)
             self.driver.click_query()
             number = self.driver.query_number()
             self.assertEqual(number, '19')
