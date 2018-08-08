@@ -13,7 +13,7 @@ from selenium.webdriver.common.keys import Keys
 from page.SafeManager.data_maintenance.product import Product, browser, manager_url
 from common.log import logger
 
-
+@unittest.skip('pass')
 class AllProducts(unittest.TestCase):
     """对数据维护-所有产品页面所有元素的测试用例"""
 
@@ -67,7 +67,7 @@ class AllProducts(unittest.TestCase):
             logger.info(str(msg))
             raise
 
-    def test_3_group_query(self):
+    def test_c_group_query(self):
         """查询：基金名称、基金编码查询结果"""
         try:
             self.driver.query_name('乾韬')
@@ -79,7 +79,7 @@ class AllProducts(unittest.TestCase):
             logger.info(str(msg))
             raise
 
-    def test_4_all_query(self):
+    def test_d_all_query(self):
         """查询：查询全部数据"""
         try:
             self.driver.query_name('乾韬')
@@ -99,7 +99,7 @@ class AllProducts(unittest.TestCase):
             logger.info(str(msg))
             raise
 
-    def test_5_empty_query(self):
+    def test_e_empty_query(self):
         """查询：查询结果为空"""
         try:
             self.driver.query_name('qwe')
@@ -110,7 +110,7 @@ class AllProducts(unittest.TestCase):
             logger.info(str(msg))
             raise
 
-    def test_6_data(self):
+    def test_f_data(self):
         """点击操作>数据维护连接跳转"""
         try:
             self.driver.click_date()
