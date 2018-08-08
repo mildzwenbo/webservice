@@ -17,7 +17,7 @@ url = "http://testpvt.boss.pb-test.com/#/dataMaintain/DataCalendar?fundCode=9100
 
 class DataCalendar(unittest.TestCase):
     """对数据维护-所有产品-数据日历页面所有元素的测试用例"""
-
+    @classmethod
     def setUpClass(cls):
         cls.syt = platform.system()
         if cls.syt == 'Linux':
@@ -27,7 +27,7 @@ class DataCalendar(unittest.TestCase):
         cls.driver = Calendar(cls.browser)
         cls.driver.open_url(manager_url)
         time.sleep(1)
-
+    @classmethod
     def tearDownClass(cls):
         cls.driver.quit()
         if cls.syt == 'Linux':
