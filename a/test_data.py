@@ -13,7 +13,7 @@ from selenium.webdriver.common.keys import Keys
 from page.SafeManager.data_maintenance.product import Product, browser, manager_url
 from common.log import logger
 
-@unittest.skip('aaa')
+
 class AllProducts(unittest.TestCase):
     """对数据维护-所有产品页面所有元素的测试用例"""
 
@@ -91,8 +91,8 @@ class AllProducts(unittest.TestCase):
             input_name = self.driver.find_elements(self.driver.fund_query)[1]
             input_name.send_keys(Keys.CONTROL, 'a')
             input_name.send_keys(Keys.BACKSPACE)
-            time.sleep(1)
             self.driver.click_query()
+            time.sleep(1)
             number = self.driver.query_number()
             self.assertEqual(number, '19')
         except Exception as msg:

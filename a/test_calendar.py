@@ -45,7 +45,6 @@ class DataCalendar(unittest.TestCase):
     def tearDown(self):
         time.sleep(1)
 
-    @unittest.skip('pass')
     def test_a_log(self):
         """点击数据日历页面的操作日志按钮测试用例"""
         try:
@@ -57,7 +56,6 @@ class DataCalendar(unittest.TestCase):
             logger.info(str(msg))
             raise
 
-    @unittest.skip('pass')
     def test_b_import_data(self):
         """点击数据日历页面的导入数据按钮测试用例"""
         try:
@@ -82,7 +80,6 @@ class DataCalendar(unittest.TestCase):
             logger.info(str(msg))
             raise
 
-    @unittest.skip('pass')
     def test_d_crumbs(self):
         """点击数据日历页面可点击的面包屑链接测试用例"""
         try:
@@ -94,7 +91,6 @@ class DataCalendar(unittest.TestCase):
             logger.info(str(msg))
             raise
 
-    @unittest.skip('pass')
     def test_e_cancel_delete(self):
         """点击数据日历页面取消删除估值表测试用例"""
         try:
@@ -107,7 +103,6 @@ class DataCalendar(unittest.TestCase):
             logger.info(str(msg))
             raise
 
-    @unittest.skip('pass')
     def test_f_sure_delete(self):
         """点击数据日历页面确定删除估值表测试用例"""
         try:
@@ -120,7 +115,6 @@ class DataCalendar(unittest.TestCase):
             logger.info(str(msg))
             raise
 
-    @unittest.skip('pass')
     def test_g_empty_delete(self):
         """点击数据日历页面空删除估值表测试用例"""
         try:
@@ -132,7 +126,6 @@ class DataCalendar(unittest.TestCase):
             logger.info(str(msg))
             raise
 
-    @unittest.skip('pass')
     def test_h_import_return(self):
         """点击导入数据页面，返回按钮测试用例"""
         try:
@@ -145,7 +138,6 @@ class DataCalendar(unittest.TestCase):
             logger.info(str(msg))
             raise
 
-    @unittest.skip('pass')
     def test_i_log(self):
         """点击导入数据页面，操作日志按钮测试用例"""
         try:
@@ -158,7 +150,6 @@ class DataCalendar(unittest.TestCase):
             logger.info(str(msg))
             raise
 
-    @unittest.skip('pass')
     def test_j_crumbs(self):
         """点击导入数据页面可点击的面包屑链接测试用例"""
         try:
