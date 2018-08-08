@@ -13,7 +13,7 @@ from selenium.webdriver.common.keys import Keys
 from page.SafeManager.data_maintenance.product import Product, browser, manager_url
 from common.log import logger
 
-@unittest.skip('pass')
+
 class AllProducts(unittest.TestCase):
     """对数据维护-所有产品页面所有元素的测试用例"""
 
