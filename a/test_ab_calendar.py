@@ -68,17 +68,20 @@ class DataCalendar(unittest.TestCase):
             logger.info(str(msg))
             raise
 
-    # def test_c_return(self):
-    #     """点击数据日历页面的返回列表按钮测试用例"""
-    #     try:
-    #         time.sleep(1)
-    #         self.driver.click_return_data()
-    #         time.sleep(1)
-    #         log_text = self.driver.find_element(('class name', 'hovers')).text
-    #         self.assertEqual(log_text, '所有产品')
-    #     except Exception as msg:
-    #         logger.info(str(msg))
-    #         raise
+    def test_c_return(self):
+        """点击数据日历页面的返回列表按钮测试用例"""
+        try:
+            self.driver.delete_all_cookies()
+            self.driver.refresh()
+            self.driver.lx_manager_login()
+            time.sleep(1)
+            self.driver.click_return_data()
+            time.sleep(1)
+            log_text = self.driver.find_element(('class name', 'hovers')).text
+            self.assertEqual(log_text, '所有产品')
+        except Exception as msg:
+            logger.info(str(msg))
+            raise
 
     def test_d_crumbs(self):
         """点击数据日历页面可点击的面包屑链接测试用例"""

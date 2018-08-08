@@ -24,7 +24,7 @@ else:
 # import time
 
 
-def browser(browser='firefox'):
+def browser(browser='firefox', name='application/vnd.ms-excel'):
     """
     打开浏览器
     :param browser:
@@ -36,7 +36,7 @@ def browser(browser='firefox'):
             fp.set_preference("browser.download.folderList", 2)
             fp.set_preference("browser.download.manager.showWhenStarting", False)
             fp.set_preference("browser.download.dir", download_path)
-            fp.set_preference("browser.helperApps.neverAsk.saveToDisk", "application/x-execl")
+            fp.set_preference("browser.helperApps.neverAsk.saveToDisk", name)
             driver = webdriver.Firefox(firefox_profile=fp)
             # file_path = r'C:\Users\Administrator\AppData\Roaming\Mozilla\Firefox\Profiles\2mnajvb0.default'
             # f = webdriver.FirefoxProfile(file_path)
