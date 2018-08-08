@@ -1,6 +1,6 @@
 """
 @author:liuxin
-@date:2018-8-6
+@ad_date:2018-8-6
 @brief:数据维护-所有产品页面测试用例
 """
 
@@ -121,6 +121,7 @@ class AllProducts(unittest.TestCase):
         except Exception as msg:
             logger.info(str(msg))
             raise
+
 
 if __name__ == '__main__':
     unittest.main()

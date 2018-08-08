@@ -1,6 +1,6 @@
 """
 @author:liuxin
-@date:2018-8-7
+@ad_date:2018-8-7
 @brief:数据维护-所有产品-数据日历页面测试用例
 """
 
@@ -64,6 +64,7 @@ class DataCalendar(unittest.TestCase):
             log_text = self.driver.find_element(('class name', 'hovers')).text
             self.assertEqual(log_text, '导入数据')
         except Exception as msg:
+
             logger.info(str(msg))
             raise
 

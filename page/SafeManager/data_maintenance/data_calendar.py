@@ -1,6 +1,6 @@
 """
 @author:liuxin
-@date:2018-8-6
+@ad_date:2018-8-6
 @brief:数据维护-所有产品页面元素定位
 """
 
