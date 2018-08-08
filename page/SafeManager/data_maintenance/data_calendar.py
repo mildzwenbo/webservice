@@ -21,17 +21,9 @@ class Calendar(Product):
     button = ('class name', 'el-button--default')  # 弹框里的确定、取消按钮定位
 
     def click_log(self):
-        """
-        点击数据日历页面，操作日志按钮
-        点击数据日历页面，导入数据-返回按钮
-        """
+        """点击数据日历页面，操作日志按钮"""
         time.sleep(1)
         self.find_elements(self.operate_button)[0].click()
-
-    def click_operate(self):
-        """点击数据日历页面，导入数据-操作日志按钮"""
-        time.sleep(1)
-        self.find_elements(self.operate_button)[1].click()
 
     def click_import_data(self):
         """点击数据日历页面，导入数据按钮"""

@@ -119,35 +119,37 @@ class DataCalendar(unittest.TestCase):
         try:
             self.driver.click_delete_excel()
             time.sleep(1)
-            text = self.driver.find_element(('class name', 'el-message__content')).text
+            value = ('class name', 'el-message__content')
+            time.sleep(1)
+            text = self.driver.find_element(value).text
             self.assertEqual(text, '没有估值表可以删除')
         except Exception as msg:
             logger.info(str(msg))
             raise
 
-    def test_h_import_return(self):
-        """点击导入数据页面，返回按钮测试用例"""
-        try:
-            self.driver.click_import_data()
-            self.driver.click_log()
-            time.sleep(1)
-            log_text = self.driver.find_element(('class name', 'hovers')).text
-            self.assertEqual(log_text, '数据日历')
-        except Exception as msg:
-            logger.info(str(msg))
-            raise
+    # def test_h_import_return(self):
+    #     """点击导入数据页面，返回按钮测试用例"""
+    #     try:
+    #         self.driver.click_import_data()
+    #         self.driver.click_log()
+    #         time.sleep(1)
+    #         log_text = self.driver.find_element(('class name', 'hovers')).text
+    #         self.assertEqual(log_text, '数据日历')
+    #     except Exception as msg:
+    #         logger.info(str(msg))
+    #         raise
 
-    def test_i_log(self):
-        """点击导入数据页面，操作日志按钮测试用例"""
-        try:
-            self.driver.click_import_data()
-            self.driver.click_operate()
-            time.sleep(1)
-            log_text = self.driver.find_element(('class name', 'hovers')).text
-            self.assertEqual(log_text, '操作日志')
-        except Exception as msg:
-            logger.info(str(msg))
-            raise
+    # def test_i_log(self):
+    #     """点击导入数据页面，操作日志按钮测试用例"""
+    #     try:
+    #         self.driver.click_import_data()
+    #         self.driver.click_operate()
+    #         time.sleep(1)
+    #         log_text = self.driver.find_element(('class name', 'hovers')).text
+    #         self.assertEqual(log_text, '操作日志')
+    #     except Exception as msg:
+    #         logger.info(str(msg))
+    #         raise
 
     def test_j_crumbs(self):
         """点击导入数据页面可点击的面包屑链接测试用例"""
