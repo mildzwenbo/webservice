@@ -118,7 +118,7 @@ class Operation(unittest.TestCase):
         try:
             self.driver.click_file()
             time.sleep(1)
-            each = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'Download')
+            each = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), 'Download')
             if len(os.listdir(each)) > 0:
                 result = True
                 self.driver.delete_file(each)

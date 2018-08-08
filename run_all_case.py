@@ -3,7 +3,7 @@ import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 """
 author:
-date:
+ad_date:
 brief:  运行全部测试用例
 """
 
@@ -24,7 +24,7 @@ def add_case():
     :return: 一个包含路径下所有测试用例（test*.py）的list集合˚
     """
     testunit = unittest.TestSuite()
-    case_path = os.path.join(os.getcwd(), 'a')
+    case_path = os.path.join(os.getcwd(), 'case')
     print("测试用例的路径 %s" % case_path)
     discover = unittest.defaultTestLoader.discover(case_path,
                                                    pattern="test*.py",
@@ -93,7 +93,7 @@ def send_mail():
     msg['from'] = sender
     msg['to'] = receiver
     #添加时间
-    msg['date'] = time.strftime('%a,%d,%b,%Y_%M_%S %Z')
+    msg['ad_date'] = time.strftime('%a,%d,%b,%Y_%M_%S %Z')
     msg.attach(body)
     #添加附件
     att = MIMEText(open(report_file, 'rb').read(), 'base64', 'utf-8')
