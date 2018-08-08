@@ -1,0 +1,39 @@
+2018-06-27 13:39:13,636 test_editinfo.py[line: 74] INFO: list index out of range
+2018-06-27 13:49:52,080 test_editinfo.py[line: 74] INFO: 'NoneType' object is not subscriptable
+2018-06-27 13:52:24,870 test_editinfo.py[line: 74] INFO: list index out of range
+2018-06-27 13:53:11,084 test_editinfo.py[line: 132] INFO: 'bool' object has no attribute 'click'
+2018-06-27 16:07:51,360 test_editinfo.py[line: 75] INFO: list index out of range
+2018-06-27 16:08:03,863 test_editinfo.py[line: 137] INFO: edit() takes 7 positional arguments but 10 were given
+2018-06-27 16:08:16,379 test_editinfo.py[line: 137] INFO: edit() takes 7 positional arguments but 10 were given
+2018-06-27 16:08:50,886 test_editinfo.py[line: 75] INFO: list index out of range
+2018-06-27 16:09:03,424 test_editinfo.py[line: 137] INFO: edit() takes 7 positional arguments but 10 were given
+2018-06-27 16:09:15,899 test_editinfo.py[line: 137] INFO: edit() takes 7 positional arguments but 10 were given
+2018-06-27 16:09:28,524 test_editinfo.py[line: 137] INFO: edit() takes 7 positional arguments but 10 were given
+2018-06-27 16:09:41,051 test_editinfo.py[line: 137] INFO: edit() takes 7 positional arguments but 10 were given
+2018-06-27 16:09:53,504 test_editinfo.py[line: 137] INFO: edit() takes 7 positional arguments but 10 were given
+2018-06-27 16:10:05,990 test_editinfo.py[line: 137] INFO: edit() takes 7 positional arguments but 10 were given
+2018-06-27 16:10:18,509 test_editinfo.py[line: 137] INFO: edit() takes 7 positional arguments but 10 were given
+2018-06-27 16:10:51,278 test_editinfo.py[line: 75] INFO: list index out of range
+2018-06-27 16:11:03,770 test_editinfo.py[line: 137] INFO: edit() takes 7 positional arguments but 10 were given
+2018-06-27 16:19:18,074 test_editinfo.py[line: 75] INFO: list index out of range
+2018-06-27 16:19:30,604 test_editinfo.py[line: 137] INFO: 'company'
+2018-06-27 16:19:43,105 test_editinfo.py[line: 137] INFO: 'company'
+2018-06-27 16:19:55,709 test_editinfo.py[line: 137] INFO: 'company'
+2018-06-27 16:30:56,799 test_editinfo.py[line: 75] INFO: list index out of range
+2018-06-27 16:31:11,987 test_editinfo.py[line: 137] INFO: select_birthday() missing 1 required positional argument: 'day'
+2018-06-27 16:32:37,217 test_editinfo.py[line: 75] INFO: list index out of range
+2018-06-27 16:34:38,625 test_editinfo.py[line: 76] INFO: list index out of range
+2018-06-27 16:49:58,597 test_editinfo.py[line: 77] INFO: 'tuple' object has no attribute 'text'
+2018-06-27 16:51:06,508 test_editinfo.py[line: 77] INFO: 'TestEditInfo' object has no attribute 'el_error1'
+2018-06-27 16:59:10,053 test_editinfo.py[line: 138] INFO: 'NoneType' object is not subscriptable
+2018-06-27 17:06:45,892 test_editinfo.py[line: 138] INFO: 'NoneType' object is not subscriptable
+2018-06-27 17:47:13,975 test_editinfo.py[line: 140] INFO: 'bool' object has no attribute 'text'
+2018-06-27 17:50:57,564 test_editinfo.py[line: 140] INFO: 'bool' object has no attribute 'text'
+2018-06-27 17:51:15,825 test_editinfo.py[line: 140] INFO:  :: 个人中心 != 修改个人投资者基本信息
+2018-06-27 17:56:42,235 test_editinfo.py[line: 141] INFO: 'bool' object has no attribute 'text'
+2018-06-27 18:01:27,891 test_editinfo.py[line: 141] INFO: 'bool' object has no attribute 'text'
+2018-06-27 18:01:46,167 test_editinfo.py[line: 141] INFO:  :: 个人中心 != 修改个人投资者基本信息
+2018-06-27 18:11:24,227 test_editinfo.py[line: 141] INFO:  :: 个人中心 != 修改个人投资者基本信息
+2018-06-27 18:17:06,930 test_editinfo.py[line: 141] INFO: 'bool' object has no attribute 'text'
+2018-06-27 18:17:25,127 test_editinfo.py[line: 141] INFO:  :: 个人中心 != 修改个人投资者基本信息
+2018-06-27 18:26:43,524 test_editinfo.py[line: 140] INFO:  :: 个人中心 != 修改个人投资者基本信息

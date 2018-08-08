@@ -1,0 +1,20 @@
+2018-08-07 14:09:41,166 test_calendar.py[line: 57] INFO: Message: Element not found in the cache - perhaps the page has changed since it was looked up
+Stacktrace:
+    at fxdriver.cache.getElementAt (resource://fxdriver/modules/web-element-cache.js:9454)
+    at Utils.getElementAt (file:///C:/Users/liuxin/AppData/Local/Temp/tmpkc9g1dy6/extensions/fxdriver@googlecode.com/components/command-processor.js:9039)
+    at WebElement.getElementText (file:///C:/Users/liuxin/AppData/Local/Temp/tmpkc9g1dy6/extensions/fxdriver@googlecode.com/components/command-processor.js:12092)
+    at DelayedCommand.prototype.executeInternal_/h (file:///C:/Users/liuxin/AppData/Local/Temp/tmpkc9g1dy6/extensions/fxdriver@googlecode.com/components/command-processor.js:12661)
+    at fxdriver.Timer.prototype.setTimeout/<.notify (file:///C:/Users/liuxin/AppData/Local/Temp/tmpkc9g1dy6/extensions/fxdriver@googlecode.com/components/command-processor.js:625)
+2018-08-07 14:51:58,927 test_calendar.py[line: 102] INFO:  :: 成功删除估值表 != 所有产品
+2018-08-07 14:53:22,098 test_calendar.py[line: 100] INFO:  :: 成功删除估值表 != 已取消删除
+2018-08-07 14:58:44,383 test_calendar.py[line: 124] INFO: 'NoneType' object is not subscriptable
+2018-08-07 15:02:59,985 test_calendar.py[line: 100] INFO: 'NoneType' object is not subscriptable
+2018-08-07 15:03:47,982 test_calendar.py[line: 112] INFO: 'NoneType' object is not subscriptable
+2018-08-07 15:16:50,088 test_calendar.py[line: 135] INFO:  :: 数据日历 != 操作日志
+2018-08-07 15:17:55,692 test_calendar.py[line: 135] INFO:  :: 数据日历 != 操作日志
+2018-08-07 15:18:35,855 test_calendar.py[line: 135] INFO:  :: 数据日历 != 操作日志
+2018-08-07 15:29:39,182 test_calendar.py[line: 100] INFO: 'NoneType' object is not subscriptable
+2018-08-07 17:36:38,442 test_calendar.py[line: 76] INFO: list index out of range
+2018-08-07 17:37:24,962 test_calendar.py[line: 76] INFO: 'WebElement' object does not support indexing
+2018-08-07 17:38:37,693 test_calendar.py[line: 76] INFO: list index out of range
+2018-08-07 17:41:45,928 test_calendar.py[line: 76] INFO: list index out of range

@@ -1,0 +1,4 @@
+2018-08-06 15:14:25,515 test_data.py[line: 56] INFO: False is not true
+2018-08-06 15:19:11,344 test_data.py[line: 70] INFO: 'bool' object has no attribute 'text'
+2018-08-06 15:23:50,118 test_data.py[line: 54] INFO:  ::  7 != 7
+2018-08-06 15:25:19,023 test_data.py[line: 54] INFO:  :: 19 != 7

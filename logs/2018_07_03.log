@@ -1,0 +1,7 @@
+2018-07-03 09:33:18,115 test_editinfo.py[line: 126] INFO: 'bool' object has no attribute 'text'
+2018-07-03 09:34:25,718 test_editinfo.py[line: 126] INFO:  :: 个人中心 != 修改个人投资者基本信息
+2018-07-03 09:37:19,657 test_editinfo.py[line: 126] INFO:  :: 个人中心 != 修改个人投资者基本信息
+2018-07-03 09:40:09,521 test_editinfo.py[line: 126] INFO:  :: 个人中心 != 修改个人投资者基本信息
+2018-07-03 09:42:23,440 test_editinfo.py[line: 126] INFO:  :: 个人中心 != 修改个人投资者基本信息
+2018-07-03 09:47:57,846 test_editinfo.py[line: 126] INFO:  :: 个人中心 != 修改个人投资者基本信息
+2018-07-03 10:05:46,469 test_editinfo.py[line: 125] INFO:  :: 固定电话格式错误，请重新输入 != 

@@ -17,6 +17,7 @@ url = "http://testpvt.boss.pb-test.com/#/dataMaintain/DataCalendar?fundCode=9100
 
 class DataCalendar(unittest.TestCase):
     """对数据维护-所有产品-数据日历页面所有元素的测试用例"""
+
     @classmethod
     def setUpClass(cls):
         cls.syt = platform.system()
@@ -27,6 +28,7 @@ class DataCalendar(unittest.TestCase):
         cls.driver = Calendar(cls.browser)
         cls.driver.open_url(manager_url)
         time.sleep(1)
+
     @classmethod
     def tearDownClass(cls):
         cls.driver.quit()
@@ -49,8 +51,11 @@ class DataCalendar(unittest.TestCase):
         try:
             time.sleep(2)
             self.driver.get_shot('abc.jpg')
-            self.driver.find_elements(('class name', 'el-button--medium'))[2].click()
-            time.sleep(1)
+            js = "return document.documentElement.outerHTML"
+            html = self.driver.js_execute(js)
+            print(html)
+            # jpgself.driver.find_elements(('class name', 'el-button--medium'))[2].click()
+            # time.sleep(1)
             self.driver.get_shot('bcd.jpg')
             # log_text = self.driver.find_element(('class name', 'hovers')).text
             # self.assertEqual(log_text, '所有产品')
