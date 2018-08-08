@@ -14,7 +14,7 @@ import time
 from page.SafeManager.data_maintenance.data_calendar import Calendar, browser, manager_url
 from common.log import logger
 url = "http://testpvt.boss.pb-test.com/#/dataMaintain/DataCalendar?fundCode=910070&fundName=%E3%80%90SX7490%E3%80%91%E5%85%B4%E9%91%AB-%E6%B4%9B%E4%B9%A6%E7%9D%BF%E4%B8%B4%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E8%AE%A1%E5%88%92"
-
+@unittest.skip('pass')
 class DataCalendar(unittest.TestCase):
     """对数据维护-所有产品-数据日历页面所有元素的测试用例"""
 

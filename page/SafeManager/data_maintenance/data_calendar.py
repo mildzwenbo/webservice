@@ -38,11 +38,10 @@ class Calendar(Product):
         time.sleep(1)
         self.find_elements(self.operate_button)[1].click()
 
-    def click_return(self):
+    def click_return_data(self):
         """点击数据日历页面，返回列表按钮"""
         time.sleep(1)
         self.find_elements(self.operate_button)[2].click()
-
 
     def select_date(self):
         """选择日期：2018-8-8"""

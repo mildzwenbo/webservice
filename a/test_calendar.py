@@ -14,7 +14,7 @@ import time
 from page.SafeManager.data_maintenance.data_calendar import Calendar, browser, manager_url
 from common.log import logger
 
-@unittest.skip('pass')
+
 class DataCalendar(unittest.TestCase):
     """对数据维护-所有产品-数据日历页面所有元素的测试用例"""
 
@@ -71,8 +71,7 @@ class DataCalendar(unittest.TestCase):
         """点击数据日历页面的返回列表按钮测试用例"""
         try:
             time.sleep(1)
-            self.driver.get_shot()
-            self.driver.find_elements(self.driver.operate_button)[2].click()
+            self.driver.click_return_data()
             time.sleep(1)
             log_text = self.driver.find_element(('class name', 'hovers')).text
             self.assertEqual(log_text, '所有产品')
