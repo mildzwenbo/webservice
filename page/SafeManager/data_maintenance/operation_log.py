@@ -30,6 +30,7 @@ class OperationLog(Product):
 
     def upload_time(self, value):
         """查询：选择上传时间"""
+        time.sleep(1)
         query_time = self.find_elements(self.all_input)[1]
         js = "document.getElementsByClassName('el-input__inner')[1].removeAttribute('readonly')"
         self.js_execute(js)
@@ -63,7 +64,7 @@ class OperationLog(Product):
 
     def click_loser(self):
         """点击结果下失败的链接"""
-        time.sleep(1)
+        time.sleep(2)
         self.click(self.loser)
 
     def click_query_button(self):
