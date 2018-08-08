@@ -14,7 +14,7 @@ import time
 from page.SafeManager.data_maintenance.data_calendar import Calendar, browser, manager_url
 from common.log import logger
 
-
+@unittest.skip('pass')
 class DataCalendar(unittest.TestCase):
     """对数据维护-所有产品-数据日历页面所有元素的测试用例"""
 

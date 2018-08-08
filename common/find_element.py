@@ -416,10 +416,10 @@ class FindElement():
         """
         self.driver.quit()
 
-    def get_shot(self):
+    def get_shot(self, img):
         """
         获取图片
         :return:
         """
-        self.driver.get_screenshot_as_file('abc.jpg')
+        self.driver.get_screenshot_as_file(img)
 
