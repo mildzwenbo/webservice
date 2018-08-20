@@ -409,6 +409,14 @@ class FindElement():
         """
         self.driver.close()
 
+    def add_cookie(self, cookie):
+        """
+        添加cookie
+        :param cookie:
+        :return:
+        """
+        self.driver.add_cookie(cookie)
+
     def quit(self):
         """
         退出浏览器
