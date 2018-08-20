@@ -84,13 +84,13 @@ class TestUnreleasedProduct(unittest.TestCase):
             raise
 
     def test_e_operation_product_click(self):
-        """列表中的操作按钮,点击编辑，基金名称为：自动化测试产品1"""
+        """列表中的操作按钮,查看选项，基金名称为：自动化测试产品1"""
         try:
             self.driver.operation_product_click()
             time.sleep(1)
             operation_list_loc = ('class name', 'el-dropdown-menu__item')
 
-            text = self.driver.find_elements(operation_list_loc)[9].text
+            text = self.driver.find_elements(operation_list_loc)[12].text
             self.assertEqual(text, '编辑')
         except Exception as msg:
             logger.info(msg)
@@ -131,3 +131,5 @@ class TestUnreleasedProduct(unittest.TestCase):
 
 
 
+if __name__ == '__main__':
+    unittest.main()

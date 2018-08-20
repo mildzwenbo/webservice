@@ -100,14 +100,14 @@ class UnreleasedProduct(ManagerLogin):
         """列表中的操作按钮,点击编辑，基金名称为：自动化测试产品1"""
         self.operation_product_click()
         time.sleep(1)
-        self.find_elements(self.operation_list_loc)[9].click()
+        self.find_elements(self.operation_list_loc)[12].click()
 
 
     def release_product_click(self):
         """列表中的操作按钮,点击发布，基金名称为：自动化测试产品1"""
         self.operation_product_click()
         time.sleep(1)
-        self.find_elements(self.operation_list_loc)[11].click()
+        self.find_elements(self.operation_list_loc)[14].click()
         self.click(('class name', 'el-button--primary'))
 
 
@@ -115,7 +115,7 @@ class UnreleasedProduct(ManagerLogin):
         """列表中的操作按钮,点击删除，基金名称为：自动化测试产品2"""
         self.find_elements(self.operation_loc)[2].click()
         time.sleep(1)
-        self.find_elements(self.operation_list_loc)[7].click()
+        self.find_elements(self.operation_list_loc)[10].click()
         self.click(('class name', 'el-button--primary'))
 
 

@@ -11,11 +11,11 @@ import time
 
 class Home(ManagerLogin):
     #产品管理快捷入口
-    product_management_loc = ('css', '#app > div > div.app-wrapper > div.main-container > section > div > div.main_header > ul > li.main-bgitem > a > span')
+    product_management_loc = ('css', '#app > div > div.app-wrapper > div.main-container > section > div > div.main_header > ul > li:nth-child(1) > a > p')
     #数据维护入口
-    data_management_loc = ('css', '#app > div > div.app-wrapper > div.main-container > section > div > div.main_header > ul > li.main-bgitem2 > a')
+    data_management_loc = ('css', '#app > div > div.app-wrapper > div.main-container > section > div > div.main_header > ul > li:nth-child(3) > a > span')
     #系统管理入口
-    system_management_loc = ('css', '#app > div > div.app-wrapper > div.main-container > section > div > div.main_header > ul > li.main-bgitem3 > a > span')
+    system_management_loc = ('css', '#app > div > div.app-wrapper > div.main-container > section > div > div.main_header > ul > li:nth-child(4) > a')
     #退出按钮
     logout_loc = ('id', 'logout')
     #退出确认下的确定和取消按钮：0取消，1确定
@@ -73,6 +73,7 @@ if __name__ == '__main__':
     home = Home(driver)
     home.open_url(manager_url)
     home.yf_manager_login()
+    time.sleep(1)
     home.logout_cancel_click()
 
 

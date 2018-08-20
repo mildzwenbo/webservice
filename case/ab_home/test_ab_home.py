@@ -14,7 +14,7 @@ from page.SafeManager.home.home import Home, browser, manager_url
 from common.log import logger
 
 
-@unittest.skip('pass')
+# @unittest.skip('pass')
 class TestHome(unittest.TestCase):
     """对首页所有元素的测试用例"""
 
@@ -80,7 +80,7 @@ class TestHome(unittest.TestCase):
             self.driver.logout_confirm_click()
             time.sleep(1)
             text = self.driver.get_text(('id', 'logo'))
-            self.assertEqual(text, '基金运营管理平台')
+            self.assertEqual(text, '睿歆资管通')
         except Exception as msg:
             logger.info(str(msg))
             raise

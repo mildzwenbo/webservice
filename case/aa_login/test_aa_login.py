@@ -67,6 +67,7 @@ class TestLogin(unittest.TestCase):
             logger.info(str(msg))
             raise
 
+    @unittest.skip('pass')
     def test_agency_disabled_login(self):
         """机构已经被停用"""
         try:
