@@ -123,6 +123,7 @@ class TestUnreleasedProduct(unittest.TestCase):
         """列表中的操作按钮,点击删除，基金名称为：自动化测试产品2"""
         try:
             self.driver.delete_product_click()
+            time.sleep(1)
             text = self.driver.get_text(('class name', 'el-message__content'))
             self.assertEqual('删除成功!', text)
         except Exception as msg:
