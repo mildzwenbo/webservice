@@ -16,7 +16,7 @@ class Calendar(Product):
     August = ('xpath', '/html/body/div[2]/div[1]/div[1]/ul/li[8]/span')  # 日历中八月份的选择
     August_8 = ('xpath', '//*[@id="app"]/div/div[2]/div[2]/section/div/div[4]/div/div[2]/div[2]/div[1]/div[2]/div[4]')  # 八日定位
     import_excl = ('xpath', '//*[@id="app"]/div/div[2]/div[2]/section/div/div[4]/div/div[2]/div[2]/div[1]/div[2]/div[4]/div[1]/div[3]/div/div/button')  # 导入估值表按钮定位
-    delete_excel = ('xpath', '//*[@id="app"]/div/div[2]/div[2]/section/div/div[4]/div/div[2]/div[2]/div[1]/div[2]/div[4]/div[1]/div[6]')  # 删除估值表按钮定位
+    delete_excel = ('xpath', '//*[@id="app"]/div/div[2]/div[2]/section/div/div[4]/div/div[2]/div[2]/div[1]/div[2]/div[4]/div[1]/div[7]')  # 删除估值表按钮定位
     crumbs = ('class name', 'goHover')  # 可点击的面包屑导航链接定位
     button = ('class name', 'el-button--default')  # 弹框里的确定、取消按钮定位
 
@@ -60,11 +60,11 @@ class Calendar(Product):
 
     def sure_button(self):
         """点击删除估值表按钮显示的弹框里，确定按钮"""
-        self.find_elements(self.button)[1].click()
+        self.find_elements(self.button)[2].click()
 
     def cancel_button(self):
         """点击删除估值表按钮显示的弹框里，取消按钮"""
-        self.find_elements(self.button)[0].click()
+        self.find_elements(self.button)[1].click()
 
 
 if __name__ == '__main__':
@@ -74,4 +74,4 @@ if __name__ == '__main__':
     p.lx_manager_login()
     p.click_bar()
     p.click_date()
-    p.click_close()
+    p.click_return_data()
