@@ -115,4 +115,3 @@ if __name__ == '__main__':
     m.mysql_recover()
     run_case()
     # send_mail()
-

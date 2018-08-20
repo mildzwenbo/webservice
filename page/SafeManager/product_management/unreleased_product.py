@@ -101,6 +101,7 @@ class UnreleasedProduct(ManagerLogin):
         self.operation_product_click()
         time.sleep(1)
         self.find_elements(self.operation_list_loc)[12].click()
+        time.sleep(1)
 
 
     def release_product_click(self):
@@ -138,6 +139,6 @@ if __name__ == '__main__':
     time.sleep(1)
     a.open_url(unreleased_product_url)
     time.sleep(2)
-    a.search_input_name()
+    a.editor_product_click()
 
 
