@@ -24,7 +24,7 @@ def add_case():
     :return: 一个包含路径下所有测试用例（test*.py）的list集合˚
     """
     testunit = unittest.TestSuite()
-    case_path = os.path.join(os.getcwd(), 'case')
+    case_path = os.path.join(os.getcwd(), 'test')
     print("测试用例的路径 %s" % case_path)
     discover = unittest.defaultTestLoader.discover(case_path,
                                                    pattern="test*.py",
@@ -113,5 +113,5 @@ def send_mail():
 if __name__ == '__main__':
     m = MysqlUtil()
     m.mysql_recover()
-    # run_case()
+    run_case()
     # send_mail()
