@@ -38,6 +38,14 @@ class ReadExcel(object):
 
 if __name__ == '__main__':
     path = GetPath().get_params_path('password.xlsx')
+    path = r'/Users/wangyunfei/Desktop/work.xlsx'
     sheet = "Sheet1"
     data = ReadExcel(path, sheet).data_list()
-    print(data)
+    count = 0
+    for i in range(len(data)):
+        if '华夏复兴' in data[i]['基金名称']:
+            print("="*100)
+            count += 1
+            print(data[i])
+
+    print(count)
