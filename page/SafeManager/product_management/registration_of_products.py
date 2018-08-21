@@ -50,16 +50,16 @@ class RegistrationOfProduct(ManagerLogin):
         """
         time.sleep(2)
         self.find_elements(('class name', 'el-radio__inner'))[7].click()
-        self.js_scroll_end(0, 800)
+        self.click(('css', '#app > div > div.app-wrapper > div.main-container > section > div > div.form-parent > div > ul > li:nth-child(3)'))
         self.find_elements(('class name', 'el-checkbox__inner'))[6].click()
         self.find_elements(('class name', 'el-radio__inner'))[32].click()
         self.find_elements(('class name', 'el-radio__inner'))[35].click()
+        self.click(('css', '#app > div > div.app-wrapper > div.main-container > section > div > div.form-parent > div > ul > li:nth-child(4)'))
         self.find_elements(('class name', 'el-radio__inner'))[36].click()
-        self.js_scroll_end(0, 100)
         self.find_elements(('class name', 'el-radio__inner'))[38].click()
+        self.click(('css', '#app > div > div.app-wrapper > div.main-container > section > div > div.form-parent > div > ul > li:nth-child(6)'))
         self.find_elements(('class name', 'el-radio__inner'))[42].click()
-        self.find_elements(('class name', 'el-radio__inner'))[44].click()
-        self.js_scroll_end(0, 2000)
+        self.click(('css', '#app > div > div.app-wrapper > div.main-container > section > div > div.form-parent > div > ul > li:nth-child(7)'))
         self.find_elements(('class name', 'el-radio__inner'))[48].click()
         self.find_elements(('class name', 'el-checkbox__inner'))[14].click()
         self.find_elements(('class name', 'el-radio__inner'))[51].click()
@@ -71,7 +71,9 @@ class RegistrationOfProduct(ManagerLogin):
         text = self.get_text(('class name', 'el-message--error'))
 
         number = len(self.find_elements(('class name', 'el-form-item__error')))
-        if text == '有必填项未填写或输入有误' and number == 37:
+        print(number)
+        print(text)
+        if text == '有必填项未填写或输入有误' and number == 36:
             return True
         else:
             return False
@@ -150,4 +152,4 @@ if __name__ == '__main__':
     time.sleep(1)
     r.open_url(registration_of_product_url)
     time.sleep(2)
-    r.input_something()
+    r.no_input_release()

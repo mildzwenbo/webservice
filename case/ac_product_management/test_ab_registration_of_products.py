@@ -22,7 +22,7 @@ class TestRegistrationOfProducts(unittest.TestCase):
     def setUpClass(cls):
         cls.syt = platform.system()
         if cls.syt == "Linux":
-            cls.display = Display(visible=0, size=(1280, 900))
+            cls.display = Display(visible=0, size=(2560, 1600))
             cls.display.start()
         cls.browser = browser()
         cls.driver = RegistrationOfProduct(cls.browser)
