@@ -377,7 +377,7 @@ class FindElement():
         滚动到顶部
         :return:
         """
-        js = "window.scrollTo(0,o)"
+        js = "window.scrollTo(0,0)"
         self.driver.execute_script(js)
 
     def js_scroll_end(self, num1, num2):

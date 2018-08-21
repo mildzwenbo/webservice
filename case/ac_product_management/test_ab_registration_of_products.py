@@ -40,6 +40,7 @@ class TestRegistrationOfProducts(unittest.TestCase):
         time.sleep(1)
         self.driver.open_url(registration_of_product_url)
         time.sleep(4)
+        self.driver.js_scroll_top()
 
     def tearDown(self):
         self.driver.delete_all_cookies()
