@@ -39,8 +39,12 @@ class TestRegistrationOfProducts(unittest.TestCase):
         self.driver.yf_manager_login()
         time.sleep(1)
         self.driver.open_url(registration_of_product_url)
-        time.sleep(4)
+        time.sleep(3)
+        js = "document.getElementsByClassName('sidebar-header')[0].setAttribute('style', 'display:none')"
+        self.driver.js_execute(js)
         self.driver.js_scroll_top()
+        time.sleep(1)
+
 
     def tearDown(self):
         self.driver.delete_all_cookies()
