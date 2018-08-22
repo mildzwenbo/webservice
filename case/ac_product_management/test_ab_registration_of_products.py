@@ -10,7 +10,7 @@ import time
 import platform
 
 
-from page.SafeManager.product_management.registration_of_products import RegistrationOfProduct, browser, manager_url, registration_of_product_url
+from page.SafeManager.product_management.unreleased_product.registration_of_products import RegistrationOfProduct, browser, manager_url, registration_of_product_url
 from common.log import logger
 
 

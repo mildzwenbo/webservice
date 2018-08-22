@@ -1,7 +1,7 @@
 """
 @author:fei
 @date:2018-08-01
-@brief:为发布产品页面所有元素的定位以及操作
+@brief:未发布产品页面所有元素的定位以及操作
 """
 
 from common.manager_login import ManagerLogin, manager_url, browser
