@@ -10,7 +10,8 @@ import platform
 import time
 
 from common.log import logger
-from page.SafeManager.product_management.unreleased_product import UnreleasedProduct, manager_url, unreleased_product_url, browser
+from page.SafeManager.product_management.unreleased_product.unreleased_product import UnreleasedProduct, manager_url, unreleased_product_url, browser
+
 
 class TestUnreleasedProduct(unittest.TestCase):
     """发布产品页面所有测试用例的编写"""
