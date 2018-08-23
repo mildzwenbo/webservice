@@ -46,10 +46,10 @@ class Operation(unittest.TestCase):
     def test_a_name(self):
         """查询：上传人查询结果"""
         try:
-            self.driver.upload_heir('刘鑫')
+            self.driver.upload_heir('招商银行')
             self.driver.click_query_button()
             number = self.driver.query_number()
-            self.assertEqual(number, '2')
+            self.assertEqual(number, '454')
         except Exception as msg:
             logger.info(str(msg))
             raise
@@ -71,7 +71,7 @@ class Operation(unittest.TestCase):
             self.driver.succeed_result()
             self.driver.click_query_button()
             number = self.driver.query_number()
-            self.assertEqual(number, '395')
+            self.assertEqual(number, '1254')
         except Exception as msg:
             logger.info(str(msg))
             raise
@@ -96,7 +96,7 @@ class Operation(unittest.TestCase):
             self.driver.all_result()
             self.driver.click_query_button()
             number = self.driver.query_number()
-            self.assertEqual(number, '407')
+            self.assertEqual(number, '1266')
         except Exception as msg:
             logger.info(str(msg))
             raise
@@ -132,6 +132,8 @@ class Operation(unittest.TestCase):
     def test_h_loser(self):
         """结果>失败链接"""
         try:
+            self.driver.loser_result()
+            time.sleep(1)
             self.driver.click_loser()
             time.sleep(1)
             text = self.driver.find_element(('class name', 'el-dialog__title')).text

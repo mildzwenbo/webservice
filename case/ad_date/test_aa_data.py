@@ -94,7 +94,7 @@ class AllProducts(unittest.TestCase):
             self.driver.click_query()
             time.sleep(1)
             number = self.driver.query_number()
-            self.assertEqual(number, '19')
+            self.assertEqual(number, '22')
         except Exception as msg:
             logger.info(str(msg))
             raise
