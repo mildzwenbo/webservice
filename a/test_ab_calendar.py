@@ -42,6 +42,7 @@ class DataCalendar(unittest.TestCase):
         self.driver.click_bar()
         self.driver.click_date()
 
+
     def tearDown(self):
         time.sleep(1)
 
@@ -72,6 +73,8 @@ class DataCalendar(unittest.TestCase):
         """点击数据日历页面的返回列表按钮测试用例"""
         try:
             time.sleep(1)
+            js = "document.getElementsByClassName('sidebar-header')[0].setAttribute('style', 'display:none')"
+            self.driver.js_execute(js)
             self.driver.click_return_data()
             time.sleep(1)
             log_text = self.driver.find_element(('class name', 'hovers')).text
@@ -128,34 +131,40 @@ class DataCalendar(unittest.TestCase):
             logger.info(str(msg))
             raise
 
-    # def test_h_import_return(self):
-    #     """点击导入数据页面，返回按钮测试用例"""
-    #     try:
-    #         self.driver.click_import_data()
-    #         self.driver.click_log()
-    #         time.sleep(1)
-    #         log_text = self.driver.find_element(('class name', 'hovers')).text
-    #         self.assertEqual(log_text, '数据日历')
-    #     except Exception as msg:
-    #         logger.info(str(msg))
-    #         raise
+    def test_h_import_return(self):
+        """点击导入数据页面，返回按钮测试用例"""
+        try:
+            js = "document.getElementsByClassName('sidebar-header')[0].setAttribute('style', 'display:none')"
+            self.driver.js_execute(js)
+            self.driver.click_import_data()
+            self.driver.click_log()
+            time.sleep(1)
+            log_text = self.driver.find_element(('class name', 'hovers')).text
+            self.assertEqual(log_text, '数据日历')
+        except Exception as msg:
+            logger.info(str(msg))
+            raise
 
-    # def test_i_log(self):
-    #     """点击导入数据页面，操作日志按钮测试用例"""
-    #     try:
-    #         self.driver.click_import_data()
-    #         self.driver.click_operate()
-    #         time.sleep(1)
-    #         log_text = self.driver.find_element(('class name', 'hovers')).text
-    #         self.assertEqual(log_text, '操作日志')
-    #     except Exception as msg:
-    #         logger.info(str(msg))
-    #         raise
+    def test_i_log(self):
+        """点击导入数据页面，操作日志按钮测试用例"""
+        js = "document.getElementsByClassName('sidebar-header')[0].setAttribute('style', 'display:none')"
+        self.driver.js_execute(js)
+        try:
+            self.driver.click_import_data()
+            time.sleep(1)
+            self.driver.click_import_data()
+            time.sleep(1)
+            log_text = self.driver.find_element(('class name', 'hovers')).text
+            self.assertEqual(log_text, '操作日志')
+        except Exception as msg:
+            logger.info(str(msg))
+            raise
 
     def test_j_crumbs(self):
         """点击导入数据页面可点击的面包屑链接测试用例"""
         try:
             self.driver.click_import_data()
+            time.sleep(1)
             self.driver.click(self.driver.crumbs)
             time.sleep(1)
             log_text = self.driver.find_element(('class name', 'hovers')).text

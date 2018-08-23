@@ -26,7 +26,10 @@ class Calendar(Product):
         self.find_elements(self.operate_button)[0].click()
 
     def click_import_data(self):
-        """点击数据日历页面，导入数据按钮"""
+        """
+            点击数据日历页面，导入数据按钮
+            点击导入数据页面，导入操作日志按钮
+        """
         time.sleep(1)
         self.find_elements(self.operate_button)[1].click()
 
@@ -74,4 +77,4 @@ if __name__ == '__main__':
     p.lx_manager_login()
     p.click_bar()
     p.click_date()
-    p.click_return_data()
+    p.click_operate()
