@@ -111,6 +111,8 @@ else:
     import StringIO
 import copy
 
+from common.log import logger
+
 # ------------------------------------------------------------------------
 # The redirectors below are used to capture output during testing. Output
 # sent to sys.stdout and sys.stderr are automatically captured. However
@@ -653,17 +655,20 @@ class _TestResult(TestResult):
             if self.status == 1:
                 self.trys += 1
                 if self.trys <= self.retry:
-                    print("retesting... %d" % self.trys)
-                    test=copy.copy(test)
-                    doc = test._testMethodDoc
-                    if doc.find('_retry')!=-1:
-                        doc = doc[:doc.find('_retry')]
-                    desc ="%s_retry:%d" %(doc, self.trys)
-                    if not PY3K:
-                        if isinstance(desc, str):
-                            desc = desc.decode("utf-8")
-                    test._testMethodDoc = desc
-                    test(self)
+                    try:
+                        print("retesting... %d" % self.trys)
+                        test=copy.copy(test)
+                        doc = test._testMethodDoc
+                        if doc.find('_retry')!=-1:
+                            doc = doc[:doc.find('_retry')]
+                        desc ="%s_retry:%d" %(doc, self.trys)
+                        if not PY3K:
+                            if isinstance(desc, str):
+                                desc = desc.decode("utf-8")
+                        test._testMethodDoc = desc
+                        test(self)
+                    except Exception as msg:
+                        logger.info(msg)
                 else:
                     self.status = 0
                     self.trys = 0

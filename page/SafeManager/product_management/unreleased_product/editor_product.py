@@ -23,11 +23,15 @@ class EditorProduct(ManagerLogin):
 
     def editor_product(self):
         """在投资信息下主要投资方向编辑信息"""
-        self.click(self.investment_information_loc)
-        investment_directionself_element = self.find_elements(self.input_name_loc)[0]
-        investment_directionself_element.clear()
-        investment_directionself_element.send_keys('在投资信息下主要投资方向编辑信息')
-        self.find_elements(self.save_loc)[6].click()
+        result = self.element_click(self.find_elements(self.input_name_loc)[0])
+        if result:
+            self.click(self.investment_information_loc)
+            investment_directionself_element = self.find_elements(self.input_name_loc)[0]
+            investment_directionself_element.clear()
+            investment_directionself_element.send_keys('在投资信息下主要投资方向编辑信息')
+            self.find_elements(self.save_loc)[6].click()
+        else:
+            pass
 
 
 
@@ -39,6 +43,5 @@ if __name__ == '__main__':
     p.yf_manager_login()
     time.sleep(2)
     p.open_url(editor_product_url)
-    time.sleep(4)
     p.editor_product()
 

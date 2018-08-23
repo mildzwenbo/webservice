@@ -13,6 +13,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.select import Select
 import platform
 import os
+import time
 
 path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 download_path = os.path.join(path, 'Download')
@@ -430,4 +431,23 @@ class FindElement():
         :return:
         """
         self.driver.get_screenshot_as_file(img)
+
+
+    def element_click(self, element, time_out=5):
+        """
+        检查元素是否可以点击或输入
+        :param element: 要检查的元素
+        :return:
+        """
+        for i in range(int(time_out)):
+            try:
+                if element:
+                    element.click()
+                    break
+            except Exception as msg:
+                time.sleep(1)
+        if i == int(time_out)+1:
+            return False
+        else:
+            return True
 
