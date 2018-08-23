@@ -111,16 +111,16 @@ class TestUnreleasedProduct(unittest.TestCase):
             raise
 
 
-    def test_g_release_product_clcik(self):
+    def test_g_release_product_click(self):
         """列表中的操作按钮,点击发布，基金名称为：自动化测试产品1"""
         try:
             self.driver.release_product_click()
             time.sleep(1)
             text = self.driver.get_text(('class name', 'el-message__content'))
             self.assertEqual('发布成功!', text)
-            self.mysql.update_mysql("UPDATE run_status SET status='1' WHERE name='test_g_release_product_clcik';")
+            self.mysql.update_mysql("UPDATE run_status SET status='1' WHERE name='test_g_release_product_click';")
         except Exception as msg:
-            self.mysql.update_mysql("UPDATE run_status SET status='0' WHERE name='test_g_release_product_clcik';")
+            self.mysql.update_mysql("UPDATE run_status SET status='0' WHERE name='test_g_release_product_click';")
             logger.info(msg)
             raise
 
