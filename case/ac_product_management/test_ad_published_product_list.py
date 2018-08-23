@@ -13,7 +13,12 @@ import platform
 
 from page.SafeManager.product_management.published_product.published_product_list import PublishedProductList, browser, manager_url, published_product_url
 from common.log import logger
+from common.exec_mysql import ExecMysql
 
+
+mysql = ExecMysql()
+select_sql = "SELECT status FROM run_status WHERE name='test_g_release_product_clcik';"
+status = int(mysql.select_mysql(select_sql)[0][0])
 
 class TestPublishedProductList(unittest.TestCase):
     """对已发布产列表所有的测试用例"""
@@ -24,7 +29,6 @@ class TestPublishedProductList(unittest.TestCase):
         if cls.syt == 'Linux':
             cls.display = Display(visible=0, size=(2560, 1600))
             cls.display.start()
-
         cls.browser = browser()
         cls.driver = PublishedProductList(cls.browser)
         cls.driver.open_url(manager_url)
@@ -90,7 +94,7 @@ class TestPublishedProductList(unittest.TestCase):
         except Exception as msg:
             logger.info(msg)
             raise
-
+    @unittest.skipUnless(status, '该产品没有发布成功')
     def test_g_history_button_click(self):
         """点击操作按钮列表中的历史净值，自动化测试产品2"""
         try:
@@ -100,7 +104,7 @@ class TestPublishedProductList(unittest.TestCase):
             logger.info(msg)
             raise
 
-
+    @unittest.skipUnless(status, '该产品没有发布成功')
     def test_f_editor_button_click(self):
         """点击操作按钮列表中的编辑，自动化测试产品2"""
         try:
@@ -110,6 +114,7 @@ class TestPublishedProductList(unittest.TestCase):
             logger.info(msg)
             raise
 
+    @unittest.skipUnless(status, '该产品没有发布成功')
     def test_h_shelves_button_click(self):
         """点击操作按钮列表中的产品下架，点击取消,自动化测试产品2"""
         try:
@@ -119,6 +124,7 @@ class TestPublishedProductList(unittest.TestCase):
             logger.info(msg)
             raise
 
+    @unittest.skipUnless(status, '该产品没有发布成功')
     def test_i_shelves_confirm_button_click(self):
         """点击操作按钮列表中的产品下架，点击确认按钮，自动化测试产品2"""
         try:

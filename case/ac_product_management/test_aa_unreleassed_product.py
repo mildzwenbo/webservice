@@ -11,6 +11,7 @@ import time
 
 from common.log import logger
 from page.SafeManager.product_management.unreleased_product.unreleased_product import UnreleasedProduct, manager_url, unreleased_product_url, browser
+from common.exec_mysql import ExecMysql
 
 
 class TestUnreleasedProduct(unittest.TestCase):
@@ -25,6 +26,7 @@ class TestUnreleasedProduct(unittest.TestCase):
         cls.browser = browser()
         cls.driver = UnreleasedProduct(cls.browser)
         cls.driver.open_url(manager_url)
+        cls.mysql = ExecMysql()
         time.sleep(1)
 
     @classmethod
@@ -116,7 +118,9 @@ class TestUnreleasedProduct(unittest.TestCase):
             time.sleep(1)
             text = self.driver.get_text(('class name', 'el-message__content'))
             self.assertEqual('发布成功!', text)
+            self.mysql.update_mysql("UPDATE run_status SET status='1' WHERE name='test_g_release_product_clcik';")
         except Exception as msg:
+            self.mysql.update_mysql("UPDATE run_status SET status='0' WHERE name='test_g_release_product_clcik';")
             logger.info(msg)
             raise
 
