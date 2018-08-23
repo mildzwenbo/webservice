@@ -145,12 +145,13 @@ class DataCalendar(unittest.TestCase):
             raise
 
     def test_i_log(self):
+        """点击导入数据页面，操作日志按钮测试用例"""
         js = "document.getElementsByClassName('sidebar-header')[0].setAttribute('style', 'display:none')"
         self.driver.js_execute(js)
-        """点击导入数据页面，操作日志按钮测试用例"""
         try:
             self.driver.click_import_data()
-            self.driver.click_operate()
+            time.sleep(1)
+            self.driver.click_import_data()
             time.sleep(1)
             log_text = self.driver.find_element(('class name', 'hovers')).text
             self.assertEqual(log_text, '操作日志')
@@ -162,6 +163,7 @@ class DataCalendar(unittest.TestCase):
         """点击导入数据页面可点击的面包屑链接测试用例"""
         try:
             self.driver.click_import_data()
+            time.sleep(1)
             self.driver.click(self.driver.crumbs)
             time.sleep(1)
             log_text = self.driver.find_element(('class name', 'hovers')).text
