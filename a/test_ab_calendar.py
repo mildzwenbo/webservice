@@ -73,7 +73,8 @@ class DataCalendar(unittest.TestCase):
         """点击数据日历页面的返回列表按钮测试用例"""
         try:
             time.sleep(1)
-            js = ""
+            js = "document.getElementsByClassName('sidebar-header')[0].setAttribute('style', 'display:none')"
+            self.driver.js_execute(js)
             self.driver.click_return_data()
             time.sleep(1)
             log_text = self.driver.find_element(('class name', 'hovers')).text
