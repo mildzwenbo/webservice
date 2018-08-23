@@ -48,6 +48,7 @@ class Operation(unittest.TestCase):
         try:
             self.driver.upload_heir('招商银行')
             self.driver.click_query_button()
+            time.sleep(1)
             number = self.driver.query_number()
             self.assertEqual(number, '454')
         except Exception as msg:
