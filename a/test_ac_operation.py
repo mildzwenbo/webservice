@@ -69,6 +69,7 @@ class Operation(unittest.TestCase):
         """查询：上传结果-成功查询结果"""
         try:
             self.driver.succeed_result()
+            time.sleep(1)
             number = self.driver.query_number()
             self.assertEqual(number, '1254')
         except Exception as msg:
@@ -79,6 +80,7 @@ class Operation(unittest.TestCase):
         """查询：上传结果-失败查询结果"""
         try:
             self.driver.loser_result()
+            time.sleep(1)
             number = self.driver.query_number()
             self.assertEqual(number, '12')
         except Exception as msg:
@@ -91,6 +93,7 @@ class Operation(unittest.TestCase):
             self.driver.loser_result()
             time.sleep(1)
             self.driver.all_result()
+            time.sleep(1)
             number = self.driver.query_number()
             self.assertEqual(number, '1266')
         except Exception as msg:
