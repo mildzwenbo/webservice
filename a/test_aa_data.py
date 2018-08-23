@@ -57,11 +57,10 @@ class AllProducts(unittest.TestCase):
     def test_b_code_query(self):
         """查询：基金编码查询结果"""
         try:
-
             self.driver.query_code('SN3597')
             self.driver.click_query()
-            fund_name = ('xpath', '//*[@id="app"]/div/div[2]/div[2]/section/div/div[3]/div[1]/div[4]/div[2]/table/tbody/tr/td[3]/div')
-            value = self.driver.find_element(fund_name).text
+            fund_name = ('class name', 'el-tooltip')
+            value = self.driver.find_elements(fund_name)[2].text
             self.assertEqual(value, 'SN3597')
         except Exception as msg:
             logger.info(str(msg))
