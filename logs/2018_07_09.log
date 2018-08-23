@@ -1,5 +1,0 @@
-2018-07-09 14:16:22,243 test_individual.py[line: 147] INFO: [WinError 183] 当文件已存在时，无法创建该文件。: 'D:\\project\\Download'
-2018-07-09 14:21:30,811 test_individual.py[line: 147] INFO: module 'os' has no attribute 'removdirs'
-2018-07-09 14:22:43,662 test_individual.py[line: 147] INFO: rmdir: path should be string, bytes or os.PathLike, not list
-2018-07-09 14:23:46,618 test_individual.py[line: 147] INFO: [WinError 145] 目录不是空的。: 'D:\\project\\Download'
-2018-07-09 18:31:55,601 test_individual.py[line: 212] INFO: expected str, bytes or os.PathLike object, not list
