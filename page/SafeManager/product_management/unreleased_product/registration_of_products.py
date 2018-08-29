@@ -8,7 +8,6 @@
 from common.manager_login import manager_url, ManagerLogin, browser
 from common.get_url import GetUrl
 
-
 import time
 
 registration_of_product_url = GetUrl().get_admin_url() + r'#/product/ProductAdd'
@@ -34,49 +33,53 @@ class RegistrationOfProduct(ManagerLogin):
         不填写任何信息点击保存按钮
         :return:
         """
-        time.sleep(2)
-        self.find_elements(self.save_loc)[6].click()
-        time.sleep(1)
-        text = self.get_text(('class name', 'el-message--error'))
-        if text == '有必填项未填写或输入有误':
-            return True
+        if self.element_click(self.find_elements(('class name', 'el-input__inner'))[0]):
+            time.sleep(2)
+            self.find_elements(self.save_loc)[6].click()
+            time.sleep(1)
+            text = self.get_text(('class name', 'el-message--error'))
+            return text
         else:
-            return False
+            return "页面不可点击"
 
     def no_input_release(self):
         """
         勾选所有其他选项，查看必填项共37个必填项，其余没有些
         :return:
         """
-        time.sleep(2)
-        self.find_elements(('class name', 'el-radio__inner'))[7].click()
-        self.click(('css', '#app > div > div.app-wrapper > div.main-container > section > div > div.form-parent > div > ul > li:nth-child(3)'))
-        self.find_elements(('class name', 'el-checkbox__inner'))[6].click()
-        self.find_elements(('class name', 'el-radio__inner'))[32].click()
-        self.find_elements(('class name', 'el-radio__inner'))[35].click()
-        self.click(('css', '#app > div > div.app-wrapper > div.main-container > section > div > div.form-parent > div > ul > li:nth-child(4)'))
-        self.find_elements(('class name', 'el-radio__inner'))[36].click()
-        self.find_elements(('class name', 'el-radio__inner'))[38].click()
-        self.click(('css', '#app > div > div.app-wrapper > div.main-container > section > div > div.form-parent > div > ul > li:nth-child(6)'))
-        self.find_elements(('class name', 'el-radio__inner'))[42].click()
-        self.click(('css', '#app > div > div.app-wrapper > div.main-container > section > div > div.form-parent > div > ul > li:nth-child(7)'))
-        self.find_elements(('class name', 'el-radio__inner'))[48].click()
-        self.find_elements(('class name', 'el-checkbox__inner'))[14].click()
-        self.find_elements(('class name', 'el-radio__inner'))[51].click()
-        self.find_elements(('class name', 'el-checkbox__inner'))[19].click()
-        self.find_elements(('class name', 'el-radio__inner'))[55].click()
-        time.sleep(2)
-        self.find_elements(self.save_loc)[7].click()
-        time.sleep(1)
-        text = self.get_text(('class name', 'el-message--error'))
+        if self.element_click(self.find_elements(('class name', 'el-input__inner'))[0]):
+            self.find_elements(('class name', 'el-radio__inner'))[9].click()
 
-        number = len(self.find_elements(('class name', 'el-form-item__error')))
-        print(number)
-        print(text)
-        if text == '有必填项未填写或输入有误' and number == 36:
-            return True
+            self.click(('css', '#app > div > div.app-wrapper > div.main-container > section > div > div.form-parent > div > ul > li:nth-child(3)'))
+            self.find_elements(('class name', 'el-checkbox__inner'))[6].click()
+
+            self.find_elements(('class name', 'el-radio__inner'))[34].click()
+            self.find_elements(('class name', 'el-radio__inner'))[37].click()
+            self.click(('css', '#app > div > div.app-wrapper > div.main-container > section > div > div.form-parent > div > ul > li:nth-child(4)'))
+            self.find_elements(('class name', 'el-radio__inner'))[38].click()
+            self.find_elements(('class name', 'el-radio__inner'))[40].click()
+            self.click(('css', '#app > div > div.app-wrapper > div.main-container > section > div > div.form-parent > div > ul > li:nth-child(6)'))
+            self.find_elements(('class name', 'el-radio__inner'))[44].click()
+            self.click(('css', '#app > div > div.app-wrapper > div.main-container > section > div > div.form-parent > div > ul > li:nth-child(7)'))
+            self.find_elements(('class name', 'el-radio__inner'))[50].click()
+            self.find_elements(('class name', 'el-checkbox__inner'))[14].click()
+            self.find_elements(('class name', 'el-radio__inner'))[53].click()
+            self.find_elements(('class name', 'el-checkbox__inner'))[19].click()
+            self.find_elements(('class name', 'el-radio__inner'))[57].click()
+            time.sleep(2)
+            self.find_elements(self.save_loc)[7].click()
+            time.sleep(1)
+            text = self.get_text(('class name', 'el-message--error'))
+
+            number = len(self.find_elements(('class name', 'el-form-item__error')))
+            print(number)
+            print(text)
+            if number == 36 and text == '有必填项未填写或输入有误':
+                return True
+            else: return False
         else:
             return False
+
 
 
     def input_something(self, name,name2, code):
@@ -85,59 +88,65 @@ class RegistrationOfProduct(ManagerLogin):
         :return:
         """
         #产品名称
-        self.find_elements(self.input_name_loc)[0].send_keys(name)
-        # 产品简称
-        self.find_elements(self.input_name_loc)[1].send_keys(name2)
-        #产品编码
-        self.find_elements(self.input_name_loc)[2].send_keys(code)
-        #基金类型
-        self.find_elements(self.input_name_loc)[3].click()
-        time.sleep(1)
-        self.find_elements(self.select_elements_loc)[29].click()
-        #产品类型
-        self.find_elements(self.input_name_loc)[4].click()
-        time.sleep(1)
-        self.find_elements(self.select_elements_loc)[43].click()
-        #组织形式
-        self.find_elements(self.input_name_loc)[6].click()
-        time.sleep(1)
-        self.find_elements(self.select_elements_loc)[43].click()
-        #成立日期
-        time.sleep(1)
-        self.find_elements(self.input_name_loc)[8].click()
-        time.sleep(1)
-        self.click(('class name', 'today'))
-        # 到期日期
-        self.find_elements(self.mulitple_loc)[0].click()
-        # 管理类型
-        self.find_elements(self.input_name_loc)[11].click()
-        time.sleep(1)
-        self.find_elements(self.select_elements_loc)[44].click()
-        #基金状态
-        self.find_elements(self.input_name_loc)[12].click()
-        time.sleep(1)
-        self.find_elements(self.select_elements_loc)[44].click()
-        #份额类型
-        self.find_elements(self.input_name_loc)[13].click()
-        time.sleep(1)
-        self.find_elements(self.select_elements_loc)[42].click()
-        #基金成立规模
-        self.find_elements(self.input_name_loc)[16].send_keys('22')
-        self.js_scroll_end(0, 500)
-        # 基金管理人
-        self.find_elements(self.input_name_loc)[19].send_keys('自动化测试11')
-        # 基金经理
-        self.find_elements(self.input_name_loc)[20].send_keys('自动化测试11')
-        # 基金运作方式
-        self.find_elements(self.input_name_loc)[21].click()
-        time.sleep(1)
-        self.find_elements(self.select_elements_loc)[44].click()
-        #基金风险等级
-        self.find_elements(self.input_name_loc)[22].click()
-        self.find_elements(self.select_elements_loc)[42].click()
-        # 主要投资方向
-        self.find_elements(('class name', 'el-textarea__inner'))[0].send_keys('自动化测试11')
-        self.find_elements(self.save_loc)[6].click()
+        if self.element_click(self.find_elements(self.input_name_loc)[0]):
+            self.find_elements(self.input_name_loc)[0].send_keys(name)
+            # 产品简称
+            self.find_elements(self.input_name_loc)[1].send_keys(name2)
+            #产品编码
+            self.find_elements(self.input_name_loc)[2].send_keys(code)
+            #基金类型
+            self.find_elements(self.input_name_loc)[3].click()
+            time.sleep(1)
+            self.find_elements(self.select_elements_loc)[29].click()
+            #产品类型
+            self.find_elements(self.input_name_loc)[4].click()
+            time.sleep(1)
+            self.find_elements(self.select_elements_loc)[43].click()
+            #组织形式
+            self.find_elements(self.input_name_loc)[6].click()
+            time.sleep(1)
+            self.find_elements(self.select_elements_loc)[43].click()
+            #成立日期
+            time.sleep(1)
+            self.find_elements(self.input_name_loc)[8].click()
+            time.sleep(1)
+            self.click(('class name', 'today'))
+            # 到期日期
+            self.find_elements(self.mulitple_loc)[0].click()
+            # 管理类型
+            self.find_elements(self.input_name_loc)[11].click()
+            time.sleep(1)
+            self.find_elements(self.select_elements_loc)[44].click()
+            #基金状态
+            self.find_elements(self.input_name_loc)[12].click()
+            time.sleep(1)
+            self.find_elements(self.select_elements_loc)[44].click()
+            #份额类型
+            self.find_elements(self.input_name_loc)[13].click()
+            time.sleep(1)
+            self.find_elements(self.select_elements_loc)[42].click()
+            #基金成立规模
+            self.find_elements(self.input_name_loc)[16].send_keys('22')
+            self.js_scroll_end(0, 500)
+            # 基金管理人
+            self.find_elements(self.input_name_loc)[19].send_keys('自动化测试11')
+            # 基金经理
+            self.find_elements(self.input_name_loc)[20].send_keys('自动化测试11')
+            # 基金运作方式
+            self.find_elements(self.input_name_loc)[21].click()
+            time.sleep(1)
+            self.find_elements(self.select_elements_loc)[44].click()
+            #基金风险等级
+            self.find_elements(self.input_name_loc)[22].click()
+            self.find_elements(self.select_elements_loc)[42].click()
+            # 主要投资方向
+            self.find_elements(('class name', 'el-textarea__inner'))[0].send_keys('自动化测试11')
+            self.find_elements(self.save_loc)[6].click()
+            time.sleep(1)
+            text = self.get_text(('class name', 'el-message__content'))
+            return text
+        else:
+            return '页面不可点击'
 
 
 
@@ -152,4 +161,4 @@ if __name__ == '__main__':
     time.sleep(1)
     r.open_url(registration_of_product_url)
     time.sleep(2)
-    r.no_input_release()
+    r.input_something('自动化测试11','自动化测试11','自动化测试11')

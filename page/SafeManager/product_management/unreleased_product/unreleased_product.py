@@ -17,7 +17,7 @@ import time
 
 class UnreleasedProduct(ManagerLogin):
     mysql = ExecMysql()
-    sql = "SELECT name FROM product_name WHERE product_name='operation_product_click';"
+    sql = "SELECT name FROM search_name WHERE product_name='operation_product_click';"
     search_name = mysql.select_mysql(sql)[0][0]
     """为发布产品页面所有元素的定位以及操作"""
     #查询输入框，0基金名称，1基金编码

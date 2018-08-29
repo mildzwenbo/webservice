@@ -11,6 +11,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import *
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.select import Select
+from selenium.common.exceptions import WebDriverException
 import platform
 import os
 import time
@@ -439,15 +440,18 @@ class FindElement():
         :param element: 要检查的元素
         :return:
         """
-        for i in range(int(time_out)):
-            try:
-                if element:
-                    element.click()
-                    break
-            except Exception as msg:
-                time.sleep(1)
-        if i == int(time_out)-1:
-            return False
-        else:
+        try:
+            for i in range(int(time_out)):
+                try:
+                    if element:
+                        element.click()
+                        break
+                except Exception as msg:
+                    time.sleep(1)
             return True
+        except WebDriverException as msg:
+            print(msg)
+            return False
+
+
 
