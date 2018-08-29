@@ -117,8 +117,8 @@ def fun_select():
 if __name__ == '__main__':
     mysql = ExecMysql()
     # 查询
-    select_sql = "SELECT status FROM run_status WHERE name='test_g_release_product_clcik';"
-    result = mysql.select_mysql(select_sql)[0][0] #得到的为元组
+    sql = "SELECT name FROM product_name WHERE product_name ='operation_product_click';"
+    result = mysql.select_mysql(sql)[0][0] #得到的为元组
     print(result)
     # for i in result:
     #     print(i[1])
