@@ -446,7 +446,7 @@ class FindElement():
                     break
             except Exception as msg:
                 time.sleep(1)
-        if i == int(time_out)+1:
+        if i == int(time_out)-1:
             return False
         else:
             return True
