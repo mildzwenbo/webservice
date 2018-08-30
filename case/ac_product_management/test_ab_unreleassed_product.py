@@ -13,6 +13,10 @@ from common.log import logger
 from page.SafeManager.product_management.unreleased_product.unreleased_product import UnreleasedProduct, manager_url, unreleased_product_url, browser
 from common.exec_mysql import ExecMysql
 
+mysql = ExecMysql()
+sql = "SELECT status FROM run_status WHERE name='test_ac_input_something'"
+status = int(mysql.select_mysql(sql)[0][0])
+
 
 class TestUnreleasedProduct(unittest.TestCase):
     """发布产品页面所有测试用例的编写"""
@@ -132,12 +136,13 @@ class TestUnreleasedProduct(unittest.TestCase):
             logger.info(msg)
             raise
 
+    @unittest.skipUnless(status, '未发布产品列表中产品未发布成功的case没有执行成功，则不执行此case')
     def test_g_delete_product_click(self):
         """列表中的操作按钮,点击删除，基金名称为：自动化测试产品2"""
         try:
             text = self.driver.delete_product_click()
-            logger.info('点击操作，点击删除按钮，取消删除后，显示的提示为：%s' % text)
-            self.assertEqual('已取消删除', text)
+            logger.info('点击操作，点击删除按钮，取确定后，显示的提示为：%s' % text)
+            self.assertEqual('删除成功!', text)
         except Exception as msg:
             logger.info(msg)
             raise

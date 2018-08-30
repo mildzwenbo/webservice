@@ -117,13 +117,13 @@ def fun_select():
 if __name__ == '__main__':
     mysql = ExecMysql()
     # 查询
-    # sql = "SELECT name FROM search_name WHERE product_name ='operation_product_click';"
-    # result = mysql.select_mysql(sql)[0][0] #得到的为元组
-    # print(result)
-    a = 'abc'
-    sql = "UPDATE add_product_name SET product_name='%s' WHERE name='test_ac_input_something';" % a
-    print(sql)
-    mysql.update_mysql(sql)
+    sql = "SELECT name FROM search_name WHERE product_name ='operation_product_click';"
+    result = mysql.select_mysql(sql)[0][0] #得到的为元组
+    print(result)
+    # a = 'abc'
+    # sql = "UPDATE add_product_name SET product_name='%s' WHERE name='test_ac_input_something';" % a
+    # print(sql)
+    # mysql.update_mysql(sql)
     # for i in result:
     #     print(i[1])
     # print('-' * 100)
@@ -144,4 +144,9 @@ if __name__ == '__main__':
 
     # mysql.update_mysql("UPDATE run_status SET status='0' WHERE name='test_g_release_product_clcik';")
 
-#
+    mysql = ExecMysql()
+    sql = "SELECT status FROM run_status WHERE name ='test_ac_input_something';"
+
+    status = mysql.select_mysql(sql)
+    print(type(status[0][0]))
+

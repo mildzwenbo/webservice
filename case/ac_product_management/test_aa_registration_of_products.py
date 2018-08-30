@@ -81,9 +81,12 @@ class TestRegistrationOfProducts(unittest.TestCase):
             text = self.driver.input_something(name, name, name)
             logger.info('正常输入信息点击保存，显示的提示为：%s' % text)
             self.assertEqual('保存成功',text)
-
+            sql1 = "UPDATE run_status SET status='1' WHERE name='test_ac_input_something';"
+            mysql.update_mysql(sql1)
         except Exception as msg:
             logger.info(msg)
+            sql2 = "UPDATE run_status SET status='0' WHERE name='test_ac_input_something';"
+            mysql.update_mysql(sql2)
             raise
 
     def test_ad_existing_name(self):

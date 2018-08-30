@@ -18,7 +18,9 @@ import time
 class UnreleasedProduct(ManagerLogin):
     mysql = ExecMysql()
     sql = "SELECT name FROM search_name WHERE product_name='operation_product_click';"
+    sql1 = "SELECT product_name FROM add_product_name WHERE name='test_ac_input_something';"
     search_name = mysql.select_mysql(sql)[0][0]
+    name = mysql.select_mysql(sql1)[0][0]
     """为发布产品页面所有元素的定位以及操作"""
     #查询输入框，0基金名称，1基金编码
     search_loc = ('class name', 'el-input__inner')
@@ -197,13 +199,13 @@ class UnreleasedProduct(ManagerLogin):
     def delete_product_click(self):
         """列表中的操作按钮,点击删除，基金名称为：自动化测试产品2"""
         if self.element_click(self.find_elements(self.search_loc)[1]):
-            self.find_elements(self.search_loc)[0].send_keys(self.search_name)
+            self.find_elements(self.search_loc)[0].send_keys(self.name)
             self.click(self.search_button_loc)
             if self.element_click(self.find_elements(self.search_loc)[1]):
                 self.find_elements(self.operation_loc)[2].click()
                 time.sleep(1)
                 self.find_elements(self.operation_list_loc)[6].click()
-                self.find_elements(('class name', 'el-button--small'))[0].click()
+                self.find_elements(('class name', 'el-button--small'))[1].click()
                 time.sleep(1)
                 text = self.get_text(('class name', 'el-message__content'))
                 return text
