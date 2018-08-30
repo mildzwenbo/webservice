@@ -73,7 +73,7 @@ class TestRegistrationOfProducts(unittest.TestCase):
 
     def test_ac_input_something(self):
         """填写正常的信息进行登记"""
-        name = '产品'+str(int(time.time()))
+        name = 'product'+str(int(time.time()))
         mysql = ExecMysql()
         sql = "UPDATE add_product_name SET product_name='%s' WHERE name='test_ac_input_something';" % name
         mysql.update_mysql(sql)
