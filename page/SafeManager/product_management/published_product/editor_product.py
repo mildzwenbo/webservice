@@ -12,7 +12,7 @@ from common.get_url import GetUrl
 from common.exec_mysql import ExecMysql
 
 mysql = ExecMysql()
-sql = 'select url from url_list where id=2'
+sql = 'select url from url_list where id=3'
 url = mysql.select_mysql(sql)[0][0]
 
 editor_product_url = GetUrl().get_admin_url() + url
@@ -47,7 +47,7 @@ if __name__ == '__main__':
     p.open_url(manager_url)
     p.yf_manager_login()
     time.sleep(2)
-    p.open_url("http://testpvt.boss.pb-test.com/#/product/OnlineProductEdit?id=14704")
+    p.open_url(editor_product_url)
     p.editor_product()
     # print(editor_product_url)
 
