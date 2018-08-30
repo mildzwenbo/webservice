@@ -206,8 +206,9 @@ class UnreleasedProduct(ManagerLogin):
                 time.sleep(1)
                 self.find_elements(self.operation_list_loc)[6].click()
                 self.find_elements(('class name', 'el-button--small'))[1].click()
-                time.sleep(1)
+                time.sleep(2)
                 text = self.get_text(('class name', 'el-message__content'))
+                print(text)
                 return text
             else:
                 return '页面无法点击'

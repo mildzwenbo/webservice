@@ -128,11 +128,11 @@ class TestUnreleasedProduct(unittest.TestCase):
             logger.info("点击操作按钮，点击发布按钮，显示的提示为：%s" % text)
             self.assertEqual('发布成功!', text)
             try:
-                self.mysql.update_mysql("UPDATE run_status SET status='1' WHERE name='test_g_release_product_clcik';")
+                self.mysql.update_mysql("UPDATE run_status SET status='1' WHERE name='test_g_release_product_click';")
             except ExecMysql as msg:
-                self.mysql.update_mysql("UPDATE run_status SET status='1' WHERE name='test_g_release_product_clcik';")
+                self.mysql.update_mysql("UPDATE run_status SET status='1' WHERE name='test_g_release_product_click';")
         except Exception as msg:
-            self.mysql.update_mysql("UPDATE run_status SET status='0' WHERE name='test_g_release_product_clcik';")
+            self.mysql.update_mysql("UPDATE run_status SET status='0' WHERE name='test_g_release_product_click';")
             logger.info(msg)
             raise
 

@@ -15,6 +15,7 @@ from page.SafeManager.product_management.unreleased_product.editor_product impor
 
 
 class TestEditorProduct(unittest.TestCase):
+    """编辑未发布产品"""
 
     @classmethod
     def setUpClass(cls):
@@ -47,6 +48,7 @@ class TestEditorProduct(unittest.TestCase):
         """在投资信息下主要投资方向编辑信息"""
         try:
             self.driver.editor_product()
+            time.sleep(1)
             text = self.driver.get_text(('class name', 'el-message__content'))
             self.assertEqual('保存成功', text)
         except Exception as msg:

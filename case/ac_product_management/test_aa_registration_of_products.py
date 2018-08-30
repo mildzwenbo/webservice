@@ -89,6 +89,8 @@ class TestRegistrationOfProducts(unittest.TestCase):
             mysql.update_mysql(sql2)
             raise
 
+
+
     def test_ad_existing_name(self):
         """输入的产品名称已经纯在，点击保存"""
         try:

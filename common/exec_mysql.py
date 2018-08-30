@@ -145,8 +145,8 @@ if __name__ == '__main__':
     # mysql.update_mysql("UPDATE run_status SET status='0' WHERE name='test_g_release_product_clcik';")
 
     mysql = ExecMysql()
-    sql = "SELECT status FROM run_status WHERE name ='test_ac_input_something';"
-
-    status = mysql.select_mysql(sql)
-    print(type(status[0][0]))
-
+    sql = "SELECT name FROM search_name WHERE product_name='operation_product_click';"
+    sql1 = "SELECT product_name FROM add_product_name WHERE name='test_ac_input_something';"
+    search_name = mysql.select_mysql(sql)[0][0]
+    name = mysql.select_mysql(sql1)[0][0]
+    print(name)
