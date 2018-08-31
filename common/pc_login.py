@@ -4,6 +4,9 @@ import time
 import threading
 import configparser
 from common.get_path import GetPath
+from common.select_environment import Select
+
+select = Select().select()
 
 pc_url = GetUrl().get_pc_url() + '#/login'
 
@@ -14,12 +17,12 @@ class PCLogin(FindElement):
     conf = configparser.ConfigParser()
     conf_ptah = GetPath().get_conf_path('username.ini')
     conf.read(conf_ptah, encoding='utf-8')
-    if conf.get('select', 'select') == '1':
+    if select == '1':
         yf_pc_name = conf.get('test_name', 'yf_pc_name')
         lx_pc_name = conf.get('test_name', 'lx_pc_name')
         zj_pc_name = conf.get('test_name', 'zj_pc_name')
         pc_pwd = conf.get('test_name', 'pc_pwd')
-    else:
+    elif select == '0':
         yf_pc_name = conf.get('test_name', 'yf_pc_name')
         lx_pc_name = conf.get('test_name', 'lx_pc_name')
         zj_pc_name = conf.get('test_name', 'zj_pc_name')

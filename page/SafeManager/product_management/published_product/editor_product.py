@@ -40,7 +40,6 @@ class EditorProduct(ManagerLogin):
 
 
 
-
 if __name__ == '__main__':
     driver = browser()
     p = EditorProduct(driver)

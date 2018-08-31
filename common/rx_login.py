@@ -11,7 +11,9 @@ import threading
 import os
 import time
 
+from common.select_environment import Select
 
+select = Select().select()
 url = GetUrl().rx_url
 
 
@@ -22,10 +24,10 @@ class RxLogin(FindElement):
     path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
     conf_path = os.path.join(os.path.join(path, 'config'), 'username.ini')
     conf.read(conf_path, encoding='utf-8')
-    if conf.get('select', 'select') == '1':
+    if select == '1':
         rx_name = conf.get('test_name', 'rx_name')
         rx_pwd = conf.get('test_name', 'rx_pwd')
-    else:
+    elif select == '0':
         rx_name = conf.get('name', 'rx_name')
         rx_pwd = conf.get('name', 'rx_pwd')
     mutex.release()
