@@ -432,7 +432,6 @@ class FindElement():
         """
         self.driver.get_screenshot_as_file(img)
 
-
     def element_click(self, element, time_out=5):
         """
         检查元素是否可以点击或输入
