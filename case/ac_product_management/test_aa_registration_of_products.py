@@ -12,6 +12,7 @@ import platform
 
 from page.SafeManager.product_management.unreleased_product.registration_of_products import RegistrationOfProduct, browser, manager_url, registration_of_product_url
 from common.log import logger
+from common.exec_mysql import ExecMysql
 
 
 class TestRegistrationOfProducts(unittest.TestCase):
@@ -55,7 +56,8 @@ class TestRegistrationOfProducts(unittest.TestCase):
         """不输入任何信息点击保存"""
         try:
             result = self.driver.no_input()
-            self.assertTrue(result)
+            logger.info('不输入任何信息点击保存按钮，显示的提示：%s' % result)
+            self.assertEqual(result, '有必填项未填写或输入有误')
         except Exception as msg:
             logger.info(msg)
             raise
@@ -71,21 +73,33 @@ class TestRegistrationOfProducts(unittest.TestCase):
 
     def test_ac_input_something(self):
         """填写正常的信息进行登记"""
+        name = 'product'+str(int(time.time()))
+        mysql = ExecMysql()
+        sql = "UPDATE add_product_name SET product_name='%s' WHERE name='test_ac_input_something';" % name
+        mysql.update_mysql(sql)
         try:
-            self.driver.input_something('自动化测试11', '自动化测试11', '自动化测试11')
-            time.sleep(1)
-            text = self.driver.get_text(('class name', 'el-message__content'))
+            text = self.driver.input_something(name, name, name)
+            logger.info('正常输入信息点击保存，显示的提示为：%s' % text)
             self.assertEqual('保存成功',text)
+            sql1 = "UPDATE run_status SET status='1' WHERE name='test_ac_input_something';"
+            mysql.update_mysql(sql1)
         except Exception as msg:
             logger.info(msg)
+            sql2 = "UPDATE run_status SET status='0' WHERE name='test_ac_input_something';"
+            mysql.update_mysql(sql2)
             raise
+
+
 
     def test_ad_existing_name(self):
         """输入的产品名称已经纯在，点击保存"""
         try:
-            self.driver.input_something('自动化测试11', '自动化测试12', '自动化测试12')
-            time.sleep(1)
-            text = self.driver.get_text(('class name', 'el-message__content'))
+            mysql = ExecMysql()
+            sql = "SELECT product_name FROM add_product_name WHERE name='test_ac_input_something';"
+            existing_name = mysql.select_mysql(sql)[0][0]
+            other_name = str(int(time.time()))
+            text = self.driver.input_something(existing_name, other_name, other_name)
+            logger.info('输入已经存在的产品名称点击保存，显示的提示为：%s' % text)
             self.assertEqual('产品名称已存在', text)
         except Exception as msg:
             logger.info(msg)
@@ -94,9 +108,12 @@ class TestRegistrationOfProducts(unittest.TestCase):
     def test_af_existing_code(self):
         """输入已经存在的简称，点击保存"""
         try:
-            self.driver.input_something('自动化测试13', '自动化测试11', '自动化测试12')
-            time.sleep(1)
-            text = self.driver.get_text(('class name', 'el-message__content'))
+            mysql = ExecMysql()
+            sql = "SELECT product_name FROM add_product_name WHERE name='test_ac_input_something';"
+            existing_name = mysql.select_mysql(sql)[0][0]
+            name = str(int(time.time()))
+            text = self.driver.input_something(name, existing_name, name)
+            logger.info('输入已经存在的产品简称点击保存，显示的提示为：%s' % text)
             self.assertEqual('产品简称已存在', text)
         except Exception as msg:
             logger.info(msg)
@@ -105,9 +122,12 @@ class TestRegistrationOfProducts(unittest.TestCase):
     def test_ae_existing_name2(self):
         """输入已经存在的编码，点击保存"""
         try:
-            self.driver.input_something('自动化测试13', '自动化测试12', '自动化测试11')
-            time.sleep(1)
-            text = self.driver.get_text(('class name', 'el-message__content'))
+            mysql = ExecMysql()
+            sql = "SELECT product_name FROM add_product_name WHERE name='test_ac_input_something';"
+            existing_code = mysql.select_mysql(sql)[0][0]
+            name = str(int(time.time()))
+            text = self.driver.input_something(name, name, existing_code)
+            logger.info('输入已经存在的产品编码点击保存，显示的提示为：%s' % text)
             self.assertEqual('编码已存在', text)
         except Exception as msg:
             logger.info(msg)

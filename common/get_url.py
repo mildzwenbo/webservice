@@ -8,6 +8,11 @@ import configparser
 import threading
 import os
 
+from common.select_environment import Select
+
+select = Select().select()
+
+
 
 class GetUrl(object):
 
@@ -17,11 +22,11 @@ class GetUrl(object):
     path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
     conf_path = os.path.join(os.path.join(path, 'config'), 'url.ini')
     conf.read(conf_path, encoding='utf-8')
-    if conf.get('select', 'select') == '1':
+    if select == '1':
         manage_url = conf.get('TESTURL', 'SafeManager')
         pc_url = conf.get('TESTURL', 'pc_url')
         rx_url = conf.get('TESTURL', 'rx_url')
-    else:
+    elif select == '0':
         manage_url = conf.get('URL', 'SafeManager')
         pc_url = conf.get('URL', 'pc_url')
         rx_url = conf.get('URL', 'rx_url')

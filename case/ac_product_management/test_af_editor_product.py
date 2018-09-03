@@ -1,7 +1,7 @@
 """
 @author:fei
-@date:2018=08-22
-@brief:编辑页面的测试用例
+@date:2018-08-22
+@brief:编辑已发布页面的测试用例
 """
 
 from pyvirtualdisplay import Display
@@ -10,12 +10,12 @@ import time
 import platform
 
 from common.log import logger
-from page.SafeManager.product_management.unreleased_product.editor_product import editor_product_url, EditorProduct, manager_url, browser
+from page.SafeManager.product_management.published_product.editor_product import editor_product_url, EditorProduct, manager_url, browser
 
 
 
 class TestEditorProduct(unittest.TestCase):
-    """编辑未发布产品"""
+    """编辑已发布产品"""
 
     @classmethod
     def setUpClass(cls):

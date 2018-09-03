@@ -3,29 +3,37 @@ from common.log import logger
 import threading
 import configparser
 from common.get_path import GetPath
+from common.select_environment import Select
+
+select = Select().select()
+
 each = GetPath()
 mysql_conf_path = each.get_conf_path('mysql.ini')
 mutex=threading.Lock()
 mutex.acquire() # 上锁，防止多线程下出问题
 conf = configparser.ConfigParser()
 conf.read(mysql_conf_path, encoding='utf-8')
-# if conf.get('select', 'select') == '1':
-#     host = conf.get('testmysql', 'host')
-#     port = int(conf.get('testmysql', 'port'))
-#     user = conf.get('testmysql', 'user')
-#     passwd = conf.get('testmysql', 'passwd')
-#     db = conf.get('testmysql', 'db')
-# else:
-#     host = conf.get('mysql', 'host')
-#     port = int(conf.get('mysql', 'port'))
-#     user = conf.get('mysql', 'user')
-#     passwd = conf.get('mysql', 'passwd')
-#     db = conf.get('mysql', 'db')
-host = conf.get('mysql', 'host')
-port = int(conf.get('mysql', 'port'))
-user = conf.get('mysql', 'user')
-passwd = conf.get('mysql', 'passwd')
-db = conf.get('mysql', 'db')
+
+
+
+if select == '1':
+    host = conf.get('mysql', 'host')
+    port = int(conf.get('mysql', 'port'))
+    user = conf.get('mysql', 'user')
+    passwd = conf.get('mysql', 'passwd')
+    db = conf.get('mysql', 'db')
+
+elif select == '0':
+    host = conf.get('pvt_mysql', 'host')
+    port = int(conf.get('pvt_mysql', 'port'))
+    user = conf.get('pvt_mysql', 'user')
+    passwd = conf.get('pvt_mysql', 'passwd')
+    db = conf.get('pvt_mysql', 'db')
+# host = conf.get('mysql', 'host')
+# port = int(conf.get('mysql', 'port'))
+# user = conf.get('mysql', 'user')
+# passwd = conf.get('mysql', 'passwd')
+# db = conf.get('mysql', 'db')
 mutex.release()
 
 
@@ -117,9 +125,13 @@ def fun_select():
 if __name__ == '__main__':
     mysql = ExecMysql()
     # 查询
-    select_sql = "SELECT status FROM run_status WHERE name='test_g_release_product_clcik';"
-    result = mysql.select_mysql(select_sql)[0][0] #得到的为元组
+    sql = "SELECT name FROM search_name WHERE product_name ='operation_product_click';"
+    result = mysql.select_mysql(sql)[0][0] #得到的为元组
     print(result)
+    # a = 'abc'
+    # sql = "UPDATE add_product_name SET product_name='%s' WHERE name='test_ac_input_something';" % a
+    # print(sql)
+    # mysql.update_mysql(sql)
     # for i in result:
     #     print(i[1])
     # print('-' * 100)
@@ -140,4 +152,9 @@ if __name__ == '__main__':
 
     # mysql.update_mysql("UPDATE run_status SET status='0' WHERE name='test_g_release_product_clcik';")
 
-#
+    mysql = ExecMysql()
+    sql = "SELECT name FROM search_name WHERE product_name='operation_product_click';"
+    sql1 = "SELECT product_name FROM add_product_name WHERE name='test_ac_input_something';"
+    search_name = mysql.select_mysql(sql)[0][0]
+    name = mysql.select_mysql(sql1)[0][0]
+    print(name)

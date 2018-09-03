@@ -17,7 +17,9 @@ from common.get_path import GetPath
 
 
 
+from common.select_environment import Select
 
+select = Select().select()
 
 class MysqlUtil(object):
     mutex = threading.Lock()
@@ -25,7 +27,7 @@ class MysqlUtil(object):
     conf = configparser.ConfigParser()
     conf_ptah = GetPath().get_conf_path('mysql.ini')
     conf.read(conf_ptah, encoding='utf-8')
-    if conf.get('select', 'select') == '1':
+    if select == '1':
         db_user = conf.get('test_mysql_raising', 'db_user')
         db_pwd = conf.get('test_mysql_raising', 'db_pwd')
         db_host = conf.get('test_mysql_raising', 'db_host')
@@ -34,7 +36,7 @@ class MysqlUtil(object):
         db_list = conf.get('test_mysql_raising', 'db_list').split(',')
         sys_user = conf.get('test_mysql_raising', 'sys_user')
         sys_pwd = conf.get('test_mysql_raising', 'sys_pwd')
-    elif conf.get('select', 'select') == '2':
+    elif select == '2':
         db_user = conf.get('test_mysql', 'db_user')
         db_pwd = conf.get('test_mysql', 'db_pwd')
         db_host = conf.get('test_mysql', 'db_host')

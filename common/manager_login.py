@@ -7,6 +7,10 @@ import configparser
 
 manager_url = GetUrl().get_admin_url()
 
+from common.select_environment import Select
+
+select = Select().select()
+
 
 class ManagerLogin(FindElement):
     mutex = threading.Lock()
@@ -14,12 +18,12 @@ class ManagerLogin(FindElement):
     conf = configparser.ConfigParser()
     conf_ptah = GetPath().get_conf_path('username.ini')
     conf.read(conf_ptah, encoding='utf-8')
-    if conf.get('select', 'select') == '1':
+    if select == '1':
         zj_manage_name = conf.get('test_name', 'zj_manage_name')
         lx_manage_name = conf.get('test_name', 'lx_manage_name')
         yf_manage_name = conf.get('test_name', 'yf_manage_name')
         manage_pwd = conf.get('test_name', 'manage_pwd')
-    else:
+    elif select=='0':
         zj_manage_name = conf.get('name', 'zj_manage_name')
         lx_manage_name = conf.get('name', 'manage_name')
         yf_manage_name = conf.get('name', 'manage_name')
