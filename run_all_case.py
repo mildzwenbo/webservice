@@ -111,8 +111,6 @@ def send_mail():
 
 
 if __name__ == '__main__':
-    # m = MysqlUtil()
-    # m.mysql_recover()
     run_case()
     # send_mail()
 
