@@ -94,6 +94,8 @@ class TestUserManagement(unittest.TestCase):
                 self.mysql.update_mysql(run_status)
             self.assertEqual(result, '新增成功')
         except Exception as msg:
+            run_status = "update run_status set status='0' where id=5"
+            self.mysql.update_mysql(run_status)
             logger.info(msg)
             raise
 
@@ -181,6 +183,8 @@ class TestUserManagement(unittest.TestCase):
                 self.mysql.update_mysql(run_status)
             self.assertEqual(result, '暂无数据')
         except Exception as msg:
+            run_status = "update run_status set status='0' where id=6"
+            self.mysql.update_mysql(run_status)
             logger.info(msg)
             raise
 
