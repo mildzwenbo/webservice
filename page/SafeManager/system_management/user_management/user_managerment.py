@@ -167,9 +167,7 @@ class UserManagement(ManagerLogin):
                     if self.element_click(self.find_elements(('class name', 'el-dialog__title'))[3]):
                         time.sleep(2)
                         # 选择产品点击分配
-                        # self.find_elements(('class name', 'el-checkbox__inner'))[1].click()
-                        js = "document.querySelector('td.el-table_3_column_13 > div:nth-child(1) > label:nth-child(1) > span:nth-child(1) > span:nth-child(1)').click()"
-                        self.js_execute(js)
+                        self.find_elements(('class name', 'el-checkbox__inner'))[0].click()
                         time.sleep(2)
                         self.find_elements(('class name', 'el-button--medium'))[8].click()
 
@@ -207,9 +205,7 @@ class UserManagement(ManagerLogin):
                         if self.element_click(self.find_elements(('class name', 'el-dialog__title'))[3]):
                             # 选择产品点击分配
                             time.sleep(2)
-                            # self.find_elements(('class name', 'el-checkbox__inner'))[1].click()
-                            js = "document.querySelector('.listTable > div:nth-child(3) > table:nth-child(1) > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1) > label:nth-child(1) > span:nth-child(1) > span:nth-child(1)').click()"
-                            self.js_execute(js)
+                            self.find_elements(('class name', 'el-checkbox__inner'))[0].click()
                             time.sleep(2)
                             self.find_elements(('class name', 'el-button--medium'))[8].click()
 
