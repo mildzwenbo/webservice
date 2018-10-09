@@ -110,7 +110,9 @@ class UserManagement(ManagerLogin):
                 #职务名称
                 self.find_elements(('class name', 'el-cascader__label'))[1].click()
                 time.sleep(2)
-                self.find_elements(('class name', 'el-cascader-menu__item'))[4].click()
+                js = "document.querySelector('li.el-cascader-menu__item--extensible:nth-child(1)').click()"
+                # self.click(('css', '#cascader-menu-6232 > li.el-cascader-menu__item.el-cascader-menu__item--extensiblem'))
+                self.js_execute(js)
                 self.find_elements(self.search_input_loc)[7].click()
                 time.sleep(1)
                 # 角色
@@ -348,4 +350,4 @@ if __name__ == '__main__':
     time.sleep(3)
     user.open_url(user_management_url)
     # user.no_input_name_add_user()
-    user.add_user('username153', '17888888888', 'dfdlsdjf@qq.com')
+    user.allocation_user('username1536038924', '资舟观复私募投资基金')
