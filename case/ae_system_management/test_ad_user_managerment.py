@@ -175,6 +175,7 @@ class TestUserManagement(unittest.TestCase):
         try:
             sql = "select product_name from add_product_name where id=7"
             username = self.mysql.select_mysql(sql)[0][0]
+            print(username)
             # sql = "select name from search_name where id=6"
             sql1 = "select name from search_name where id=7"
             # username = self.mysql.select_mysql(sql)[0][0]
