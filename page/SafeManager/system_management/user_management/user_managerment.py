@@ -165,6 +165,7 @@ class UserManagement(ManagerLogin):
                     self.find_element(('xpath', '//*[@id="app"]/div/div[2]/div[2]/section/div/div[4]/div[7]/div/div/div[2]/div/div[2]/div/div[1]/form/div[1]/div/div/input')).send_keys(name)
                     self.click(('xpath', '//*[@id="app"]/div/div[2]/div[2]/section/div/div[4]/div[7]/div/div/div[2]/div/div[2]/div/div[1]/form/button/span'))
                     if self.element_click(self.find_elements(('class name', 'el-dialog__title'))[3]):
+                        time.sleep(2)
                         # 选择产品点击分配
                         self.find_elements(('class name', 'el-checkbox__inner'))[1].click()
                         time.sleep(2)
@@ -203,6 +204,7 @@ class UserManagement(ManagerLogin):
                                     '//*[@id="app"]/div/div[2]/div[2]/section/div/div[4]/div[7]/div/div/div[2]/div/div[2]/div/div[1]/form/button/span'))
                         if self.element_click(self.find_elements(('class name', 'el-dialog__title'))[3]):
                             # 选择产品点击分配
+                            time.sleep(2)
                             self.find_elements(('class name', 'el-checkbox__inner'))[1].click()
                             time.sleep(2)
                             self.find_elements(('class name', 'el-button--medium'))[8].click()
