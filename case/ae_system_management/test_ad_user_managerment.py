@@ -169,12 +169,15 @@ class TestUserManagement(unittest.TestCase):
             logger.info(msg)
             raise
 
+    @unittest.skipUnless(int(ExecMysql().select_mysql('select status from run_status where id=5')[0][0]),'添加用户的case执行失败')
     def test_ai_allocation_user(self):
         """在产品分配中分配产品"""
         try:
-            sql = "select name from search_name where id=6"
-            sql1 = "select name from search_name where id=7"
+            sql = "select product_name from add_product_name where id=7"
             username = self.mysql.select_mysql(sql)[0][0]
+            # sql = "select name from search_name where id=6"
+            sql1 = "select name from search_name where id=7"
+            # username = self.mysql.select_mysql(sql)[0][0]
             name = self.mysql.select_mysql(sql1)[0][0]
             result = self.driver.allocation_user(username, name)
             logger.info('在产品分配中分配产品,返回的结果为：%s' % result)
@@ -188,13 +191,16 @@ class TestUserManagement(unittest.TestCase):
             logger.info(msg)
             raise
 
+    @unittest.skipUnless(int(ExecMysql().select_mysql('select status from run_status where id=5')[0][0]),'添加用户的case执行失败')
     @unittest.skipUnless(int(ExecMysql().select_mysql('select status from run_status where id=6')[0][0]),'分配产品的测试用例执行失败')
     def test_aj_remove_product(self):
         """移除分配的产品"""
         try:
-            sql = "select name from search_name where id=6"
-            sql1 = "select name from search_name where id=7"
+            sql = "select product_name from add_product_name where id=7"
             username = self.mysql.select_mysql(sql)[0][0]
+            # sql = "select name from search_name where id=6"
+            sql1 = "select name from search_name where id=7"
+            # username = self.mysql.select_mysql(sql)[0][0]
             name = self.mysql.select_mysql(sql1)[0][0]
             result = self.driver.remove_product(username, name)
             logger.info('在产品分配中移除产品,返回的结果为：%s' % result)
