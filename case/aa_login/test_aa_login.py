@@ -46,6 +46,7 @@ class TestLogin(unittest.TestCase):
         try:
             self.driver.no_input()
             targets_text = ('class name', 'el-form-item__error')
+            time.sleep(1)
             texts = self.driver.find_elements(targets_text)
             name_error_text = texts[0].text
             institutions_text = texts[1].text
