@@ -8,6 +8,7 @@ import unittest
 from pyvirtualdisplay import Display
 import time
 import platform
+from random import randint
 
 
 from page.SafeManager.product_management.unreleased_product.registration_of_products import RegistrationOfProduct, browser, manager_url, registration_of_product_url
@@ -75,10 +76,11 @@ class TestRegistrationOfProducts(unittest.TestCase):
         """填写正常的信息进行登记"""
         name = 'product'+str(int(time.time()))
         mysql = ExecMysql()
+        code = str(randint(100000, 999999))
         sql = "UPDATE add_product_name SET product_name='%s' WHERE name='test_ac_input_something';" % name
         mysql.update_mysql(sql)
         try:
-            text = self.driver.input_something(name, name, name)
+            text = self.driver.input_something(name, name, code)
             logger.info('正常输入信息点击保存，显示的提示为：%s' % text)
             self.assertEqual('保存成功',text)
             sql1 = "UPDATE run_status SET status='1' WHERE name='test_ac_input_something';"
@@ -92,7 +94,7 @@ class TestRegistrationOfProducts(unittest.TestCase):
 
 
     def test_ad_existing_name(self):
-        """输入的产品名称已经纯在，点击保存"""
+        """输入的产品名称已经，点存在击保存"""
         try:
             mysql = ExecMysql()
             sql = "SELECT product_name FROM add_product_name WHERE name='test_ac_input_something';"
@@ -122,10 +124,11 @@ class TestRegistrationOfProducts(unittest.TestCase):
     def test_ae_existing_name2(self):
         """输入已经存在的编码，点击保存"""
         try:
-            mysql = ExecMysql()
-            sql = "SELECT product_name FROM add_product_name WHERE name='test_ac_input_something';"
-            existing_code = mysql.select_mysql(sql)[0][0]
+            # mysql = ExecMysql()
+            # sql = "SELECT product_name FROM add_product_name WHERE name='test_ac_input_something';"
+            # existing_code = mysql.select_mysql(sql)[0][0]
             name = str(int(time.time()))
+            existing_code = 'produc'
             text = self.driver.input_something(name, name, existing_code)
             logger.info('输入已经存在的产品编码点击保存，显示的提示为：%s' % text)
             self.assertEqual('编码已存在', text)
